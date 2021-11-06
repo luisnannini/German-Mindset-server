@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { stringify } = require('querystring');
 
 const data = fs.readFileSync('./data/job_offers.json');
 const jobOffers = JSON.parse(data);
