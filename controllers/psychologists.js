@@ -1,6 +1,7 @@
 const fs = require('fs');
 
-const psychologists = JSON.parse(fs.readFileSync('./data/psychologists.json'));
+const data = fs.readFileSync('./data/psychologists.json');
+const psychologists = JSON.parse(data);
 
 // Get all psychologists
 const getAll = (req, res) => {
@@ -27,10 +28,13 @@ const getByName = (req, res) => {
   }
 };
 
+//Function to create a random ID number
 function generateRandomIntegerInRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-let randomnId = generateRandomIntegerInRange(100, 200);
+let randomId = generateRandomIntegerInRange(100, 200);
+
+
 // Create new psychologist
 const createPsychologist = (req, res) => {
   const newPsychologist = {
@@ -44,21 +48,22 @@ const createPsychologist = (req, res) => {
     address: req.body.address,
     phone_number: req.body.phone_number
   }
+  //Check to require information
   if(!newPsychologist.first_name || !newPsychologist.address ||
     !newPsychologist.birth_date || !newPsychologist.email ||
     !newPsychologist.last_name || !newPsychologist.license ||
     !newPsychologist.phone_number){
     return res.status(400).json({ msg: 'Please include all the information'});
   } else {
-   let json = JSON.stringify(newPsychologist)
-  }
+    psychologists.push(newPsychologist);
+    res.send(200, {psychologists})
+  }} 
   
-    
-}
 
 
 module.exports = {
   getAll: getAll,
   getById: getById,
   getByName: getByName,
+  createPsychologist: createPsychologist,
 };
