@@ -20,3 +20,16 @@ app.get("/psychologist-interviews/:id", (req, res)=>{
   }
 })
 
+//Delete Interview
+
+app.delete("/psychologist-interviews/:id",(req, res)=>{
+  const found = psychAppointments.some(interview => interview.id ===parseInt(req.params.id))
+  if (found){
+    res.json({
+    msg: `The interview with the id of ${req.params.id} has been deleted`,
+    });
+  }else{
+    res.status(400).json({msg: `There's not an interview with the id of ${req.params.id}`})
+  }
+})
+
