@@ -1,4 +1,6 @@
-[{"id":1,"appointmentDay":"4/27/2021","appointmentTime":"20:33"},
+const psychAppointments = [
+
+{"id":1,"appointmentDay":"4/27/2021","appointmentTime":"20:33"},
 {"id":2,"appointmentDay":"11/9/2020","appointmentTime":"7:35"},
 {"id":3,"appointmentDay":"3/30/2021","appointmentTime":"14:08"},
 {"id":4,"appointmentDay":"1/30/2021","appointmentTime":"11:06"},
@@ -998,3 +1000,5 @@
 {"id":998,"appointmentDay":"1/12/2021","appointmentTime":"13:15"},
 {"id":999,"appointmentDay":"3/31/2021","appointmentTime":"15:45"},
 {"id":1000,"appointmentDay":"3/27/2021","appointmentTime":"15:09"}]
+
+module.exports= psychAppointments;
