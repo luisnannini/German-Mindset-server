@@ -21,7 +21,7 @@ app.get("/psychologist-interviews/:id", (req, res)=>{
   if (found){
     res.json(psychAppointments.filter(interview => interview.id === parseInt(req.params.id)));
   }else{
-    res.status(400).json({msg: `There's not an interview booked with the id ${req.params.id}`})
+    res.status(400).json({msg: `There's not an interview booked with the user id ${req.params.id}`})
   }
 })
 
@@ -31,10 +31,10 @@ app.delete("/psychologist-interviews/:id",(req, res)=>{
   const found = psychAppointments.some(interview => interview.id ===parseInt(req.params.id))
   if (found){
     res.json({
-    msg: `The interview with the id of ${req.params.id} has been deleted`,
+    msg: `The interview with the user id of ${req.params.id} has been deleted`,
     });
   }else{
-    res.status(400).json({msg: `There's not an interview with the id of ${req.params.id}`})
+    res.status(400).json({msg: `There's not an interview with the user id of ${req.params.id}`})
   }
 })
 
@@ -53,12 +53,12 @@ app.post("/psychologist-interviews", (req, res)=>{
 
   const found = psychAppointments.some(interview => interview.id ===parseInt(req.body.id))
   if (found){
-    return res.status(400).json({msg: `There's already an interview booked with the id ${req.body.id}`})
+    return res.status(400).json({msg: `There's already an interview booked with the user id ${req.body.id}`})
   }
 
   psychAppointments.push(newInterview);
   res.json({
-    msg: `The interview with the id of ${newInterview.id} has been added`,
+    msg: `The interview with the user id of ${newInterview.id} has been added`,
     psychAppointments
   })
 })
@@ -72,6 +72,19 @@ app.get("/company-interviews/:id", (req, res)=>{
   if (found){
     res.json(companyAppointments.filter(interview => interview.id === parseInt(req.params.id)));
   }else{
-    res.status(400).json({msg: `The id ${req.params.id} doesn't have an interview with a company`});
+    res.status(400).json({msg: `The user id ${req.params.id} doesn't have an interview with a company`});
+  }
+})
+
+//Delete interview with company
+
+app.delete("/company-interviews/:id",(req, res)=>{
+  const found = companyAppointments.some(interview => interview.id ===parseInt(req.params.id))
+  if (found){
+    res.json({
+    msg: `The interview with the id of ${req.params.id} has been deleted`,
+    });
+  }else{
+    res.status(400).json({msg: `There's not an interview with a company with the user id of ${req.params.id}`})
   }
 })
