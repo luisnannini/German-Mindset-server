@@ -7,7 +7,7 @@ const psychologistsController = require('./controllers/psychologists');
 app.set('json spaces', 2);
 
 app.get('/', (req, res) => {
-  res.send('Welcome to MindSet!');
+  res.send('Mindset frontpage');
 });
 
 //ADMIN
