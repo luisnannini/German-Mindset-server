@@ -1,4 +1,3 @@
-const { json } = require('express');
 const fs = require('fs');
 
 const data = fs.readFileSync('./data/psychologists.json');
