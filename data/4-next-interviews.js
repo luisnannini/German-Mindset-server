@@ -1,4 +1,6 @@
-[{"id":1,"nextInterviewDay":"10/14/2021","nextInterviewTime":"2:32 AM","companyName":"Labadie, Cummerata and Cummerata","position":"Nurse"},
+const companyAppointments =[
+
+{"id":1,"nextInterviewDay":"10/14/2021","nextInterviewTime":"2:32 AM","companyName":"Labadie, Cummerata and Cummerata","position":"Nurse"},
 {"id":2,"nextInterviewDay":"9/6/2021","nextInterviewTime":"6:26 AM","companyName":"Koss-Torphy","position":"Account Coordinator"},
 {"id":3,"nextInterviewDay":"8/14/2021","nextInterviewTime":"6:15 PM","companyName":"Wisoky, Kub and Yundt","position":"Senior Editor"},
 {"id":4,"nextInterviewDay":"2/7/2021","nextInterviewTime":"8:55 AM","companyName":"Cassin, Lubowitz and Flatley","position":"Account Coordinator"},
@@ -998,3 +1000,5 @@
 {"id":998,"nextInterviewDay":"3/1/2021","nextInterviewTime":"4:18 PM","companyName":"Rutherford Group","position":"Legal Assistant"},
 {"id":999,"nextInterviewDay":"8/4/2021","nextInterviewTime":"9:35 AM","companyName":"Quigley, Mosciski and Tillman","position":"Professor"},
 {"id":1000,"nextInterviewDay":"12/30/2020","nextInterviewTime":"8:04 PM","companyName":"Braun, D'Amore and Okuneva","position":"Data Coordiator"}]
+
+module.exports= companyAppointments;

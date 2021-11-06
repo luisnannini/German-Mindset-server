@@ -1,5 +1,6 @@
 const express = require('express');
-const psychAppointments = require('./data/3-schedule-interview-psychologist')
+const psychAppointments = require('./data/3-schedule-interview-psychologist');
+const companyAppointments = require('./data/4-next-interviews');
 const app = express();
 
 const port = process.env.port || 5000;;
@@ -60,4 +61,17 @@ app.post("/psychologist-interviews", (req, res)=>{
     msg: `The interview with the id of ${newInterview.id} has been added`,
     psychAppointments
   })
+})
+
+
+//Ver el listado de entrevistas próximas, las cuales puede cancelar.
+//Look interview with company
+
+app.get("/company-interviews/:id", (req, res)=>{
+  const found = companyAppointments.some(interview => interview.id ===parseInt(req.params.id))
+  if (found){
+    res.json(companyAppointments.filter(interview => interview.id === parseInt(req.params.id)));
+  }else{
+    res.status(400).json({msg: `The id ${req.params.id} doesn't have an interview with a company`});
+  }
 })
