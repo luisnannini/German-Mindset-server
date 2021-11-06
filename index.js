@@ -3,7 +3,9 @@ const app = express();
 const port = 5000;
 
 const psychologistsController = require('./controllers/psychologists');
-const jobOfferController = require('./controllers/jobOffers')
+const jobOfferController = require('./controllers/jobOffers');
+const applicantsController = require('./controllers/applicants')
+
 
 app.set('json spaces', 2);
 
@@ -29,6 +31,12 @@ app.get('/job_offers/:company', jobOfferController.getByCompany);
 app.post('/job_offers', jobOfferController.createJobOffer);
 app.put('/job_offers/:id', jobOfferController.updatejobOffer);
 app.delete('/job_offers/:id', jobOfferController.deletejobOffer);
+
+
+//ADMIN applicants
+app.get('/applicants', applicantsController.getAll);
+app.get('/applicants/:id', applicantsController.getById);
+app.put('/applicants/:id', applicantsController.updateApplicant);
 
 
 
