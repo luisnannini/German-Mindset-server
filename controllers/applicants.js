@@ -25,7 +25,7 @@ const deleteInterview = (req, res) => {
     if (found) {
       res.json(applicants.filter(applicant => applicant.id !== parseInt(req.params.id)));
     } else {
-      res.send('Applicant not found');
+      res.send('Interview not found');
     }
 }
 
