@@ -84,8 +84,6 @@ const changeAvailability = (req, res) => {
     }   
 }
 
-
-
 module.exports = {
     registerApplicant: registerApplicant,
     createCV: createCV,
