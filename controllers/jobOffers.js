@@ -14,7 +14,7 @@ const getById = (req, res) => {
     if (found) {
       res.json(jobOffers.filter(jobOffer => jobOffer.id === parseInt(req.params.id)));
     } else {
-      res.send('Offer not found');
+      res.send(400, {"Msg":"Offer not found"});
     }
   };
   
@@ -24,7 +24,8 @@ const getByCompany = (req, res) => {
     if (found) {
       res.json(jobOffers.filter(jobOffer => jobOffer.company === req.params.company));
     } else {
-      res.send('Offer not found');
+      res.send(typeof(req.params.company))
+      res.send(400, {"Msg":"Offer not found"});
     }
   };
 
@@ -67,7 +68,7 @@ const updatejobOffer = (req, res) => {
           jobOffer.description = updatejobOffer.description ? updatejobOffer.description : jobOffer.description,
           jobOffer.publication_date = updatejobOffer.publication_date ? updatejobOffer.publication_date : jobOffer.publication_date,
           jobOffer.applicants = updatejobOffer.applicants ? updatejobOffer.applicants : jobOffer.applicants,
-          res.json({ msg: 'Job Offer updated', jobOffers})
+          res.json({ msg: 'Job Offer updated', jobOffers});
         }});
     } else {
       res.send('User not found');
@@ -80,7 +81,7 @@ const deletejobOffer = (req, res) => {
     if (found) {
       res.json(jobOffers.filter(jobOffer => jobOffer.id !== parseInt(req.params.id)));
     } else {
-      res.send('Offer not found');
+      res.send(400, {"Msg":"Offer not found"});
     }
 }
 

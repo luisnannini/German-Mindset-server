@@ -13,7 +13,7 @@ const getById = (req, res) => {
     if (found) {
       res.json(applicants.filter(applicant => applicant.id === parseInt(req.params.id)));
     } else {
-      res.send('Applicant not found');
+      res.send(400, {"Msg":"Applicant not found"});
     }
   };
 
@@ -24,10 +24,10 @@ const updateApplicant = (req, res) => {
       const updateApplicant = req.body;
       applicants.forEach(applicant => {
         if(applicant.id === parseInt(req.params.id)){
-          applicant.state = updateApplicant.state
+          applicant.state = updateApplicant.state ? updateApplicant.state : applicant.state;
         }});
     } else {
-      res.send('Applicant not found');
+      res.send(400, {"Msg":"Applicant not found"});
     }
 };
 

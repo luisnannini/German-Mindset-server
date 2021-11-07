@@ -14,7 +14,7 @@ const getById = (req, res) => {
   if (found) {
     res.json(psychologists.filter(psychologist => psychologist.id === parseInt(req.params.id)));
   } else {
-    res.send('User not found');
+    res.send(400, {"Msg":"Psychologist user not found"});
   }
 };
 
@@ -24,7 +24,7 @@ const getByName = (req, res) => {
   if (found) {
     res.json(psychologists.filter(psychologist => psychologist.first_name === req.params.name));
   } else {
-    res.send('User not found');
+    res.send(400, {"Msg":"Psychologist user not found"});
   }
 };
 
@@ -64,7 +64,7 @@ const deletePsychologist = (req, res) => {
   if (found) {
     res.json(psychologists.filter(psychologist => psychologist.id !== parseInt(req.params.id)));
   } else {
-    res.send('User not found');
+    res.send(400, {"Msg":"Psychologist user not found"});
   }
 }
 
@@ -86,7 +86,7 @@ const updatePsychologist = (req, res) => {
         res.json({ msg: 'Member updated', psychologist})
       }});
   } else {
-    res.send('User not found');
+    res.send(400, {"Msg":"Psychologist user not found"});
   }
 };
 
