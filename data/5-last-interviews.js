@@ -1,4 +1,6 @@
-[{"id":1,"result":true,"companyName":"Gutmann, Greenfelder and Deckow","position":"Business Systems Development Analyst"},
+const interviewResults = [
+
+{"id":1,"result":true,"companyName":"Gutmann, Greenfelder and Deckow","position":"Business Systems Development Analyst"},
 {"id":2,"result":true,"companyName":"Langosh, O'Kon and Kiehn","position":"Environmental Tech"},
 {"id":3,"result":true,"companyName":"Erdman and Sons","position":"Budget/Accounting Analyst IV"},
 {"id":4,"result":true,"companyName":"Rutherford-Kunze","position":"Recruiter"},
@@ -998,3 +1000,5 @@
 {"id":998,"result":true,"companyName":"Wiegand, Herzog and Graham","position":"Executive Secretary"},
 {"id":999,"result":false,"companyName":"Wunsch Group","position":"Software Test Engineer I"},
 {"id":1000,"result":false,"companyName":"Hilpert, Tremblay and Christiansen","position":"Sales Associate"}]
+
+module.exports= interviewResults;
