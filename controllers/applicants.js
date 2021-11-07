@@ -15,7 +15,8 @@ const updateApplicant = (req, res) => {
           applicant.state = updateApplicant.state
         }});
     } else {
-      res.send('Applicant not found');
+      res.status(400);
+      res.json({ msg: 'Applicant not found'});
     }
 };
 
@@ -25,7 +26,8 @@ const deleteInterview = (req, res) => {
     if (found) {
       res.json(applicants.filter(applicant => applicant.id !== parseInt(req.params.id)));
     } else {
-      res.send('Interview not found');
+      res.status(400);
+      res.json({ msg: 'Interview not found'});
     }
 }
 
