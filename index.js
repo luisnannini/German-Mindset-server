@@ -1,7 +1,7 @@
 const express = require('express');
 const psychAppointments = require('./data/3-schedule-interview-psychologist');
-const companyAppointments = require('./data/4-next-interviews');
-const interviewResults = require('./data/5-last-interviews');
+const interviewsData = require('./data/interviews');
+
 const app = express();
 
 const port = process.env.port || 5000;;
@@ -65,41 +65,55 @@ app.post("/psychologist-interviews", (req, res)=>{
 })
 
 
-//Ver el listado de entrevistas próximas, las cuales puede cancelar.
-//Look interview with company
+//Ver el listado de entrevistas próximas, las cuales puede cancelar. y Ver el listado de entrevistas realizadas con sus resultados.
+//Look past and future interviews
 
-app.get("/company-interviews/:id", (req, res)=>{
-  const found = companyAppointments.some(interview => interview.id ===parseInt(req.params.id))
-  if (found){
-    res.json(companyAppointments.filter(interview => interview.id === parseInt(req.params.id)));
-  }else{
-    res.status(400).json({msg: `The user id ${req.params.id} doesn't have an interview with a company`});
+app.get("/company-interviews", (req, res)=>{
+  const idUser = req.query.id;
+  const time = req.query.time;
+
+  if(idUser == undefined && time == undefined){
+    return res.json(interviewsData)
   }
+
+  let filteredInterview = interviewsData;
+
+  if (idUser){
+    const foundUser = filteredInterview.some(interview => interview.idUser ===parseInt(idUser))
+    if (foundUser){
+      filteredInterview = filteredInterview.filter(interview => interview.idUser === parseInt(idUser));
+    }else{
+      res.status(400).json({msg: `The user id ${idUser} doesn't have an interview with a company`});
+    }
+  }
+
+  const today = new Date().getTime();
+
+  if (time == "past"){
+    filteredInterview = filteredInterview.filter((dateTime)=>{
+      return Date.parse(dateTime.date)<=today
+    })
+  }else if(time == "future"){
+    filteredInterview = filteredInterview.filter((dateTime)=>{
+      return Date.parse(dateTime.date)>=today
+    })
+  }
+  if(filteredInterview[0] != undefined){
+    res.json(filteredInterview)
+  }
+  res.json({msg:`There's no interview with that query`});
 })
 
 //Delete interview with company
 
-app.delete("/company-interviews/:id",(req, res)=>{
-  const found = companyAppointments.some(interview => interview.id ===parseInt(req.params.id))
-  if (found){
-    res.json({
-    msg: `The interview with the id of ${req.params.id} has been deleted`,
-    });
-  }else{
-    res.status(400).json({msg: `There's not an interview with a company with the user id of ${req.params.id}`})
+app.delete("/company-interviews/:idInterview",(req, res)=>{
+  for (let i = 0; i < interviewsData.length; i++) {
+    const interview = interviewsData[i];
+    if(interview.idInterview == req.params.idInterview){
+      interviewsData.splice(i,1)
+      res.json({msg: `The interview with the id of ${req.params.idInterview} has been deleted`})
+    }
   }
-})
-
-//Ver el listado de entrevistas realizadas con sus resultados.
-//Look interviews made
-
-app.get("/interviews-results/:id", (req, res)=>{
-  const found = interviewResults.some(interview => interview.id ===parseInt(req.params.id))
-  if (found){
-    let interview = interviewResults.filter(interview =>interview.id === parseInt(req.params.id))
-    res.status(200).json({interview})
-  }else{
-    res.status(400).json({msg: `The user id ${req.params.id} didn't have an interview with a company`});
-  }
+  res.status(400).json({msg: `That interview doesn't exist`})
 })
 
