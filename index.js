@@ -1,5 +1,4 @@
 const express = require("express");
-const applicants = require("./controllers/applicants");
 const app = express();
 const applicantsController = require('./controllers/applicants');
 
