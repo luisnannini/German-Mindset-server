@@ -8,11 +8,11 @@ As a group we had to work with branches to solve the given tasks.
 
 The project has 3 main areas to focus in, these are:
 
- *Psychologist
+ - Psychologist
 
- *Admins
+ - Admins
 
- *Users/Applicants
+ - Users/Applicants
 
 ---
 
@@ -45,11 +45,11 @@ $ app.listen(PORT);
 
 ## GROUPS.
 
-*Paloma and Sabrina were assigned to the user/applicant area.
+- Paloma and Sabrina were assigned to the user/applicant area.
 
-*Martin and Vicenzo were assigned to the admin area.
+- Martin and Vicenzo were assigned to the admin area.
 
-*Juan y Andres were assigned to the psychologist area.
+- Juan y Andres were assigned to the psychologist area.
 
 ---
 
