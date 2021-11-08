@@ -1,11 +1,11 @@
 const clients = require('../data/clients.json');
 
-//Create a new client
 //Generate new id for Client
 function generateId(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
+}
 
+//Create a new client
 const newClient = (req, res) => {
     const clientNew = {
       id: generateId(100,200),
@@ -56,7 +56,6 @@ const deleteClient = (req, res) => {
 const listClients = (req,res) =>{
     res.json(clients);
 }
-
 module.exports = {
     listClients: listClients,
     deleteClient: deleteClient,
