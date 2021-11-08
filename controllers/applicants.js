@@ -1,6 +1,9 @@
 const fs = require('fs');
 const data = fs.readFileSync('./data/Data_applicants.json');
 const applicants = JSON.parse(data);
+
+//Get all applicants with their scheduled interviews
+
 const getAll = (req, res) => {
     res.json(applicants);
   };
