@@ -1,36 +1,73 @@
+//Init
+const express = require('express');
+const app = express();
+const port = 5000;
+
 //Controllers require
+const psychologistsController = require('./controllers/psychologists');
+const jobOfferController = require('./controllers/jobOffers');
+const applicantsController = require('./controllers/applicants')
 const clients = require('./controllers/clientControl');
 const postulations = require('./controllers/positionsControl');
 const profiles = require('./controllers/profileControl');
 
-// Express library to create server.
-const express = require ('express');
-const app= express();
+//Json visibility
+app.set('json spaces', 2);
 
-// Library to allow cross origin.
-const cors = require ('cors');
-
-// Library to allow the data from the front-end.
-app.use(cors());
+//Init body parser middleware
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.urlencoded({extended: false}));
 
-//Admin - Create, edit, delete and show clients
+//Frontpage message
+app.get('/', (req, res) => {
+  res.send('Mindset frontpage');
+});
+
+//ADMIN psychologists
+app.get('/psychologists', psychologistsController.getAll);
+app.get('/psychologists/:id', psychologistsController.getById);
+app.get('/psychologists/:first_name', psychologistsController.getByName);
+app.post('/psychologists', psychologistsController.createPsychologist);
+app.delete('/psychologists/:id', psychologistsController.deletePsychologist);
+app.put('psychologists/:id',psychologistsController.updatePsychologist);
+
+//ADMIN Job Offers
+app.get('/job_offers', jobOfferController.getAll);
+app.get('/job_offers/:id', jobOfferController.getById);
+app.get('/job_offers/:company', jobOfferController.getByCompany);
+app.post('/job_offers', jobOfferController.createJobOffer);
+app.put('/job_offers/:id', jobOfferController.updatejobOffer);
+app.delete('/job_offers/:id', jobOfferController.deletejobOffer);
+
+//ADMIN applicants
+app.get('/applicants', applicantsController.getAll);
+app.get('/applicants/:id', applicantsController.getById);
+app.put('/applicants/:id', applicantsController.changeAvailability);
+
+//ADMIN - Create, edit, delete and show clients
 app.get('/clients', clients.listClients);
 app.post('/clients', clients.newClient);
 app.delete('/clients/:id', clients.deleteClient);
 app.put('clients/:id',clients.clientUpdate);
 
-//Admin - Visualize and cancel applicant postulations
+//ADMIN - Visualize and cancel applicant postulations
 app.get('/postulations',postulations.showApllicants);
 app.get('/postulations/:id',postulations.cancelPostulation);
 
-//Admin - Administrate professionals profiless
+//ADMIN - Administrate professionals profiless
 app.get('/profiles',profiles.listProfiles);
 app.post('/profiles',profiles.newProfile);
 app.put('/profiles/:id',profiles.editProfile);
 app.delete('/profiles/:id',profiles.deleteProfile);
 
-// Set of the port.
-const PORT = process.env.PORT || 4000;
-app.listen(PORT,()=> console.log(`Server running in ${PORT}`));
+
+//APPLICANTS 
+app.post('/register', applicantsController.registerApplicant);
+app.post('/register/cv', applicantsController.createCV);
+app.put('/applicants/:id', applicantsController.changeAvailability);
+app.use("/psychologist-interviews", require("./controllers/psychologist-interview"));
+app.use("/company-interviews", require("./controllers/company-interviews"));
+
+app.listen(port, () => {
+    console.log(`MindSet server listening at http://localhost:${port}`);
+  });
