@@ -1,3 +1,4 @@
+//Init
 const express = require('express');
 const app = express();
 const port = 5000;
@@ -12,6 +13,7 @@ app.set('json spaces', 2);
 
 //Init body parser middleware
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 
 //Frontpage message
@@ -50,6 +52,8 @@ app.get('/profiles/anual/:id', profileTypesController.getReport);
 app.post('/register', applicantsController.registerApplicant);
 app.post('/register/cv', applicantsController.createCV);
 app.put('/applicants/:id', applicantsController.changeAvailability);
+app.use("/psychologist-interviews", require("./controllers/psychologist-interview"));
+app.use("/company-interviews", require("./controllers/company-interviews"));
 
 app.listen(port, () => {
     console.log(`MindSet server listening at http://localhost:${port}`);
