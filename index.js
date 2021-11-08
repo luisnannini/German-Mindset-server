@@ -1,6 +1,6 @@
 const express = require('express');
-const applicantsProfile = require('./controllers/applicants');
-const psychologistsAvailability = require('./controllers/psychologists');
+const applicantsController = require('./controllers/applicants');
+const psychologists = require('./controllers/psychologists');
 const app = express();
 const port = 3000;
 
@@ -13,39 +13,15 @@ app.listen(port, () => {
 });
 
 //Update profile and cancel interviews
- /* app.get('/applicants', applicantsController.getAll);
+ app.get('/applicants', applicantsController.getAll);
+ app.get('/applicants/interview/:id', applicantsController.nextInterview);
  app.put('/applicants/:id', applicantsController.updateApplicant);
- app.delete('/applicants/:id', applicantsController.deleteInterview); */
+ app.delete('/applicants/:id', applicantsController.deleteInterview);
 
 //Change type of profile
 
-app.get('/applicants', applicantsProfile.updateProfile);
+app.put('/applicants/:id', applicantsController.updateProfile);
 
 //Psychologists availability
 
-app.get('/psychologists', psychologistsAvailability.getAll);
-
-
-
-
-
-
-
-
-// Interviews view and cancelations
-
- /* - ID
- - Applicant
- - Next interview     cancel interviews
- - Type of profile */
-
-
-// Interviews type of profile
-
-/* - ID
- - Applicant
- - Next interview
- - Type of profile    modify type of profile   */
-
-
-// Time available for interviews
+app.put('/psychologists/:id', psychologists.psychologistsAvailability);

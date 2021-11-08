@@ -1,33 +1,21 @@
 //Day and time availability
+const fs = require('fs');
+const timeAvailability = fs.readFileSync('./data/Data_timeAvailability.json');
+const availabilityData = JSON.parse(timeAvailability);
 
 const psychologistsAvailability = (req, res) => {
-    const found = applicants.some(applicant => applicant.id === parseInt(req.params.id));
+    const availability = availabilityData.some(psychologist => psychologist.id === parseInt(req.params.id));
       if (found) {
-        res.json(applicants.filter(applicant => applicant.id !== parseInt(req.params.id)));
+        res.json(availabilityData.filter(psychologist => psychologist.id == parseInt(req.params.id)));
+        fs.writeFile('./data/Data_timeAvailability.json', JSON.stringify(psychologist), err => {
+          if (err) {res.send('Verify profile')};
+        });
+        res.json(availability);
       } else {
-        res.send('Applicant not found');
+        res.send('Psychologist not available');
       }
   }
 
-  const psychologistsAvailability = (req, res) => {
-    const availability = {
-        from: req.body.from,
-        to: req.body.to,
-        days: req.body.days
-    }
-    if (newCV.from || newCV.to || newCV.days) {
-            newCV.primaryStudies = null;
-            newCV.secondaryStudies = null;
-            newCV.tertiaryStudies = null;
-            newCV.universityStudies = null;
-            newCV.courses = null;
-            newCV.otherInfo = null;
-        } else if (!newCV.experience || !newCV.from || !newCV.to || !newCV.days) {
-            return res.status(400).json({
-                error: 'Not able to complete registration',
-                message: 'experience, from, to and days are required'
-            })
-        }
-    cv.push(availability);
-    res.json(availability);
+module.exports = {
+  psychologistsAvailability: psychologistsAvailability,
 }

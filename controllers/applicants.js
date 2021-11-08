@@ -5,6 +5,17 @@ const getAll = (req, res) => {
     res.json(applicants);
   };
   
+//See next interview
+
+const nextInterview = (req, res) => {
+  const found = applicants.some(applicants => applicants.nextInterview === req.params.nextInterview);
+  if (found) {
+    res.json(psychologists.filter(applicants => applicants.nextInterview === req.params.nextInterview));
+  } else {
+    res.send(400, "Next interview not found");
+  }
+};
+
 //Update applicant
 const updateApplicant = (req, res) => {
   const found = applicants.some(applicant => applicant.id === parseInt(req.params.id));
@@ -31,7 +42,6 @@ const deleteInterview = (req, res) => {
 } 
 
 //Change type of profile
-
 const updateProfile = (req, res) => {
   const newProfile = {profile: req.query.typeOfProfile};
   applicants.list.push (newProfile);
@@ -41,9 +51,9 @@ const updateProfile = (req, res) => {
   res.json(newProfile);
 }
 
-
 module.exports = {
     getAll: getAll,
+    nextInterview: nextInterview,
     updateApplicant: updateApplicant,
     deleteInterview: deleteInterview, 
     updateProfile: updateProfile
