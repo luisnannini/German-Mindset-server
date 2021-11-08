@@ -13,7 +13,8 @@ app.set('json spaces', 2);
 //Init body parser middleware
 app.use(express.json());
 
-//Mindset Frontpage
+
+//Frontpage message
 app.get('/', (req, res) => {
   res.send('Mindset frontpage');
 });
@@ -45,6 +46,11 @@ app.get('/profiles/:id', profileTypesController.getById);
 app.get('/profiles/byProfile/:profile', profileTypesController.getByName);
 app.get('/profiles/anual/:id', profileTypesController.getReport);
 
+//APPLICANTS 
+app.post('/register', applicantsController.registerApplicant);
+app.post('/register/cv', applicantsController.createCV);
+app.put('/applicants/:id', applicantsController.changeAvailability);
+
 app.listen(port, () => {
-    console.log(`MindSet server at http://localhost:${port}`);
+    console.log(`MindSet server listening at http://localhost:${port}`);
   });
