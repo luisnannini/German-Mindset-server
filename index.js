@@ -1,5 +1,4 @@
 const express = require('express');
-const scheduleController = require('./controllers/schedule');
 const applicantsController = require('./controllers/applicants')
 const app = express();
 app.set('json spaces', 2);
@@ -9,7 +8,7 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3500;
 
-app.listen(PORT, () => console.log('Server starred on port ${PORT}'));
+app.listen(PORT, () => console.log(`Server starred on port ${PORT}`));
 
 //Init body parser middleware
 app.use(express.json());
