@@ -3,10 +3,10 @@ const fs = require('fs');
 const data = fs.readFileSync('./data/job_offers.json');
 const jobOffers = JSON.parse(data);
 
+//Get all jobOffers
 const getAll = (req, res) => {
     res.json(jobOffers);
-  };
-
+};
 
 // Single jobOffer by ID
 const getById = (req, res) => {
@@ -16,7 +16,7 @@ const getById = (req, res) => {
     } else {
       res.send(400, {"Msg":"Offer not found"});
     }
-  };
+};
   
 // Single jobOffer by Company
 const getByCompany = (req, res) => {
@@ -27,15 +27,13 @@ const getByCompany = (req, res) => {
       res.send(typeof(req.params.company))
       res.send(400, {"Msg":"Offer not found"});
     }
-  };
-
+};
 
 //Function to create a random ID number
 function generateRandomIntegerInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-  let randomId = generateRandomIntegerInRange(100, 20000);
-
+}
+let randomId = generateRandomIntegerInRange(100, 20000);
 
 // Create new Job_offer
 const createJobOffer = (req, res) => {
@@ -55,7 +53,7 @@ const createJobOffer = (req, res) => {
     } else {
       jobOffers.push(newJobOffer);
       res.send(200, {jobOffers})
-}} 
+}};
 
 //Update JobOffer
 const updatejobOffer = (req, res) => {
@@ -85,11 +83,11 @@ const deletejobOffer = (req, res) => {
     }
 }
 
-  module.exports = {
-    getAll: getAll,
-    getById: getById,
-    getByCompany: getByCompany,
-    createJobOffer: createJobOffer,
-    updatejobOffer: updatejobOffer,
-    deletejobOffer: deletejobOffer
-  }
+module.exports = {
+  getAll: getAll,
+  getById: getById,
+  getByCompany: getByCompany,
+  createJobOffer: createJobOffer,
+  updatejobOffer: updatejobOffer,
+  deletejobOffer: deletejobOffer
+}
