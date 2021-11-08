@@ -3,12 +3,12 @@ const fs = require('fs');
 const data = fs.readFileSync('./data/profile_type.json');
 const profileTypes = JSON.parse(data);
 
-// Get all profileType
+//Get all profileType
 const getAll = (req, res) => {
   res.json(profileTypes);
 };
 
-// Single profileType by ID
+//Single profileType by ID
 const getById = (req, res) => {
     const found = profileTypes.some(profileType => profileType.id === parseInt(req.params.id));
     if (found) {
@@ -19,7 +19,7 @@ const getById = (req, res) => {
   };
 
   
-// Single profileType by profile name
+//Single profileType by profile name
 const getByName = (req, res) => {
     const found = profileTypes.some(profileType => profileType.profile === req.params.profile);
     if (found) {

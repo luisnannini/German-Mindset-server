@@ -58,7 +58,7 @@ const createPsychologist = (req, res) => {
     res.send(200, {psychologists})
   }} 
 
-  //Remove a psychologist
+//Remove a psychologist
 const deletePsychologist = (req, res) => {
   const found = psychologists.some(psychologist => psychologist.id === parseInt(req.params.id));
   if (found) {
