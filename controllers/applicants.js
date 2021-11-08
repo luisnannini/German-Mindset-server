@@ -14,7 +14,7 @@ const updateApplicant = (req, res) => {
     applicants.forEach(applicant => {
       if(applicant.id === parseInt(req.params.id)){
         applicant.typeOfProfile = updateApplicant.typeOfProfile ? updateApplicant.typeOfProfile : applicant.typeOfProfile,
-        res.json({ msg: 'Type of profile assigned to applicant', psychologist})
+        res.json({ msg: 'Type of profile assigned to applicant', applicant})
       }}); 
   } else {
       res.status(400);
