@@ -1,5 +1,6 @@
 
 const fs = require('fs');
+const { stringify } = require('querystring');
 
 const data = fs.readFileSync('./data/profile_type.json');
 const profileTypes = JSON.parse(data);
@@ -36,7 +37,8 @@ const getReport = (req, res) => {
   if (found) {
     profileTypes.forEach(profileType => {
       if(profileType.type.id === parseInt(req.params.id)) {
-        res.json(`${profileType.type.month}`);
+        console.log(profileType.type.month[0])
+        res.json(`${JSON.stringify(profileType.type.month)}`);
       }
     })
   }else{
