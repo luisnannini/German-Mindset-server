@@ -4,7 +4,7 @@ const applicants = require('../data/applicants.json')
 //Status = true > applicant got a job postulation
 
 const showApllicants = (req,res) =>{
-    return applicants.filter((applicant) => applicant.state === true )
+    res.json(applicants.filter((applicant) => applicant.state === true ))
 };
 const cancelPostulation = (req,res)=>{
     const found = applicants.find(applicant => applicant.id === parseInt(req.params.id));
