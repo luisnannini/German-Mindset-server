@@ -22,25 +22,27 @@ First of all we need to download the last version of Node.js on [ClickHere](http
 
 In order to set up a server to work we made use of:
 
-$ npm init
+```
+npm init
 
-$ npm install express --save
+npm install express --save
 
-$ npm install --save-dev nodemon
+npm install --save-dev nodemon
+```
 
 ---
 
 ## STEPS TO BUILD AND RUN THE SERVER.
 
 ```
- const express = require ('express')
- const app= express()
- const cors = require ('cors')
- app.use(cors())
- app.use(express.json())
- app.use(express.static('public'))
- const PORT = process.env.PORT || 4000
- app.listen(PORT)
+const express = require ('express')
+const app= express()
+const cors = require ('cors')
+app.use(cors())
+app.use(express.json())
+app.use(express.static('public'))
+const PORT = process.env.PORT || 4000
+app.listen(PORT)
 ```
 
 ---
