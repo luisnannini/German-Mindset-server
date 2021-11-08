@@ -6,18 +6,20 @@ const getAll = (req, res) => {
   };
   
 //Update applicant
+
 const updateApplicant = (req, res) => {
-    const found = applicants.some(applicant => applicant.id === parseInt(req.params.id));
-    if (found) {
-      const updateApplicant = req.body;
-      applicants.forEach(applicant => {
-        if(applicant.id === parseInt(req.params.id)){
-          applicant.state = updateApplicant.state
-        }});
-    } else {
+  const found = applicants.some(applicant => applicant.id === parseInt(req.params.id));
+  if (found) {
+    const updateApplicant = req.body;
+    applicants.forEach(applicant => {
+      if(applicant.id === parseInt(req.params.id)){
+        applicant.typeOfProfile = updateApplicant.typeOfProfile ? updateApplicant.typeOfProfile : applicant.typeOfProfile,
+        res.json({ msg: 'Type of profile assigned to applicant', psychologist})
+      }}); 
+  } else {
       res.status(400);
       res.json({ msg: 'Applicant not found'});
-    }
+  }
 };
 
 //Cancel an interview
