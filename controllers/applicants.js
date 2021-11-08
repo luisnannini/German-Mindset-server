@@ -6,6 +6,22 @@ const availability = JSON.parse(availabilityData);
 const cv = JSON.parse(cvData);
 const applicants = JSON.parse(applicantsData);
 
+// Get all applicants
+const getAll = (req, res) => {
+    res.json(applicants);
+  };
+
+// Single applicant by ID
+const getById = (req, res) => {
+    const found = applicants.some(applicant => applicant.id === parseInt(req.params.id));
+    if (found) {
+      res.json(applicants.filter(applicant => applicant.id === parseInt(req.params.id)));
+    } else {
+      res.send('Applicant not found');
+    }
+  };
+
+
 // Create applicant - Register    
 const registerApplicant = (req, res) => {
     const newApplicant = {
@@ -85,6 +101,8 @@ const changeAvailability = (req, res) => {
 }
 
 module.exports = {
+    getAll: getAll,
+    getById: getById,
     registerApplicant: registerApplicant,
     createCV: createCV,
     changeAvailability: changeAvailability
