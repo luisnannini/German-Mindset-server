@@ -1,6 +1,7 @@
 //Controllers require
 const clients = require('./controllers/clientControl');
 const postulations = require('./controllers/positionsControl');
+const profiles = require('./controllers/profileControl');
 // Express library to create server.
 const express = require ('express');
 const app= express();
@@ -19,6 +20,10 @@ app.put('clients/:id',clients.clientUpdate);
 app.get('/postulations',postulations.showApllicants);
 app.get('/postulations/:id',postulations.cancelPostulation);
 //Admin - Administrate professionals profiless
+app.get('/profiles',profiles.listProfiles);
+app.post('/profiles',profiles.newProfile);
+app.put('/profiles/:id',profiles.editProfile);
+app.delete('/profiles/:id',profiles.deleteProfile);
 // Set of the port.
 const PORT = process.env.PORT || 4000;
 app.listen(PORT,()=> console.log(`Server running in ${PORT}`));
