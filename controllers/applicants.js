@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { get } = require('http');
 const applicantsData = fs.readFileSync('./data/1-create-applicant-data.json');
 const cvData = fs.readFileSync('./data/2-input-personaldata-experience-etc.json');
 const availabilityData = fs.readFileSync('./data/6-availability.json');

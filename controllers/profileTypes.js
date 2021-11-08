@@ -34,7 +34,4 @@ module.exports = {
     getAll: getAll,
     getById: getById,
     getByName: getByName,
-    // createprofileType: createprofileType,
-    // deletePsychologist: deletePsychologist,
-    // updatePsychologist: updatePsychologist
   };

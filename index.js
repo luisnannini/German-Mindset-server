@@ -38,7 +38,7 @@ app.delete('/job_offers/:id', jobOfferController.deletejobOffer);
 //ADMIN applicants
 app.get('/applicants', applicantsController.getAll);
 app.get('/applicants/:id', applicantsController.getById);
-app.put('/applicants/:id', applicantsController.updateApplicant);
+app.put('/applicants/:id', applicantsController.changeAvailability);
 
 
 //ADMIN Profile Types
