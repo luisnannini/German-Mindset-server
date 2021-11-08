@@ -6,12 +6,13 @@ const psychologistsController = require('./controllers/psychologists');
 const jobOfferController = require('./controllers/jobOffers');
 const applicantsController = require('./controllers/applicants')
 
-
+//Json visibility
 app.set('json spaces', 2);
 
 //Init body parser middleware
 app.use(express.json());
 
+//Frontpage message
 app.get('/', (req, res) => {
   res.send('Mindset frontpage');
 });
@@ -32,12 +33,15 @@ app.post('/job_offers', jobOfferController.createJobOffer);
 app.put('/job_offers/:id', jobOfferController.updatejobOffer);
 app.delete('/job_offers/:id', jobOfferController.deletejobOffer);
 
-
 //ADMIN applicants
 app.get('/applicants', applicantsController.getAll);
 app.get('/applicants/:id', applicantsController.getById);
-app.put('/applicants/:id', applicantsController.updateApplicant);
+app.put('/applicants/:id', applicantsController.changeAvailability);
 
+//APPLICANTS 
+app.post('/register', applicantsController.registerApplicant);
+app.post('/register/cv', applicantsController.createCV);
+app.put('/applicants/:id', applicantsController.changeAvailability);
 
 
 app.listen(port, () => {

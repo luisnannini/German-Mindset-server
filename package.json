@@ -7,11 +7,13 @@
     "start": "node index",
     "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
+
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/germanradium/basd_2021_mindset_backend.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -19,6 +21,10 @@
   },
   "homepage": "https://github.com/germanradium/basd_2021_mindset_backend#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
   }
 }
