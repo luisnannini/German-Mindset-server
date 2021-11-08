@@ -35,12 +35,12 @@ const deleteInterview = (req, res) => {
 const updateProfile = (req, res) => {
   const newProfile = {profile: req.query.typeOfProfile};
   applicants.list.push (newProfile);
-  fs.writeFile('./data/Data_applicants.json', JSON.stringifyapplicants, err => {
+  fs.writeFile('./data/Data_applicants.json', JSON.stringify(applicants), err => {
     if (err) {res.send('Verify profile')};
-  }
-  );
+  });
   res.json(newProfile);
 }
+
 
 module.exports = {
     getAll: getAll,
