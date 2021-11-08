@@ -1,5 +1,6 @@
 //Controllers require
 const clients = require('./controllers/clientControl')
+const postulations = require('./controllers/positionsControl')
 // Express library to create server.
 const express = require ('express');
 const app= express();
@@ -12,8 +13,13 @@ app.listen(PORT,()=> console.log(`Server running in ${PORT}`));
     //app.use(cors());
     //app.use(express.json());
     //app.use(express.static('public'));
+
 //Admin - Create, edit, delete and show clients
 app.get('/clients', clients.listClients);
 app.post('/clients', clients.newClient);
 app.delete('/clients/:id', clients.deleteClient);
 app.put('clients/:id',clients.clientUpdate);
+
+//Admin - Visualize and cancel applicant postulations
+app.get('/postulations',postulations.showApllicants);
+app.get('/postulations/:id',postulations.cancelPostulation);
