@@ -10,6 +10,7 @@ const applicantsController = require('./controllers/applicants')
 const clients = require('./controllers/clientControl');
 const postulations = require('./controllers/positionsControl');
 const profiles = require('./controllers/profileControl');
+const profileTypesController = require('./controllers/profileTypes')
 
 //Json visibility
 app.set('json spaces', 2);
@@ -26,15 +27,15 @@ app.get('/', (req, res) => {
 //ADMIN psychologists
 app.get('/psychologists', psychologistsController.getAll);
 app.get('/psychologists/:id', psychologistsController.getById);
-app.get('/psychologists/:first_name', psychologistsController.getByName);
+app.get('/psychologists/byName/:name', psychologistsController.getByName);
 app.post('/psychologists', psychologistsController.createPsychologist);
 app.delete('/psychologists/:id', psychologistsController.deletePsychologist);
-app.put('psychologists/:id',psychologistsController.updatePsychologist);
+app.put('/psychologists/:id',psychologistsController.updatePsychologist);
 
 //ADMIN Job Offers
 app.get('/job_offers', jobOfferController.getAll);
 app.get('/job_offers/:id', jobOfferController.getById);
-app.get('/job_offers/:company', jobOfferController.getByCompany);
+app.get('/job_offers/company/:company', jobOfferController.getByCompany);
 app.post('/job_offers', jobOfferController.createJobOffer);
 app.put('/job_offers/:id', jobOfferController.updatejobOffer);
 app.delete('/job_offers/:id', jobOfferController.deletejobOffer);
@@ -55,11 +56,16 @@ app.get('/postulations',postulations.showApllicants);
 app.get('/postulations/:id',postulations.cancelPostulation);
 
 //ADMIN - Administrate professionals profiless
-app.get('/profiles',profiles.listProfiles);
-app.post('/profiles',profiles.newProfile);
-app.put('/profiles/:id',profiles.editProfile);
-app.delete('/profiles/:id',profiles.deleteProfile);
+app.get('/profiles/professional',profiles.listProfiles);
+app.post('/profiles/professional',profiles.newProfile);
+app.put('/profiles/professional/:id',profiles.editProfile);
+app.delete('/profiles/professional/:id',profiles.deleteProfile);
 
+//ADMIN Profile Types
+app.get('/profiles', profileTypesController.getAll);
+app.get('/profiles/:id', profileTypesController.getById);
+app.get('/profiles/byProfile/:profile', profileTypesController.getByName);
+app.get('/profiles/anual/:id', profileTypesController.getReport);
 
 //APPLICANTS 
 app.post('/register', applicantsController.registerApplicant);
