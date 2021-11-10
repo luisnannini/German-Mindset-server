@@ -1,8 +1,10 @@
 const express = require('express');
 const applicantsController = require('./controllers/applicants');
-const psychologists = require('./controllers/psychologists');
+const psychologists = require('./controllers/psychologists-schedule');
 const app = express();
 const port = 3000;
+app.use(express.json());
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -20,7 +22,7 @@ app.listen(port, () => {
 
 //Change type of profile
 
-app.put('/applicants/:id', applicantsController.updateProfile);
+app.put('/applicants/profiles/:id', applicantsController.updateProfile);
 
 //Psychologists availability
 
