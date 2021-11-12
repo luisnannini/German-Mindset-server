@@ -1,25 +1,27 @@
 {
-  "name": "tests",
+  "name": "basd_2021_mindset_backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
+    "start": "node index",
+    "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VicenzoMantilla/Test-Work-Flow.git"
+    "url": "git+https://github.com/germanradium/basd_2021_mindset_backend.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VicenzoMantilla/Test-Work-Flow/issues"
+    "url": "https://github.com/germanradium/basd_2021_mindset_backend/issues"
   },
-  "homepage": "https://github.com/VicenzoMantilla/Test-Work-Flow#readme",
+  "homepage": "https://github.com/germanradium/basd_2021_mindset_backend#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.14"
