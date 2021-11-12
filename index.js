@@ -3,9 +3,13 @@ const express = require('express');
 const app = express();
 const port = 5000;
 
+//Controllers require
 const psychologistsController = require('./controllers/psychologists');
 const jobOfferController = require('./controllers/jobOffers');
 const applicantsController = require('./controllers/applicants')
+const clients = require('./controllers/clientControl');
+const postulations = require('./controllers/positionsControl');
+const profiles = require('./controllers/profileControl');
 const profileTypesController = require('./controllers/profileTypes')
 
 //Json visibility
@@ -14,7 +18,6 @@ app.set('json spaces', 2);
 //Init body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
 
 //Frontpage message
 app.get('/', (req, res) => {
@@ -41,6 +44,22 @@ app.delete('/job_offers/:id', jobOfferController.deletejobOffer);
 app.get('/applicants', applicantsController.getAll);
 app.get('/applicants/:id', applicantsController.getById);
 app.put('/applicants/:id', applicantsController.changeAvailability);
+
+//ADMIN - Create, edit, delete and show clients
+app.get('/clients', clients.listClients);
+app.post('/clients', clients.newClient);
+app.delete('/clients/:id', clients.deleteClient);
+app.put('clients/:id',clients.clientUpdate);
+
+//ADMIN - Visualize and cancel applicant postulations
+app.get('/postulations',postulations.showApllicants);
+app.get('/postulations/:id',postulations.cancelPostulation);
+
+//ADMIN - Administrate professionals profiless
+app.get('/profiles/professional',profiles.listProfiles);
+app.post('/profiles/professional',profiles.newProfile);
+app.put('/profiles/professional/:id',profiles.editProfile);
+app.delete('/profiles/professional/:id',profiles.deleteProfile);
 
 //ADMIN Profile Types
 app.get('/profiles', profileTypesController.getAll);
