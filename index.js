@@ -14,6 +14,7 @@ const profileTypesController = require('./controllers/profileTypes')
 
 //Json visibility
 app.set('json spaces', 2);
+app.use(express.static('public'));
 
 //Init body parser middleware
 app.use(express.json());
@@ -73,6 +74,15 @@ app.post('/register/cv', applicantsController.createCV);
 app.put('/applicants/:id', applicantsController.changeAvailability);
 app.use("/psychologist-interviews", require("./controllers/psychologist-interview"));
 app.use("/company-interviews", require("./controllers/company-interviews"));
+
+//PSYCHOLOGIST Update profile and cancel interviews
+ app.get('/applicants', applicantsController.getAll);
+ app.get('/applicants/interview/:id', applicantsController.nextInterview);
+ app.put('/applicants/:id', applicantsController.updateApplicant);
+ app.delete('/applicants/:id', applicantsController.deleteInterview);
+
+//PSYCHOLOGIST Change type of profile
+app.put('/applicants/profiles/:id', applicantsController.updateProfile);
 
 app.listen(port, () => {
     console.log(`MindSet server listening at http://localhost:${port}`);
