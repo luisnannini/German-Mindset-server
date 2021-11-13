@@ -15,16 +15,16 @@ mongoose.connect('mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-
 })
 
 //Controllers require
-const psychologistsController = require('./controllers/psychologists');
-const jobOfferController = require('./controllers/jobOffers');
-const applicantsController = require('./controllers/applicants')
-const clients = require('./controllers/clientControl');
-const postulations = require('./controllers/positionsControl');
-const profiles = require('./controllers/profileControl');
-const profileTypesController = require('./controllers/profileTypes');
-const { getReport } = require('./controllers/profileTypes');
-const psychologistEvaluation = require('./controllers/psychologist-evaluations');
-const psychologistSchedule = require('./controllers/psychologists-schedule');
+const psychologistsController = require('./old-controllers/psychologists');
+const jobOfferController = require('./old-controllers/jobOffers');
+const applicantsController = require('./old-controllers/applicants')
+const clients = require('./old-controllers/clientControl');
+const postulations = require('./old-controllers/positionsControl');
+const profiles = require('./old-controllers/profileControl');
+const profileTypesController = require('./old-controllers/profileTypes');
+const { getReport } = require('./old-controllers/profileTypes');
+const psychologistEvaluation = require('./old-controllers/psychologist-evaluations');
+const psychologistSchedule = require('./old-controllers/psychologists-schedule');
 
 //Json visibility
 app.set('json spaces', 2);
@@ -86,8 +86,8 @@ app.get('/profiles/anual/:id', profileTypesController.getReport);
 app.post('/register', applicantsController.registerApplicant);
 app.post('/register/cv', applicantsController.createCV);
 app.put('/applicants/:id', applicantsController.changeAvailability);
-app.use("/psychologist-interviews", require("./controllers/psychologist-interview"));
-app.use("/company-interviews", require("./controllers/company-interviews"));
+app.use("/psychologist-interviews", require("./old-controllers/psychologist-interview"));
+app.use("/company-interviews", require("./old-controllers/company-interviews"));
 
 //PSYCHOLOGIST Update profile and cancel interviews
  app.get('/applicants', applicantsController.getAll);
