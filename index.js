@@ -84,6 +84,9 @@ app.use("/company-interviews", require("./controllers/company-interviews"));
 //PSYCHOLOGIST Change type of profile
 app.put('/applicants/profiles/:id', applicantsController.updateProfile);
 
+//PSYCHOLOGIST availability
+app.put('/psychologists/:id', psychologists.psychologistsAvailability);
+
 app.listen(port, () => {
     console.log(`MindSet server listening at http://localhost:${port}`);
   });
