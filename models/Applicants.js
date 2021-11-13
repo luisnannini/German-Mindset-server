@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
@@ -9,3 +10,5 @@ const ApplicantsSchema = new Schema({
   address: String,
   availability: Boolean,
 })
+
+module.exports = mongoose.model('Applicants',ApplicantsSchema)

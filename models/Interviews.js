@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
@@ -9,3 +10,5 @@ const InterviewSchema = new Schema ({
   time_range: String,
   result: Boolean,
 })
+
+module.exports = mongoose.model('Interviews',InterviewSchema)

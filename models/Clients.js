@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
@@ -14,3 +15,5 @@ const ClientsSchema = new Schema ({
     description: String,
   }
 })
+
+module.exports = mongoose.model('Clients',ClientsSchema)
