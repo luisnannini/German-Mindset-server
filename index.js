@@ -26,10 +26,10 @@ app.get('/postulations',postulations.showApllicants);
 app.get('/postulations/:id',postulations.cancelPostulation);
 
 //Admin - Administrate professionals profiless
-app.get('/profiles',profiles.listProfiles);
-app.post('/profiles',profiles.newProfile);
-app.put('/profiles/:id',profiles.editProfile);
-app.delete('/profiles/:id',profiles.deleteProfile);
+app.get('/profiles/professional',profiles.listProfiles);
+app.post('/profiles/professional',profiles.newProfile);
+app.put('/profiles/professional/:id',profiles.editProfile);
+app.delete('/profiles/professional/:id',profiles.deleteProfile);
 
 // Set of the port.
 const PORT = process.env.PORT || 4000;
