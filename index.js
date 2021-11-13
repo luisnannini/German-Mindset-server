@@ -80,14 +80,14 @@ app.get('/profiles/:id', profileTypesController.getById);
 app.get('/profiles/byProfile/:profile', profileTypesController.getByName);
 app.get('/profiles/anual/:id', profileTypesController.getReport);
 
-//APPLICANTS 
+//APPLICANTS
 app.post('/register', applicantsController.registerApplicant);
 app.post('/register/cv', applicantsController.createCV);
 app.put('/applicants/:id', applicantsController.changeAvailability);
 app.use("/psychologist-interviews", require("./controllers/psychologist-interview"));
 app.use("/company-interviews", require("./controllers/company-interviews"));
 
-/*//PSYCHOLOGIST Update profile and cancel interviews
+//PSYCHOLOGIST Update profile and cancel interviews
  app.get('/applicants', applicantsController.getAll);
  app.get('/applicants/interview/:id', applicantsController.nextInterview);
  app.put('/applicants/:id', applicantsController.updateApplicant);
@@ -98,7 +98,7 @@ app.put('/applicants/profiles/:id', applicantsController.updateProfile);
 
 //PSYCHOLOGIST availability
 app.put('/psychologists/:id', psychologists.psychologistsAvailability);
-*/
+
 app.listen(port, () => {
     console.log(`MindSet server listening at http://localhost:${port}`);
   });
