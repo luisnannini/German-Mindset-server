@@ -3,6 +3,17 @@ const express = require('express');
 const app = express();
 const port = 5000;
 
+//Mongoose Library
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-RR?retryWrites=true&w=majority',
+(error)=>{
+  if(error){
+    console.log("error: ", error)
+  }else{
+    console.log("Database connected")
+  }
+})
+
 //Controllers require
 const psychologistsController = require('./controllers/psychologists');
 const jobOfferController = require('./controllers/jobOffers');
@@ -10,7 +21,8 @@ const applicantsController = require('./controllers/applicants')
 const clients = require('./controllers/clientControl');
 const postulations = require('./controllers/positionsControl');
 const profiles = require('./controllers/profileControl');
-const profileTypesController = require('./controllers/profileTypes')
+const profileTypesController = require('./controllers/profileTypes');
+const { getReport } = require('./controllers/profileTypes');
 
 //Json visibility
 app.set('json spaces', 2);
@@ -75,7 +87,7 @@ app.put('/applicants/:id', applicantsController.changeAvailability);
 app.use("/psychologist-interviews", require("./controllers/psychologist-interview"));
 app.use("/company-interviews", require("./controllers/company-interviews"));
 
-//PSYCHOLOGIST Update profile and cancel interviews
+/*//PSYCHOLOGIST Update profile and cancel interviews
  app.get('/applicants', applicantsController.getAll);
  app.get('/applicants/interview/:id', applicantsController.nextInterview);
  app.put('/applicants/:id', applicantsController.updateApplicant);
@@ -86,7 +98,7 @@ app.put('/applicants/profiles/:id', applicantsController.updateProfile);
 
 //PSYCHOLOGIST availability
 app.put('/psychologists/:id', psychologists.psychologistsAvailability);
-
+*/
 app.listen(port, () => {
     console.log(`MindSet server listening at http://localhost:${port}`);
   });
