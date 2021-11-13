@@ -6,8 +6,8 @@ const ClientsSchema = new Schema ({
   id_clients: ObjectId,
   company_name: String,
   address: String,
-  phone_number: String,
-  email: String,
+  phone_number: { type: String, required: true},
+  email: { type: String, required: true},
   contact: {
     full_name:String,
     phone_number: String,

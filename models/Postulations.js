@@ -6,7 +6,7 @@ const PostulationsSchema = new Schema({
   id_postulation: ObjectId,
   id_clients: ObjectId,
   id_profile: ObjectId,
-  description: String,
+  description: { type: String, required: true},
 })
 
 module.exports = mongoose.model('Postulations',PostulationsSchema)

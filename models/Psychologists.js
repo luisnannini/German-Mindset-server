@@ -4,11 +4,11 @@ const ObjectId = Schema.ObjectId;
 
 const PsychologistSchema = new Schema({
   id_psychologist: ObjectId,
-  full_name: String,
-  email: String,
+  full_name: { type: String, required: true},
+  email: { type: String, required: true},
   license: String,
   address: String,
-  phone_number: String,
+  phone_number: { type: String, required: true},
   birth_date: Date,
 });
 

@@ -4,7 +4,7 @@ const ObjectId = Schema.ObjectId;
 
 const ProfileSchema = new Schema ({
   id_profile: ObjectId,
-  description: String,
+  description: { type: String, required: true},
 })
 
 module.exports = mongoose.model('Profiles', ProfileSchema)
