@@ -10,7 +10,9 @@ const applicantsController = require('./controllers/applicants')
 const clients = require('./controllers/clientControl');
 const postulations = require('./controllers/positionsControl');
 const profiles = require('./controllers/profileControl');
-const profileTypesController = require('./controllers/profileTypes')
+const profileTypesController = require('./controllers/profileTypes');
+const psychologistEvaluation = require('./old-controllers/psychologist-evaluations');
+const psychologistSchedule = require('./old-controllers/psychologists-schedule');
 
 //Json visibility
 app.set('json spaces', 2);
@@ -76,13 +78,16 @@ app.use("/psychologist-interviews", require("./controllers/psychologist-intervie
 app.use("/company-interviews", require("./controllers/company-interviews"));
 
 //PSYCHOLOGIST Update profile and cancel interviews
- app.get('/applicants', applicantsController.getAll);
- app.get('/applicants/interview/:id', applicantsController.nextInterview);
- app.put('/applicants/:id', applicantsController.updateApplicant);
- app.delete('/applicants/:id', applicantsController.deleteInterview);
+app.get('/applicants', applicantsController.getAll);
+app.get('/applicants/interview/:id', psychologistEvaluation.nextInterview);
+app.put('/applicants/:id', psychologistEvaluation.updateApplicant);
+app.delete('/applicants/:id', psychologistEvaluation.deleteInterview);
 
 //PSYCHOLOGIST Change type of profile
-app.put('/applicants/profiles/:id', applicantsController.updateProfile);
+app.put('/psychologist/applicants/:profile', psychologistEvaluation.updateProfile);
+
+//PSYCHOLOGIST availability
+app.put('/psychologist/availability/:id', psychologistSchedule.psychologistsAvailability);
 
 //PSYCHOLOGIST availability
 app.put('/psychologists/:id', psychologists.psychologistsAvailability);
