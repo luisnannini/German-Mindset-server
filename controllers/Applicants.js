@@ -10,12 +10,38 @@ const getApplicants = (req, res) => {
       })
   }
 
+const updateApplicants = (req, res) => {
+	Applicants.findByIdAndUpdate(req.params.id,
+	{
+        full_name: req.query.full_name,
+	    username: req.query.username,
+        birth_date: req.query.birth_date,
+        phone_number: req.query.phone_number,
+        email: red.query.email,
+        address: red.query.address,
+	},
+	{new: true},
+	(error, newAdmin) => {
+	  if(!newAdmin) {
+	    return res.status(404).json({
+	      msg: 'Applicants with id: ${req.params.id} was not found'	
+	    })
+	}
+	if(error) {
+	  return res.status(400).json(error)	
+	}
+	return res.status(200).json(newAdmin)
+	}
+)}
+
 const createApplicants = (req, res) => {
   const Applicants = new Applicantss({
-    positions: req.body.positions,
-    postulants: req.body.postulants,
-    interview: req.body.interview,
-    result: req.body.result,
+    full_name: req.query.full_name,
+	username: req.query.username,
+    birth_date: req.query.birth_date,
+    phone_number: req.query.phone_number,
+    email: red.query.email,
+    address: red.query.address,
   });
 
   Applicants.save((error, app) => {
@@ -27,7 +53,7 @@ const createApplicants = (req, res) => {
 };
 
 const deleteApplicants = (req, res) => {
-  Applicantss.findByIdAndDelete(req.params.id, (error, chosenApplicants) => {
+  Applicants.findByIdAndDelete(req.params.id, (error, chosenApplicants) => {
     if (!chosenApplicants) {
       return res.status(404).json(`Id ${req.params.id} not found`);
     } if (error) {
@@ -40,5 +66,6 @@ const deleteApplicants = (req, res) => {
 module.exports = {
     getApplicants,
     createApplicants,
+    updateApplicants,
     deleteApplicants,
 };
