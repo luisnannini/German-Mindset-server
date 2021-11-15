@@ -10,6 +10,21 @@ const getAdmins = (req, res) => {
     })
 }
 
+const getOneAdmin = (req, res) => {
+  Admins.findById(req.params.id,
+  (error, oneAdmin) => {
+    if(!oneAdmin) {
+      return res.status(404).json({
+        msg: `Admin with id: ${req.params.id} was not found`
+      })
+    }
+    if(error) {
+      return res.status(400).json(error)
+    }
+    return res.status(200).json(oneAdmin)
+  })
+}
+
 const updateAdmin = (req, res) => {
 	Admins.findByIdAndUpdate(req.params.id,
 	{
@@ -59,6 +74,7 @@ const deleteAdmin = (req, res) => {
 
 module.exports = {
   getAdmins,
+  getOneAdmin,
   updateAdmin,
   createAdmin,
   deleteAdmin,

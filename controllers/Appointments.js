@@ -10,6 +10,21 @@ const getAppointments = (req, res) => {
       })
 }
 
+const getOneApointment = (req, res) => {
+    Appointments.findById(req.params.id,
+    (error, oneApointment) => {
+      if(!oneApointment) {
+        return res.status(404).json({
+          msg: `Apointment with id: ${req.params.id} was not found`
+        })
+      }
+      if(error) {
+        return res.status(400).json(error)
+      }
+      return res.status(200).json(oneApointment)
+    })
+}
+
 const getAppointmentsByApplicantsId = (req, res) => {
     Appointments.find({ id_applicant: req.params.id_applicant })
     .then ((appointments) => {
@@ -60,6 +75,7 @@ const deleteAppointment = (req, res) => {
     getAppointments,
     getAppointmentsByApplicantsId,
     getAppointmentsByPsychologistId,
+    getOneApointment,
     createAppointment,
     deleteAppointment,
 };
