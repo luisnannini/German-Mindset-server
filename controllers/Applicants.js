@@ -2,8 +2,8 @@ const Applicants = require('../models/Applicants');
 
 const getApplicants = (req, res) => {
     Applicants.find()
-      .then((Applicants) =>{
-        return res.status(200).json(Applicants)
+      .then((applicants) =>{
+        return res.status(200).json(applicants)
       })
       .catch((error) =>{
         return res.status(400).json(error)
@@ -56,11 +56,11 @@ const createApplicants = (req, res) => {
 const deleteApplicants = (req, res) => {
   Applicants.findByIdAndDelete(req.params.id, (error, chosenApplicants) => {
     if (!chosenApplicants) {
-      return res.status(404).json(`Id ${req.params.id} not found`);
+      return res.status(404).json(`Applicant with id ${req.params.id} was not found`);
     } if (error) {
       return res.status(400).json(error);
     }
-    return res.status(204).send(`Id ${req.params.id} was remove successfully`);
+    return res.status(204).send(`Applicant with id ${req.params.id} was remove successfully`);
   });
 };
 
