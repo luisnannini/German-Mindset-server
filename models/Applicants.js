@@ -9,7 +9,8 @@ const ApplicantsSchema = new Schema({
   phone_number: { type: Boolean, required: true},
   email: String,
   address: String,
-  availability: { type: Boolean, required: true},
+  profile: String,
+  availability:  { type: Boolean, required: true},
 })
 
 module.exports = mongoose.model('Applicants',ApplicantsSchema)
