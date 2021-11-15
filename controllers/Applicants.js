@@ -10,6 +10,21 @@ const getApplicants = (req, res) => {
       })
 }
 
+const getOneApplicant = (req, res) => {
+  Applicants.findById(req.params.id,
+  (error, oneApplicant) => {
+    if(!oneApplicant) {
+      return res.status(404).json({
+        msg: `Applicant with id: ${req.params.id} was not found`
+      })
+    }
+    if(error) {
+      return res.status(400).json(error)
+    }
+    return res.status(200).json(oneApplicant)
+  })
+}
+
 const updateApplicant = (req, res) => {
 	Applicants.findByIdAndUpdate(req.params.id,
 	{
@@ -47,9 +62,9 @@ const createApplicant = (req, res) => {
     
       Applicants.save((error, app) => {
         if (error) {
-          return res.status(400).json(error);
+        return res.status(400).json(error);
         }
-        return res.status(201).json(app);
+        return res.status(201).json(applicant);
       });
 };
 
