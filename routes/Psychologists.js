@@ -10,6 +10,6 @@ router.delete('/:id', psychologists.deletePsychologist);
 router.put('/:id', psychologists.updatePsychologist);
 router.get('/appointments/', psychologists.getAppointments);
 router.delete('/appointments/:id', psychologists.deleteAppointment);
-router.put('/appointments/:id', psychologists.updateApplicantProfile);
+router.put('/applicants/:id', psychologists.updateApplicantProfile);
 
 module.exports = router;
