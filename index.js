@@ -27,6 +27,7 @@ const profilesRoutes = require("./routes/profiles");
 const psychologistsRoutes = require("./routes/psychologists");
 
 
+
 //Json visibility
 
 
@@ -44,7 +45,7 @@ app.get('/', (req, res) => {
 
 
 //ADMIN admins
-router.use("/admins", adminRoutes);
+router.use("/admin", adminRoutes);
 
 //Applicants
 router.use("/applicants", applicantRoutes);
@@ -66,6 +67,7 @@ router.use("/Profiles", profilesRoutes)
 
 //Psychologists
 router.use("/Psychologists", psychologistsRoutes)
+
 
 // //ADMIN psychologists
 // app.get('/psychologists', psychologistsController.getAll);
