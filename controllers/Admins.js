@@ -10,7 +10,7 @@ const getAdmins = (req, res) => {
     })
 }
 
-const updateAdmins = (req, res) => {
+const updateAdmin = (req, res) => {
 	Admins.findByIdAndUpdate(req.params.id,
 	{
 	  full_name: req.query.full_name,
@@ -31,7 +31,7 @@ const updateAdmins = (req, res) => {
 	}
 )}
 
-const createAdmins = (req, res) => {
+const createAdmin = (req, res) => {
   const newAdmin = new Admins({
       full_name: req.query.full_name,
       username: req.query.username,
@@ -46,20 +46,20 @@ const createAdmins = (req, res) => {
     });
 };
 
-const deleteAdmins = (req, res) => {
-Admins.findByIdAndDelete(req.params.id, (error, chosenAdmins) => {
-  if (!chosenAdmins) {
-    return res.status(404).json(`Id ${req.params.id} not found`);
-  } if (error) {
-    return res.status(400).json(error);
-  }
-  return res.status(204).send(`Id ${req.params.id} was remove successfully`);
-});
+const deleteAdmin = (req, res) => {
+  Admins.findByIdAndDelete(req.params.id, (error, chosenAdmin) => {
+    if (!chosenAdmin) {
+      return res.status(404).json(`Admin with id ${req.params.id} was not found`);
+    } if (error) {
+      return res.status(400).json(error);
+    }
+    return res.status(204).send(`Admin with id ${req.params.id} was remove successfully`);
+  });
 };
 
 module.exports = {
   getAdmins,
-  updateAdmins,
-  createAdmins,
-  deleteAdmins,
+  updateAdmin,
+  createAdmin,
+  deleteAdmin,
 }

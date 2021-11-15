@@ -76,20 +76,16 @@ const createClient = (req, res) => {
   })
 }
 
-const deleteClient = (req,res) => {
-  Clients.findByIdAndDelete(req.params.id,
-  (error, Client) => {
-    if(!Client) {
-      return res.status(404).json({
-        msg: `Client with id: ${req.params.id} was not found`
-      })
-    }
-    if(error) {
-      return res.status(400).json(error)
-    }
-    return res.status(200).json(Client)
-  })
-}
+const deleteClient = (req, res) => {
+    Clients.findByIdAndDelete(req.params.id, (error, chosenClient) => {
+      if (!chosenClient) {
+        return res.status(404).json(`Client with id ${req.params.id} was not found`);
+      } if (error) {
+        return res.status(400).json(error);
+      }
+      return res.status(204).send(`Client with id ${req.params.id} was remove successfully`);
+    });
+  };
 
 module.exports = {
   getClients,
