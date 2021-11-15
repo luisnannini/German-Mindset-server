@@ -55,13 +55,13 @@ router.use("/clients", clientRoutes);
 router.use("/interviews", interviewRoutes)
 
 //Postulations
-router.use("/Postulations", postulationsRoutes)
+router.use("/postulations", postulationsRoutes)
 
 //Profiles
-router.use("/Profiles", profilesRoutes)
+router.use("/profiles", profilesRoutes)
 
 //Psychologists
-router.use("/Psychologists", psychologistsRoutes)
+router.use("/psychologists", psychologistsRoutes)
 
 
 // //ADMIN psychologists
