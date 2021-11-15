@@ -10,7 +10,8 @@ const getInterviews = (req, res) => {
    .catch((error)=>{
     res.status(400).json(error)
    })
-}
+};
+
 
 // See interviews for Postulant
 const getInterviewsByPostulant = (req, res) => {
@@ -23,7 +24,7 @@ const getInterviewsByPostulant = (req, res) => {
                 {msg: `There's no interviews booked with the user id ${req.params.id_user}`}
                 )
         })
-}
+};
 
 // Cancel interview
 const deleteInterview = (req, res) => {
@@ -44,4 +45,4 @@ const deleteInterview = (req, res) => {
     getInterviews,
     getInterviewsByPostulant,
     deleteInterview,
-  }
+  };

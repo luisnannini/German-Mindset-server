@@ -1,11 +1,11 @@
-const Admins = require('../models/Admins')
+const Admins = require('../models/admin')
 
 // See list of admins
 
 const getAdmins = (req, res) => {
   Admins.find()
-    .then((admins) =>{
-      return res.status(200).json(admins)
+    .then((Admins) =>{
+      return res.status(200).json(Admins)
     })
     .catch((error) =>{
       return res.status(400).json(error)

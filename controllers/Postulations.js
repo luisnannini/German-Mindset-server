@@ -83,7 +83,7 @@ const deletePostulation = (req, res) => {
         }
         return res.status(204).send();
       });
-}
+};
 
 module.exports = {
     getPostulations,
@@ -92,5 +92,4 @@ module.exports = {
     addPostulation,
     updatePostulation,
     deletePostulation
-  }
-  
+};

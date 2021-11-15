@@ -29,6 +29,7 @@ const getPsychologistById = (req, res) => {
     }) 
 };
 
+
 // See Psychologist by Name
 const getPsychilogistByName = (req, res) => {
     Psychologists.find( {full_name: req.params.id_clients} )
@@ -41,6 +42,7 @@ const getPsychilogistByName = (req, res) => {
         )
     })
 };
+
 
 // Add Psychologist
 const addPsychologist = (req, res) => {
@@ -107,6 +109,7 @@ const getAppointments = (req, res) => {
     })
 };
 
+
 // Cancel Appointment
 const deleteAppointment = (req, res) => {
     Appointments.findByIdAndDelete(req.params.id_user, (error, appointment) => {
@@ -144,4 +147,4 @@ module.exports = {
     getAppointments,
     deleteAppointment,
     updateApplicantProfile,
-  }
+};
