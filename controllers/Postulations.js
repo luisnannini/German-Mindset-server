@@ -14,7 +14,7 @@ const getPostulations = (req, res) => {
 
 // See postulation by Id
 const getPostulationById = (req, res) => {
-    Postulations.findById(req.params.id_postulation, (error, postulation) => {
+    Postulations.findById(req.params.id, (error, postulation) => {
         if(!postulation) {
             return res.status(404).json(
                 { msg : "Offer not found" }
@@ -59,7 +59,7 @@ const addPostulation = (req, res) => {
 
 // Update Postulation
 const updatePostulation = (req, res) => {
-    Postulations.findByIdAndUpdate(req.params.id_postulation,
+    Postulations.findByIdAndUpdate(req.params.id,
         { description : req.body.description },
         { new: true },
         (error, newPostulation) =>  {
@@ -72,10 +72,10 @@ const updatePostulation = (req, res) => {
 
 // Delete Postulation
 const deletePostulation = (req, res) => {
-    Postulations.findByIdAndDelete(req.params.id_postulation, (error, postulation) => {
+    Postulations.findByIdAndDelete(req.params.id, (error, postulation) => {
         if (!postulation) {
           return res.status(404).json(
-              {msg: `There's no postulation with the id ${req.params.id_postulation}`}
+              {msg: `There's no postulation with the id ${req.params.id}`}
             ); 
         }
         if (error) {

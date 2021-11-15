@@ -16,10 +16,10 @@ const getPsychologists = (req, res) => {
 
 // See Psychologist by Id 
 const getPsychologistById = (req, res) => {
-    Postulations.findById(req.params.id_psychologist, (error, psychologist) => {
+    Psychologists.findById(req.params.id, (error, psychologist) => {
         if(!psychologist) {
             return res.status(404).json(
-                { msg : `There's no psychologist with id ${req.params.id_psychologist}` }
+                { msg : `There's no psychologist with id ${req.params.id}` }
             ); 
         }
         if (error) {
@@ -32,9 +32,9 @@ const getPsychologistById = (req, res) => {
 
 // See Psychologist by Name
 const getPsychilogistByName = (req, res) => {
-    Psychologists.find( {full_name: req.params.id_clients} )
-    .then((psychologists) => {
-        res.status(200).json(psychologists);
+    Psychologists.find( {full_name: req.params.full_name} )
+    .then((Psychologists) => {
+        res.status(200).json(Psychologists);
     })
     .catch((error) => {
         res.status(404).json(
@@ -47,7 +47,6 @@ const getPsychilogistByName = (req, res) => {
 // Add Psychologist
 const addPsychologist = (req, res) => {
     const psychologist = new Psychologists({
-        id_psychologist: req.body.id_psychologist,
         full_name: req.body.full_name,
         email: req.body.email,
         license: req.body.license,
@@ -66,10 +65,10 @@ const addPsychologist = (req, res) => {
 
 // Delete Psychologist
 const deletePsychologist = (req, res) => {
-    Psychologists.findByIdAndDelete(req.params.id_psychologist, (error, psychologist) => {
+    Psychologists.findByIdAndDelete(req.params.id, (error, psychologist) => {
         if (!psychologist) {
           return res.status(404).json(
-              {msg: `There's no psychologist with the id ${req.params.id_psychologist}`}
+              {msg: `There's no psychologist with the id ${req.params.id}`}
             ); 
         }
         if (error) {
@@ -81,7 +80,7 @@ const deletePsychologist = (req, res) => {
 
 // Edit Psychologist
 const updatePsychologist = (req, res) => {
-    Psychologists.findByIdAndUpdate(req.params.id_psychologist,
+    Psychologists.findByIdAndUpdate(req.params.id,
         { full_name : req.body.full_name,
         email: req.body.email,
         license: req.body.license,
@@ -112,10 +111,10 @@ const getAppointments = (req, res) => {
 
 // Cancel Appointment
 const deleteAppointment = (req, res) => {
-    Appointments.findByIdAndDelete(req.params.id_user, (error, appointment) => {
+    Appointments.findByIdAndDelete(req.params.id, (error, appointment) => {
         if (!appointment) {
           return res.status(404).json(
-              {msg: `There's no appointment with the id ${req.params.id_user}`}
+              {msg: `There's no appointment with the id ${req.params.id}`}
             ); 
         }
         if (error) {

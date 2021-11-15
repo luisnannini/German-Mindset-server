@@ -17,7 +17,6 @@ const addProfile = (req, res) => {
     const profile = new Profiles({
         description: req.body.description
       });
-    
       profile.save((error) => {
         if (error) {
           return res.status(400).json(error);
@@ -28,7 +27,7 @@ const addProfile = (req, res) => {
 
 // Edit Profile
 const updateProfile = (req, res) => {
-    Profiles.findByIdAndUpdate(req.params.id_profile,
+    Profiles.findByIdAndUpdate(req.params.id,
         { description : req.body.description },
         { new: true },
         (error, newProfile) =>  {
@@ -41,10 +40,10 @@ const updateProfile = (req, res) => {
 
 // Delete Profile
 const deleteProfile = (req, res) => {
-    Profiles.findByIdAndDelete(req.params.id_profile, (error, profile) => {
+    Profiles.findByIdAndDelete(req.params.id, (error, profile) => {
         if (!profile) {
           return res.status(404).json(
-              {msg: `There's no profile with the id ${req.params.id_profile}`}
+              {msg: `There's no profile with the id ${req.params.id}`}
             ); 
         }
         if (error) {

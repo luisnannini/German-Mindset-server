@@ -9,4 +9,4 @@ const PostulationsSchema = new Schema({
   description: { type: String, required: true},
 })
 
-module.exports = mongoose.model('Postulations',PostulationsSchema)
+module.exports = mongoose.model('postulations',PostulationsSchema)
