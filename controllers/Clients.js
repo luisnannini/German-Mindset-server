@@ -55,7 +55,7 @@ const updateClient = (req, res) => {
 }
 
 const createClient = (req, res) => {
-  const client = new Client({
+  const newClient = new Client({
     company_name: req.body.company_name,
       address: req.body.address,
       phone_number: req.body.phone_number,
@@ -68,7 +68,7 @@ const createClient = (req, res) => {
       }
   })
 
-  client.save((error, newClient) => {
+  newClient.save((error, newClient) => {
     if(error) {
       return res.status(400).json(error)
     }

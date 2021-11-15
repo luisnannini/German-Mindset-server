@@ -51,7 +51,7 @@ const updateApplicant = (req, res) => {
 )}
 
 const createApplicant = (req, res) => {
-    const Applicants = new Applicants({
+    const newApplicant = new Applicants({
         full_name: req.body.full_name,
         username: req.body.username,
         birth_date: req.body.birth_date,
@@ -60,7 +60,7 @@ const createApplicant = (req, res) => {
         address: red.body.address,
       });
     
-      Applicants.save((error, newApplicant) => {
+      newApplicant.save((error, newApplicant) => {
         if (error) {
         return res.status(400).json(error);
         }
