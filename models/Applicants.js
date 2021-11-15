@@ -9,6 +9,7 @@ const ApplicantsSchema = new Schema({
   phone_number: String,
   email: String,
   address: String,
+  profile: String,
   availability: Boolean,
 })
 
