@@ -56,10 +56,11 @@ const getAppointmentsByPsychologistId = (req, res) => {
 // Create appointment
 
 const createAppointment = (req, res) => {
-    const newAppointment = new Appointment({
+    const newAppointment = new Appointments({
         id_applicant: req.body.id_applicant,
         id_psychologist: req.body.id_psychologist,
-        createdAt: Date().getTime().toString(),
+        date: req.body.date,
+        time: req.body.time,
       });
     
       newAppointment.save((error, newAppointment) => {
@@ -73,7 +74,7 @@ const createAppointment = (req, res) => {
 // Delete appointment
 
 const deleteAppointment = (req, res) => {
-  Appointment.findByIdAndDelete(req.params.id, (error, chosenAppointment) => {
+  Appointments.findByIdAndDelete(req.params.id, (error, chosenAppointment) => {
     if (!chosenAppointment) {
       return res.status(404).json(`Appointment with id ${req.params.id} was not found`);
     } if (error) {

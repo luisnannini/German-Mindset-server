@@ -8,7 +8,7 @@ const InterviewSchema = new Schema ({
   id_postulation: String,
   date: { type: Date, required: true},
   time_range: String,
-  result: Boolean,
+  result: { type: Boolean, required: true}
 })
 
 module.exports = mongoose.model('Interviews',InterviewSchema)

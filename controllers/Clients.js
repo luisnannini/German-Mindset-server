@@ -37,13 +37,13 @@ const updateClient = (req, res) => {
       company_name: req.body.company_name,
       address: req.body.address,
       phone_number: req.body.phone_number,
-      email:req.body.email,
-      contact: {
-        full_name: req.body.contact.full_name,
+      email: req.body.email,
+      contact: [{
+        fullname: req.body.contact.fullname,
         phone_number: req.body.contact.phone_number,
         email: req.body.contact.email,
         description: req.body.contact.description,
-      }
+      }],
     },
     { new: true }, 
     (error, updatedClient) => {
@@ -63,17 +63,17 @@ const updateClient = (req, res) => {
 // Create client
 
 const createClient = (req, res) => {
-  const newClient = new Client({
+  const newClient = new Clients({
     company_name: req.body.company_name,
-      address: req.body.address,
-      phone_number: req.body.phone_number,
-      email:req.body.email,
-      contact: {
-        full_name: req.body.contact.full_name,
-        phone_number: req.body.contact.phone_number,
-        email: req.body.contact.email,
-        description: req.body.contact.description,
-      }
+    address: req.body.address,
+    phone_number: req.body.phone_number,
+    email: req.body.email,
+    contact: {
+      fullname: req.body.contact.fullname,
+      phone_number: req.body.contact.phone_number,
+      email: req.body.contact.email,
+      description: req.body.contact.description,
+    },
   })
 
   newClient.save((error, newClient) => {

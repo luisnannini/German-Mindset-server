@@ -52,6 +52,7 @@ const deleteProfile = (req, res) => {
         }
         return res.status(204).send();
       });
+};
 
 module.exports = {
   getProfiles,

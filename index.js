@@ -1,7 +1,9 @@
 //Init
 const express = require('express');
-const router = express.Router();  
+const router = express.Router();
+const app = express()
 const port = 5000;
+const cors = require('cors')
 
 //Mongoose Library
 const mongoose = require('mongoose');
@@ -26,12 +28,14 @@ const psychologistsRoutes = require("./routes/psychologists");
 
 
 //Json visibility
-app.set('json spaces', 2);
-app.use(express.static('public'));
+
+
 
 //Init body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors())
+app.use('/', router)
 
 //Frontpage message
 app.get('/', (req, res) => {
@@ -62,8 +66,6 @@ router.use("/Profiles", profilesRoutes)
 
 //Psychologists
 router.use("/Psychologists", psychologistsRoutes)
-
-
 
 // //ADMIN psychologists
 // app.get('/psychologists', psychologistsController.getAll);

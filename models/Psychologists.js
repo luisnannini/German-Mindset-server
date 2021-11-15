@@ -6,7 +6,7 @@ const PsychologistSchema = new Schema({
   id_psychologist: ObjectId,
   full_name: { type: String, required: true},
   email: { type: String, required: true},
-  license: String,
+  license: { type: String, required: true},
   address: String,
   phone_number: { type: String, required: true},
   birth_date: Date,

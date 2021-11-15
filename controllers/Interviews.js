@@ -1,6 +1,18 @@
 const fs = require('fs');
 const Interviews = require('../models/Interviews');
 
+// All interviews
+const getInterviews = (req, res) => {
+  Interviews.find()
+   .then((interviews)=>{
+    res.status(200).json(interviews)
+   })
+   .catch((error)=>{
+    res.status(400).json(error)
+   })
+};
+
+
 // See interviews for Postulant
 const getInterviewsByPostulant = (req, res) => {
     Interviews.find( {id_user: req.params.id_user} )
@@ -12,7 +24,7 @@ const getInterviewsByPostulant = (req, res) => {
                 {msg: `There's no interviews booked with the user id ${req.params.id_user}`}
                 )
         })
-}
+};
 
 // Cancel interview
 const deleteInterview = (req, res) => {
@@ -30,6 +42,7 @@ const deleteInterview = (req, res) => {
   };
 
   module.exports = {
+    getInterviews,
     getInterviewsByPostulant,
     deleteInterview,
-  }
+  };

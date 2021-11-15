@@ -34,13 +34,13 @@ const getOneApplicant = (req, res) => {
 const updateApplicant = (req, res) => {
 	Applicants.findByIdAndUpdate(req.params.id,
 	{
-        full_name: req.query.full_name,
-        username: req.query.username,
-        birth_date: req.query.birth_date,
-        phone_number: req.query.phone_number,
-        email: red.query.email,
-        address: red.query.address,
-        availability: red.query.address,
+        full_name: req.body.full_name,
+        username: req.body.username,
+        birth_date: req.body.birth_date,
+        phone_number: req.body.phone_number,
+        email: req.body.email,
+        address: req.body.address,
+        availability: req.body.availability,
 	},
 	{new: true},
 	(error, updatedApplicant) => {
@@ -64,8 +64,9 @@ const createApplicant = (req, res) => {
         username: req.body.username,
         birth_date: req.body.birth_date,
         phone_number: req.body.phone_number,
-        email: red.body.email,
-        address: red.body.address,
+        email: req.body.email,
+        address: req.body.address,
+        availability: req.body.availability,
       });
     
       newApplicant.save((error, newApplicant) => {
