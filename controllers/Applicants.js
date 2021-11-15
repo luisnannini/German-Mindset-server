@@ -60,7 +60,7 @@ const createApplicant = (req, res) => {
         address: red.body.address,
       });
     
-      Applicants.save((error, app) => {
+      Applicants.save((error, applicant) => {
         if (error) {
         return res.status(400).json(error);
         }
