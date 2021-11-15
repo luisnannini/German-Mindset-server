@@ -65,7 +65,7 @@ const addPsychologist = (req, res) => {
 }
 
 // Delete Psychologist
-const deletepsychologist = (req, res) => {
+const deletePsychologist = (req, res) => {
     Psychologists.findByIdAndDelete(req.params.id_psychologist, (error, psychologist) => {
         if (!psychologist) {
           return res.status(404).json(
@@ -142,9 +142,10 @@ module.exports = {
     getPsychologists,
     getPsychologistById,
     getPsychilogistByName,
-    deletepsychologist,
+    deletePsychologist,
     updatePsychologist,
     getAppointments,
     deleteAppointment,
     updateApplicantProfile,
+    addPsychologist
 };

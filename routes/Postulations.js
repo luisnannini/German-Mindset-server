@@ -4,7 +4,7 @@ const postulations = require('../controllers/postulations');
 const validation = require('../validations/postulations')
 
 router.get('/', postulations.getPostulations);
-router.get('/:id', postulations.getPostulationByID);
+router.get('/:id', postulations.getPostulationById);
 router.get('/:client', postulations.getPostulationByClient);
 router.post(
     '/',

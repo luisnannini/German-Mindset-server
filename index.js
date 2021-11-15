@@ -1,7 +1,7 @@
 //Init
 const express = require('express');
 const router = express.Router();
-const app = express()
+const app = express();
 const port = 5000;
 const cors = require('cors')
 
@@ -25,11 +25,6 @@ const interviewRoutes = require("./routes/interviews");
 const postulationsRoutes = require("./routes/postulations");
 const profilesRoutes = require("./routes/profiles");
 const psychologistsRoutes = require("./routes/psychologists");
-
-
-
-//Json visibility
-
 
 
 //Init body parser middleware
