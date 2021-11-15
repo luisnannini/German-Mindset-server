@@ -1,14 +1,18 @@
 const Admins = require('../models/Admins')
 
+// See list of admins
+
 const getAdmins = (req, res) => {
   Admins.find()
-    .then((Admins) =>{
-      return res.status(200).json(Admins)
+    .then((admins) =>{
+      return res.status(200).json(admins)
     })
     .catch((error) =>{
       return res.status(400).json(error)
     })
 }
+
+// See admins by Id
 
 const getOneAdmin = (req, res) => {
   Admins.findById(req.params.id,
@@ -24,6 +28,8 @@ const getOneAdmin = (req, res) => {
     return res.status(200).json(oneAdmin)
   })
 }
+
+// Update admin
 
 const updateAdmin = (req, res) => {
 	Admins.findByIdAndUpdate(req.params.id,
@@ -46,6 +52,8 @@ const updateAdmin = (req, res) => {
 	}
 )}
 
+// Create admin
+
 const createAdmin = (req, res) => {
   const newAdmin = new Admins({
       full_name: req.query.full_name,
@@ -60,6 +68,8 @@ const createAdmin = (req, res) => {
       return res.status(201).json(newAdmin);
     });
 };
+
+// Delete admin
 
 const deleteAdmin = (req, res) => {
   Admins.findByIdAndDelete(req.params.id, (error, chosenAdmin) => {

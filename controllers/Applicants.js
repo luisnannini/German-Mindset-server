@@ -1,5 +1,7 @@
 const Applicants = require('../models/Applicants');
 
+// See list of applicants
+
 const getApplicants = (req, res) => {
     Applicants.find()
       .then((applicants) =>{
@@ -9,6 +11,8 @@ const getApplicants = (req, res) => {
         return res.status(400).json(error)
       })
 }
+
+// See applicants by Id
 
 const getOneApplicant = (req, res) => {
   Applicants.findById(req.params.id,
@@ -24,6 +28,8 @@ const getOneApplicant = (req, res) => {
     return res.status(200).json(oneApplicant)
   })
 }
+
+// Update applicant
 
 const updateApplicant = (req, res) => {
 	Applicants.findByIdAndUpdate(req.params.id,
@@ -50,6 +56,8 @@ const updateApplicant = (req, res) => {
 	}
 )}
 
+// Add applicant
+
 const createApplicant = (req, res) => {
     const newApplicant = new Applicants({
         full_name: req.body.full_name,
@@ -67,6 +75,8 @@ const createApplicant = (req, res) => {
         return res.status(201).json(newApplicant);
       });
 };
+
+// Delete applicant
 
 const deleteApplicant = (req, res) => {
   Applicants.findByIdAndDelete(req.params.id, (error, chosenApplicants) => {

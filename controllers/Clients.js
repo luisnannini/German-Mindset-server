@@ -1,5 +1,7 @@
 const Clients = require('../models/clients');
 
+// See list of clients
+
 const getClients = (req, res) => {
   Clients.find()
    .then((clients)=>{
@@ -9,6 +11,8 @@ const getClients = (req, res) => {
     res.status(400).json(error)
    })
 }
+
+// See clients by Id
 
 const getOneClient = (req, res) => {
   Clients.findById(req.params.id,
@@ -24,6 +28,8 @@ const getOneClient = (req, res) => {
     return res.status(200).json(Clients)
   })
 }
+
+// Update client
 
 const updateClient = (req, res) => {
   Clients.findByIdAndUpdate(req.params.id,
@@ -54,6 +60,8 @@ const updateClient = (req, res) => {
   )
 }
 
+// Create client
+
 const createClient = (req, res) => {
   const newClient = new Client({
     company_name: req.body.company_name,
@@ -75,6 +83,8 @@ const createClient = (req, res) => {
     return res.status(201).json(newClient)
   })
 }
+
+// Delete client
 
 const deleteClient = (req, res) => {
     Clients.findByIdAndDelete(req.params.id, (error, chosenClient) => {
