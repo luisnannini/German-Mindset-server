@@ -1,6 +1,7 @@
 //Init
 const express = require('express');
-const router = express.Router();  
+const router = express.Router();
+const app = express()
 const port = 5000;
 
 //Mongoose Library
@@ -22,8 +23,8 @@ const clientRoutes = require("./routes/clients");
 
 
 //Json visibility
-app.set('json spaces', 2);
-app.use(express.static('public'));
+
+
 
 //Init body parser middleware
 app.use(express.json());
@@ -36,7 +37,7 @@ app.get('/', (req, res) => {
 
 
 //ADMIN admins
-router.use("/admins", adminRoutes);
+router.use("/admin", adminRoutes);
 
 //Applicants
 router.use("/applicants", applicantRoutes);

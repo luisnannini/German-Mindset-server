@@ -1,4 +1,4 @@
-const Admins = require('../models/Admins')
+const Admins = require('../models/admin')
 
 // See list of admins
 
