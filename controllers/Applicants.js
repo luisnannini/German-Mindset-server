@@ -19,10 +19,11 @@ const updateApplicants = (req, res) => {
         phone_number: req.query.phone_number,
         email: red.query.email,
         address: red.query.address,
+        availability: red.query.address,
 	},
 	{new: true},
-	(error, newAdmin) => {
-	  if(!newAdmin) {
+	(error, newApplicants) => {
+	  if(!newApplicants) {
 	    return res.status(404).json({
 	      msg: 'Applicants with id: ${req.params.id} was not found'	
 	    })
@@ -30,7 +31,7 @@ const updateApplicants = (req, res) => {
 	if(error) {
 	    return res.status(400).json(error)	
 	}
-	    return res.status(200).json(newAdmin)
+	    return res.status(200).json(newApplicants)
 	}
 )}
 
