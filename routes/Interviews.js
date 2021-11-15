@@ -1,11 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const clients = require('../controllers/clients');
+const interviews = require('../controllers/Interviews');
+const validation = require('../validations/Interviews')
 
-router.get('/', clients.getClients);
-router.get('/:id', clients.getOneClient);
-router.post('/', clients.createClient);
-router.put('/:id', clients.updateClient);
-router.delete('/:id', clients.deleteClient);
+router.get('/:id', interviews.getInterviewsByPostulant);
+router.delete('/:id', interviews.deleteInterview);
 
 module.exports = router;
