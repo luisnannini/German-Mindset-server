@@ -1,7 +1,9 @@
 //Init
 const express = require('express');
-const router = express.Router();  
+const router = express.Router();
+const app = express()
 const port = 5000;
+const cors = require('cors')
 
 //Mongoose Library
 const mongoose = require('mongoose');
@@ -22,12 +24,14 @@ const clientRoutes = require("./routes/clients");
 
 
 //Json visibility
-app.set('json spaces', 2);
-app.use(express.static('public'));
+
+
 
 //Init body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors())
+app.use('/', router)
 
 //Frontpage message
 app.get('/', (req, res) => {
@@ -36,7 +40,7 @@ app.get('/', (req, res) => {
 
 
 //ADMIN admins
-router.use("/admins", adminRoutes);
+router.use("/admin", adminRoutes);
 
 //Applicants
 router.use("/applicants", applicantRoutes);
