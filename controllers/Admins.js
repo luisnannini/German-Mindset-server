@@ -38,11 +38,11 @@ const createAdmins = (req, res) => {
       password: req.query.password,
     });
   
-    Admins.save((error, app) => {
+    Admins.save((error, admin) => {
       if (error) {
-        return res.status(400).json(error);
+      return res.status(400).json(error);
       }
-      return res.status(201).json(app);
+      return res.status(201).json(admin);
     });
 };
 
