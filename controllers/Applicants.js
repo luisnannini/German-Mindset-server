@@ -28,14 +28,14 @@ const updateApplicants = (req, res) => {
 	    })
 	}
 	if(error) {
-	  return res.status(400).json(error)	
+	    return res.status(400).json(error)	
 	}
-	return res.status(200).json(newAdmin)
+	    return res.status(200).json(newAdmin)
 	}
 )}
 
 const createApplicants = (req, res) => {
-    const Applicants = new Applicantss({
+    const Applicants = new Applicants({
         full_name: req.query.full_name,
         username: req.query.username,
         birth_date: req.query.birth_date,
