@@ -12,7 +12,7 @@ router.post(
     validation.validateAppointment,
     appointments.createAppointment
 );
-// router.put('/:id', appointments.updateApplicant);
+//router.put('/:id', appointments.updateApplicant);
 router.delete('/:id', appointments.deleteAppointment);
 
 module.exports = router;
