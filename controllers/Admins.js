@@ -5,7 +5,7 @@ const Admins = require('../models/admin')
 const getAdmins = (req, res) => {
   Admins.find()
     .then((Admins) =>{
-      return res.json(Admins)
+      return res.status(200).json(Admins)
     })
     .catch((error) =>{
       return res.status(400).json(error)
