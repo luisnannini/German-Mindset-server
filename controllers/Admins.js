@@ -32,17 +32,17 @@ const updateAdmins = (req, res) => {
 )}
 
 const createAdmins = (req, res) => {
-  const Admins = new Admins({
+  const newAdmin = new Admins({
       full_name: req.query.full_name,
       username: req.query.username,
       password: req.query.password,
     });
   
-    Admins.save((error, admin) => {
+    newAdmin.save((error, newAdmin) => {
       if (error) {
       return res.status(400).json(error);
       }
-      return res.status(201).json(admin);
+      return res.status(201).json(newAdmin);
     });
 };
 
