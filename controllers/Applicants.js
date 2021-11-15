@@ -10,7 +10,7 @@ const getApplicants = (req, res) => {
       })
 }
 
-const updateApplicants = (req, res) => {
+const updateApplicant = (req, res) => {
 	Applicants.findByIdAndUpdate(req.params.id,
 	{
         full_name: req.query.full_name,
@@ -35,14 +35,14 @@ const updateApplicants = (req, res) => {
 	}
 )}
 
-const createApplicants = (req, res) => {
+const createApplicant = (req, res) => {
     const Applicants = new Applicants({
-        full_name: req.query.full_name,
-        username: req.query.username,
-        birth_date: req.query.birth_date,
-        phone_number: req.query.phone_number,
-        email: red.query.email,
-        address: red.query.address,
+        full_name: req.body.full_name,
+        username: req.body.username,
+        birth_date: req.body.birth_date,
+        phone_number: req.body.phone_number,
+        email: red.body.email,
+        address: red.body.address,
       });
     
       Applicants.save((error, app) => {
@@ -53,7 +53,7 @@ const createApplicants = (req, res) => {
       });
 };
 
-const deleteApplicants = (req, res) => {
+const deleteApplicant = (req, res) => {
   Applicants.findByIdAndDelete(req.params.id, (error, chosenApplicants) => {
     if (!chosenApplicants) {
       return res.status(404).json(`Applicant with id ${req.params.id} was not found`);
@@ -66,7 +66,7 @@ const deleteApplicants = (req, res) => {
 
 module.exports = {
     getApplicants,
-    createApplicants,
-    updateApplicants,
-    deleteApplicants,
+    createApplicant,
+    updateApplicant,
+    deleteApplicant,
 };
