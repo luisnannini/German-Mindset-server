@@ -81,6 +81,7 @@ const deleteApplicant = (req, res) => {
 
 module.exports = {
     getApplicants,
+    getOneApplicant,
     createApplicant,
     updateApplicant,
     deleteApplicant,
