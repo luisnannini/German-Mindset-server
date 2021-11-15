@@ -34,9 +34,9 @@ const getOneAdmin = (req, res) => {
 const updateAdmin = (req, res) => {
 	Admins.findByIdAndUpdate(req.params.id,
 	{
-	  full_name: req.query.full_name,
-    username: req.query.username,
-    password: req.query.password,
+	  full_name: req.body.full_name,
+    username: req.body.username,
+    password: req.body.password,
 	},
 	{new: true},
 	(error, newAdmin) => {
@@ -56,9 +56,9 @@ const updateAdmin = (req, res) => {
 
 const createAdmin = (req, res) => {
   const newAdmin = new Admins({
-      full_name: req.query.full_name,
-      username: req.query.username,
-      password: req.query.password,
+      full_name: req.body.full_name,
+      username: req.body.username,
+      password: req.body.password,
     });
   
     newAdmin.save((error, newAdmin) => {

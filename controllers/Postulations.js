@@ -83,4 +83,13 @@ const deletePostulation = (req, res) => {
         }
         return res.status(204).send();
       });
-}
+};
+
+module.exports = {
+    getPostulations,
+    getPostulationById,
+    getPostulationByClient,
+    addPostulation,
+    updatePostulation,
+    deletePostulation
+};

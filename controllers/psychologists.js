@@ -12,7 +12,7 @@ const getPsychologists = (req, res) => {
         .catch((error) => {
             res.status(404).json()
         })
-}
+};
 
 // See Psychologist by Id 
 const getPsychologistById = (req, res) => {
@@ -27,7 +27,8 @@ const getPsychologistById = (req, res) => {
         }
         res.status(200).json(psychologist);
     }) 
-}
+};
+
 
 // See Psychologist by Name
 const getPsychilogistByName = (req, res) => {
@@ -40,7 +41,8 @@ const getPsychilogistByName = (req, res) => {
             {msg: `There's no psychologists with the name ${req.params.full_name}`}
         )
     })
-}
+};
+
 
 // Add Psychologist
 const addPsychologist = (req, res) => {
@@ -75,7 +77,7 @@ const deletepsychologist = (req, res) => {
         }
         return res.status(204).send();
       });
-}
+};
 
 // Edit Psychologist
 const updatePsychologist = (req, res) => {
@@ -94,7 +96,7 @@ const updatePsychologist = (req, res) => {
             }
             return res.status(200).json(newPsychologist)
     })
-}
+};
 
 // See Appointments
 const getAppointments = (req, res) => {
@@ -105,7 +107,8 @@ const getAppointments = (req, res) => {
     .catch((error) => {
         res.status(404).json()
     })
-}
+};
+
 
 // Cancel Appointment
 const deleteAppointment = (req, res) => {
@@ -120,7 +123,7 @@ const deleteAppointment = (req, res) => {
         }
         return res.status(204).send();
       });
-}
+};
 
 // Edit Applicant Profile
 const updateApplicantProfile = (req, res) => {
@@ -133,4 +136,15 @@ const updateApplicantProfile = (req, res) => {
             }
             return res.status(200).json(newApplicantProfile)
     })
-}
+};
+
+module.exports = {
+    getPsychologists,
+    getPsychologistById,
+    getPsychilogistByName,
+    deletepsychologist,
+    updatePsychologist,
+    getAppointments,
+    deleteAppointment,
+    updateApplicantProfile,
+};
