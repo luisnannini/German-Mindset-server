@@ -19,6 +19,10 @@ const adminRoutes = require("./routes/admins");
 const applicantRoutes = require("./routes/applicants");
 const appointmentRoutes = require("./routes/appointments");
 const clientRoutes = require("./routes/clients");
+const interviewRoutes = require("./routes/interviews");
+const postulationsRoutes = require("./routes/postulations");
+const profilesRoutes = require("./routes/profiles");
+const psychologistsRoutes = require("./routes/psychologists");
 
 
 //Json visibility
@@ -46,6 +50,20 @@ router.use("/appointments", appointmentRoutes);
 
 //Clients 
 router.use("/clients", clientRoutes);
+
+//Interviews 
+router.use("/interviews", interviewRoutes)
+
+//Postulations
+router.use("/Postulations", postulationsRoutes)
+
+//Profiles
+router.use("/Profiles", profilesRoutes)
+
+//Psychologists
+router.use("/Psychologists", psychologistsRoutes)
+
+
 
 // //ADMIN psychologists
 // app.get('/psychologists', psychologistsController.getAll);
