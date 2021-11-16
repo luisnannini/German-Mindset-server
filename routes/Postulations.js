@@ -5,7 +5,7 @@ const validation = require('../validations/postulations')
 
 router.get('/', postulations.getPostulations);
 router.get('/:id', postulations.getPostulationById);
-router.get('/:client', postulations.getPostulationByClient);
+router.get('/byClient/:id_clients', postulations.getPostulationByClient);
 router.post(
     '/',
     validation.validatePostulation,

@@ -75,7 +75,6 @@ const createClient = (req, res) => {
       description: req.body.contact.description,
     },
   })
-
   newClient.save((error, newClient) => {
     if(error) {
       return res.status(400).json(error)
