@@ -5,7 +5,7 @@ const validation = require('../validations/Interviews')
 
 
 router.get('/', interviews.getInterviews);
-router.get('/:id', interviews.getInterviewsByPostulant);
+router.get('/:id_clients', interviews.getInterviewsByClient);
 router.delete('/:id', interviews.deleteInterview);
 
 module.exports = router;

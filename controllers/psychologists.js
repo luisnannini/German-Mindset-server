@@ -126,7 +126,7 @@ const deleteAppointment = (req, res) => {
 
 // Edit Applicant Profile
 const updateApplicantProfile = (req, res) => {
-    Applicants.findByIdAndUpdate(req.params.id_applicant,
+    Applicants.findByIdAndUpdate(req.params.id,
         { profile: req.body.profile},
         { new: true },
         (error, newApplicantProfile) =>  {

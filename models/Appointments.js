@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const AppointmentsSchema = new Schema ({
-  id_applicant: ObjectId,
-  id_psychologist: ObjectId,
+  id_applicant: String,
+  id_psychologist: String,
   date: { type: Date, required: true},
   time: { type: String, required: true},
 })

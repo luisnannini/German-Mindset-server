@@ -14,8 +14,8 @@ const getInterviews = (req, res) => {
 
 
 // See interviews for Postulant
-const getInterviewsByPostulant = (req, res) => {
-    Interviews.find( {id_user: req.params.id_user} )
+const getInterviewsByClient = (req, res) => {
+    Interviews.find( {id_clients: req.params.id_clients} )
         .then((interviews) => {
             res.status(200).json(interviews);
         })
@@ -28,7 +28,7 @@ const getInterviewsByPostulant = (req, res) => {
 
 // Cancel interview
 const deleteInterview = (req, res) => {
-    Interviews.findByIdAndDelete(req.params.id_user, (error, interview) => {
+    Interviews.findByIdAndDelete(req.params.id, (error, interview) => {
       if (!interview) {
         return res.status(404).json(
             {msg: `There's no interview with the id of ${req.params.id_user}`}
@@ -43,6 +43,6 @@ const deleteInterview = (req, res) => {
 
   module.exports = {
     getInterviews,
-    getInterviewsByPostulant,
+    getInterviewsByClient,
     deleteInterview,
   };

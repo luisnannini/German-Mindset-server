@@ -69,7 +69,7 @@ const createClient = (req, res) => {
     phone_number: req.body.phone_number,
     email: req.body.email,
     contact: {
-      fullname: req.body.contact.fullname,
+      full_name: req.body.contact.full_name,
       phone_number: req.body.contact.phone_number,
       email: req.body.contact.email,
       description: req.body.contact.description,

@@ -5,7 +5,7 @@ const validation = require('../validations/psychologists')
 
 router.get('/', psychologists.getPsychologists);
 router.get('/:id', psychologists.getPsychologistById);
-router.get('/byName/:name', psychologists.getPsychilogistByName);
+router.get('/byName/:full_name', psychologists.getPsychilogistByName);
 router.post(
     '/',
     validation.validatePsychologist,

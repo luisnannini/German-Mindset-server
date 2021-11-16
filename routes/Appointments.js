@@ -4,9 +4,9 @@ const appointments = require('../controllers/Appointments');
 const validation = require('../validations/Appointments')
 
 router.get('/', appointments.getAppointments);
+router.get('/psychologists/:id_psychologist', appointments.getAppointmentsByPsychologistId);
 router.get('/:id', appointments.getOneApointment);
-router.get('/applicant/:id', appointments.getAppointmentsByApplicantsId);
-router.get('/psychologists/:id', appointments.getAppointmentsByPsychologistId);
+router.get('/applicant/:id_applicant', appointments.getAppointmentsByApplicantsId);
 router.post(
     '/',
     validation.validateAppointment,
