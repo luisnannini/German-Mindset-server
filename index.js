@@ -1,7 +1,7 @@
 //Init
 const express = require('express');
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT || 4000;
 
 //Controllers require
 const psychologistsController = require('./controllers/psychologists');
