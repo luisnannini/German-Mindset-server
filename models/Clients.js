@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const ClientsSchema = new Schema ({
-  id_clients: ObjectId,
   company_name: { type: String, required: true},
   address: String,
   phone_number: { type: String, required: true},
