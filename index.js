@@ -1,96 +1,66 @@
 //Init
 const express = require('express');
+const router = express.Router();
 const app = express();
 const PORT = process.env.PORT || 5000;
+const cors = require('cors');
 
-//Controllers require
-const psychologistsController = require('./controllers/psychologists');
-const jobOfferController = require('./controllers/jobOffers');
-const applicantsController = require('./controllers/applicants')
-const clients = require('./controllers/clientControl');
-const postulations = require('./controllers/positionsControl');
-const profiles = require('./controllers/profileControl');
-const profileTypesController = require('./controllers/profileTypes');
-const psychologistEvaluation = require('./old-controllers/psychologist-evaluations');
-const psychologistSchedule = require('./old-controllers/psychologists-schedule');
+//Mongoose Library
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-RR?retryWrites=true&w=majority',
+(error)=>{
+  if(error){
+    console.log("error: ", error)
+  }else{
+    console.log("Database connected")
+  }
+})
 
-//Json visibility
-app.set('json spaces', 2);
-app.use(express.static('public'));
+//Routes require
+const adminRoutes = require("./routes/admins");
+const applicantRoutes = require("./routes/applicants");
+const appointmentRoutes = require("./routes/appointments");
+const clientRoutes = require("./routes/clients");
+const interviewRoutes = require("./routes/interviews");
+const postulationsRoutes = require("./routes/postulations");
+const profilesRoutes = require("./routes/profiles");
+const psychologistsRoutes = require("./routes/psychologists");
+
 
 //Init body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors())
+app.use('/', router)
 
 //Frontpage message
 app.get('/', (req, res) => {
   res.send('Mindset frontpage');
 });
 
-//ADMIN psychologists
-app.get('/psychologists', psychologistsController.getAll);
-app.get('/psychologists/:id', psychologistsController.getById);
-app.get('/psychologists/byName/:name', psychologistsController.getByName);
-app.post('/psychologists', psychologistsController.createPsychologist);
-app.delete('/psychologists/:id', psychologistsController.deletePsychologist);
-app.put('/psychologists/:id',psychologistsController.updatePsychologist);
+//ADMIN admins
+router.use("/admin", adminRoutes);
 
-//ADMIN Job Offers
-app.get('/job_offers', jobOfferController.getAll);
-app.get('/job_offers/:id', jobOfferController.getById);
-app.get('/job_offers/company/:company', jobOfferController.getByCompany);
-app.post('/job_offers', jobOfferController.createJobOffer);
-app.put('/job_offers/:id', jobOfferController.updatejobOffer);
-app.delete('/job_offers/:id', jobOfferController.deletejobOffer);
+//Applicants
+router.use("/applicants", applicantRoutes);
 
-//ADMIN applicants
-app.get('/applicants', applicantsController.getAll);
-app.get('/applicants/:id', applicantsController.getById);
-app.put('/applicants/:id', applicantsController.changeAvailability);
+//Appointments 
+router.use("/appointments", appointmentRoutes);
 
-//ADMIN - Create, edit, delete and show clients
-app.get('/clients', clients.listClients);
-app.post('/clients', clients.newClient);
-app.delete('/clients/:id', clients.deleteClient);
-app.put('clients/:id',clients.clientUpdate);
+//Clients 
+router.use("/clients", clientRoutes);
 
-//ADMIN - Visualize and cancel applicant postulations
-app.get('/postulations',postulations.showApllicants);
-app.get('/postulations/:id',postulations.cancelPostulation);
+//Interviews 
+router.use("/interviews", interviewRoutes);
 
-//ADMIN - Administrate professionals profiless
-app.get('/profiles/professional',profiles.listProfiles);
-app.post('/profiles/professional',profiles.newProfile);
-app.put('/profiles/professional/:id',profiles.editProfile);
-app.delete('/profiles/professional/:id',profiles.deleteProfile);
+//Postulations
+router.use("/postulations", postulationsRoutes);
 
-//ADMIN Profile Types
-app.get('/profiles', profileTypesController.getAll);
-app.get('/profiles/:id', profileTypesController.getById);
-app.get('/profiles/byProfile/:profile', profileTypesController.getByName);
-app.get('/profiles/anual/:id', profileTypesController.getReport);
+//Profiles
+router.use("/profiles", profilesRoutes);
 
-//APPLICANTS 
-app.post('/register', applicantsController.registerApplicant);
-app.post('/register/cv', applicantsController.createCV);
-app.put('/applicants/:id', applicantsController.changeAvailability);
-app.use("/psychologist-interviews", require("./controllers/psychologist-interview"));
-app.use("/company-interviews", require("./controllers/company-interviews"));
-
-//PSYCHOLOGIST Update profile and cancel interviews
-app.get('/applicants', applicantsController.getAll);
-app.get('/applicants/interview/:id', psychologistEvaluation.nextInterview);
-app.put('/applicants/:id', psychologistEvaluation.updateApplicant);
-app.delete('/applicants/:id', psychologistEvaluation.deleteInterview);
-
-//PSYCHOLOGIST Change type of profile
-app.put('/psychologist/applicants/:profile', psychologistEvaluation.updateProfile);
-
-//PSYCHOLOGIST availability
-app.put('/psychologist/availability/:id', psychologistSchedule.psychologistsAvailability);
-
-//PSYCHOLOGIST availability
-app.put('/psychologists/:id', psychologists.psychologistsAvailability);
+//Psychologists
+router.use("/psychologists", psychologistsRoutes);
 
 app.listen(PORT, () => {
     console.log(`MindSet server listening at http://localhost:${port}`);
