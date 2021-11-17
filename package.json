@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/germanradium/basd_2021_mindset_backend.git"
   },
+  "engines": {
+    "node": "16.8.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -1,7 +1,7 @@
 //Init
 const express = require('express');
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
 //Controllers require
 const psychologistsController = require('./controllers/psychologists');
@@ -92,6 +92,6 @@ app.put('/psychologist/availability/:id', psychologistSchedule.psychologistsAvai
 //PSYCHOLOGIST availability
 app.put('/psychologists/:id', psychologists.psychologistsAvailability);
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`MindSet server listening at http://localhost:${port}`);
   });
