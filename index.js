@@ -2,8 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const app = express();
-const port = 5000;
-const cors = require('cors')
+const PORT = process.env.PORT || 5000;
+const cors = require('cors');
 
 //Mongoose Library
 const mongoose = require('mongoose');
@@ -26,6 +26,7 @@ const postulationsRoutes = require("./routes/postulations");
 const profilesRoutes = require("./routes/profiles");
 const psychologistsRoutes = require("./routes/psychologists");
 
+
 //Init body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -36,7 +37,6 @@ app.use('/', router)
 app.get('/', (req, res) => {
   res.send('Mindset frontpage');
 });
-
 
 //ADMIN admins
 router.use("/admin", adminRoutes);
@@ -62,6 +62,6 @@ router.use("/profiles", profilesRoutes);
 //Psychologists
 router.use("/psychologists", psychologistsRoutes);
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`MindSet server listening at http://localhost:${port}`);
   });
