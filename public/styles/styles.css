@@ -53,6 +53,7 @@
 }
 .windowContent{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 80%;
@@ -84,11 +85,30 @@
     color: #FC6225;
     font-weight: bold;
 }
+.subTitles > ul{
+    display: flex;
+    list-style: none;
+}
 .subTitles li{
     padding: 0 4em;
 }
 .informationApplicant >span{
     padding: 0 4em;
+}
+.informationApplicant > ul{
+    display: flex;
+    list-style: none;
+}
+.informationApplicant > ul > li{
+    padding: 0 1em;
+    cursor: pointer;
+}
+.addNew{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1em;
 }
 #footer{
     display: flex;
