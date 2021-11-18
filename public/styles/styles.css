@@ -118,3 +118,36 @@
     align-items: center;
     background-color: #3E4855;
 }
+/* FORM */
+.newFormContainer{
+    display: flex;
+    justify-content: center;
+}
+.columInpunts{
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+    padding: 0 2em;
+}
+.fields{
+    display: flex;
+    flex-flow: column;
+    margin: 1em 1em;
+}
+.fields label{
+    margin-bottom: 0.5em;
+    font-family: QuicksandBold;
+    text-transform: uppercase;
+    color: #1F162D;
+}
+.fields input{
+    border: 2px solid rgba(0, 0, 0, 0.425);
+    border-radius: 7px;
+}
+.save{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1em;
+}
