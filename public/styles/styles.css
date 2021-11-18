@@ -136,12 +136,11 @@
 }
 .fields label{
     margin-bottom: 0.5em;
-    font-family: QuicksandBold;
     text-transform: uppercase;
-    color: #1F162D;
+    font-weight: bold;
+    color: #FC6225;
 }
 .fields input{
-    border: 2px solid rgba(0, 0, 0, 0.425);
     border-radius: 7px;
 }
 .save{
@@ -150,4 +149,14 @@
     justify-content: center;
     width: 100%;
     margin-top: 1em;
+}
+.success{
+    border: 2px solid green;
+    border-radius: 7px;
+    opacity: 1;
+}
+.error{
+    border: 2px solid red;
+    border-radius: 7px;
+    opacity: 1;
 }
