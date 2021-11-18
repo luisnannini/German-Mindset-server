@@ -1,8 +1,9 @@
 // SELECTORS
 const fullname = document.getElementById('name');
 const email = document.getElementById('email');
-const password = document.getElementById('password');
 const phone = document.getElementById('phone');
+const date = document.getElementById('date');
+const status = document.getElementById('status');
 const url = "mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-RR?retryWrites=true&w=majority"
 const data = document.querySelectorAll('input')
 
@@ -51,25 +52,6 @@ function emailVerify(){
         return false;
     }
 }
-function passwordVerify(){
-    let passwordControl = password.value;
-    let upperLetter = /[A-Z]/;
-    let lowerLetter = /[a-z]/;
-    let numberContain = /[0-9]/;
-    if(
-        passwordControl !== '' &&
-        passwordControl !== null &&
-        passwordControl.length >= 8 &&
-        passwordControl.length <= 25 &&
-        passwordControl.match(upperLetter) &&
-        passwordControl.match(lowerLetter) &&
-        passwordControl.match(numberContain)
-    ){
-        return true;
-    }else{
-        return false;
-    }
-}
 function phoneVerify(){
     let phoneControl = phone.value;
     let symbols = /(-)/;
@@ -90,8 +72,9 @@ function createApplicant (){
     let inputsData = {
         fullname : data[0].value,
         email : data[1].value,
-        password : data[2].value,
-        phone : data[3].value
+        date : data[2].value,
+        phone : data[3].value,
+        status : data[4].value
     }
     fetch(url, {
         method: "POST",
@@ -121,16 +104,6 @@ email.addEventListener('blur',()=>{
 })
 email.addEventListener('focus',()=>{
     remove(1);
-})
-password.addEventListener('blur',()=>{
-    if (passwordVerify()){
-        showSuccess(2);
-    }else{
-        showError(2);
-    }
-})
-password.addEventListener('focus',()=>{
-    remove(2);
 })
 phone.addEventListener('blur',()=>{
     if(phoneVerify()){
