@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#header{
+    display: flex;
+    width: 100%;
+}
+.box1{
+    width: 20%;
+    background-color: #3E4855;
+}
+.box2{
+    width: 80%;
+    background-color: #FC6225;
+}
+.headerContent{
+    justify-content: space-between;
+}
+.box2 > div{
+    display: flex;
+    flex-direction: row;
+}
+.conteiner{
+    display: flex;
+}
+.aside{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 20%;
+    background-color: #232F3E;
+}
+.list{
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+.list > ul{
+    list-style: none;
+}
+.list > ul > li{
+    margin: 0.8em 0;
+    color:white;
+    text-decoration: none;
+}
+.list> ul > li:hover{
+    color: #FC6225;
+    cursor: pointer;
+}
+.list > ul > li:nth-last-child(){
+    margin: 2em 0;
+}
+.windowContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.listContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 85%;
+    height: 35vh;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #707070;
+    border-radius: 25px;
+}
+.listContainer > div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+.titles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.subTitles{
+    display: flex;
+    color: #FC6225;
+    font-weight: bold;
+}
+.subTitles li{
+    padding: 0 4em;
+}
+.informationApplicant >span{
+    padding: 0 4em;
+}
+#footer{
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #3E4855;
+}
