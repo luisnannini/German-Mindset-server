@@ -1,5 +1,3 @@
-const Applicants = require("../../models/Applicants");
-
 // SELECTORS
 const fullname = document.getElementById('name');
 const email = document.getElementById('email');
@@ -8,7 +6,7 @@ const date = document.getElementById('date');
 const status = document.getElementById('status');
 const url = "mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-RR?retryWrites=true&w=majority"
 const data = document.querySelectorAll('input')
-
+const createApplicant = document.getElementById('submit');
 // FUNCTIONS
 function showSuccess(i){
     data[i].classList.add('success');
@@ -70,20 +68,7 @@ function phoneVerify(){
         return false;
     }
 }
-function createApplicant (){
-    let url = `${window.location.origin}/applicants/`;
-    let newApplicant = {
-        headers: {
-            "Content-Type" : "application/json",
-        },
-        body : JSON.stringify({
-            full_name : data[0].value,
-            email: data[1].value,
-            birth_date: data[2].value,
-            phone_number: parseInt(data[3].value),
-            availability: data[4].value
-        })
-    }
+function create (){
     fetch(url,newApplicant)
     .then((res)=>{
         if(res.status !== 200 && res.status !== 201){
@@ -102,34 +87,51 @@ function createApplicant (){
     })
 }
 // EVENTS 
-fullname.addEventListener('blur',()=>{
+fullname.onblur = ()=>{
     if (nameVerify()){
         showSuccess(0);
     }else{
         showError(0);
     }
-})
-fullname.addEventListener('focus',()=>{
+}
+fullname.onfocus = ()=>{
     remove(0); 
-})
-email.addEventListener('blur',()=>{
+}
+email.onblur = ()=>{
     if(emailVerify()){
         showSuccess(1);
     }else{
         showError(1);
     }
-})
-email.addEventListener('focus',()=>{
+}
+email.onfocus = ()=>{
     remove(1);
-})
-phone.addEventListener('blur',()=>{
+}
+phone.onblur = ()=>{
     if(phoneVerify()){
         showSuccess(3);
     }else{
         showError(3);
     }
-})
-phone.addEventListener('focus',()=>{
+}
+phone.onfocus = ()=>{
     remove(3);
-})
+}
 // METHODS CALLS
+createApplicant.onsumit = (event)=>{
+    event.preventDefault();
+    let url = `${window.location.origin}/applicants/`;
+    let newApplicant = {
+        headers: {
+            "Content-Type" : "application/json",
+        },
+        body : JSON.stringify({
+            full_name : data[0].value,
+            email: data[1].value,
+            birth_date: data[2].value,
+            phone_number: parseInt(data[3].value),
+            availability: data[4].value
+        })
+    }
+    create(url,newApplicant)
+}
