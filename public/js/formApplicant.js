@@ -1,9 +1,34 @@
+window.onload = ()=>{
+    if (params.get(':id')){
+        fetch(`${window.location.origin}/applicants/?_id=${params.get(':id')}`)
+        .then((res)=>{
+            if(res.status !== 200 && res.status !== 201){
+                return res.json().then(({message})=>{
+                    throw new Error(message);
+                })
+            }
+        return res.json();
+        })
+        .then((res)=>{
+            res.data.forEach((applicant) => {
+                fullname.value = applicant.full_name,
+                email.value = applicant.email,
+                phone.value = applicant.phone_number,
+                date.value = applicant.birth_date,
+                state.value = applicant.availability
+            });
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+    }
+}
 // SELECTORS
 const fullname = document.getElementById('name');
 const email = document.getElementById('email');
 const phone = document.getElementById('phone');
 const date = document.getElementById('date');
-const status = document.getElementById('status');
+const state = document.getElementById('state');
 const url = "mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-RR?retryWrites=true&w=majority"
 const data = document.querySelectorAll('input')
 const createApplicant = document.getElementById('submit');
@@ -120,7 +145,7 @@ phone.onfocus = ()=>{
 // METHODS CALLS
 createApplicant.onsumit = (event)=>{
     event.preventDefault();
-    let url = `${window.location.origin}/applicants/`;
+    let url = `${window.location.origin}/applicants`;
     let newApplicant = {
         headers: {
             "Content-Type" : "application/json",
@@ -132,6 +157,13 @@ createApplicant.onsumit = (event)=>{
             phone_number: parseInt(data[3].value),
             availability: data[4].value
         })
+    }
+    if (params.get('/:id')){
+        newApplicant.method = 'PUT';
+        url = `${window.location.origin}/applicants/${param.get(':id')}`;
+    }else{
+        newApplicant.method = 'POST';
+        url = `${window.location.origin}/applicants`;
     }
     create(url,newApplicant)
 }
