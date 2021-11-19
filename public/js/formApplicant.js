@@ -1,3 +1,5 @@
+const Applicants = require("../../models/Applicants");
+
 // SELECTORS
 const fullname = document.getElementById('name');
 const email = document.getElementById('email');
@@ -69,20 +71,35 @@ function phoneVerify(){
     }
 }
 function createApplicant (){
-    let inputsData = {
-        fullname : data[0].value,
-        email : data[1].value,
-        date : data[2].value,
-        phone : data[3].value,
-        status : data[4].value
-    }
-    fetch(url, {
-        method: "POST",
-        body: JSON.stringify(inputsData),
+    let url = `${window.location.origin}/applicants/`;
+    let newApplicant = {
         headers: {
-          "Content-Type": "application/json",
+            "Content-Type" : "application/json",
         },
-      })
+        body : JSON.stringify({
+            full_name : data[0].value,
+            email: data[1].value,
+            birth_date: data[2].value,
+            phone_number: parseInt(data[3].value),
+            availability: data[4].value
+        })
+    }
+    fetch(url,newApplicant)
+    .then((res)=>{
+        if(res.status !== 200 && res.status !== 201){
+            return res.json()
+            .then(({message})=>{
+                throw new Error(message)
+            })
+        }
+        return res.json()
+    })
+    .then(()=>{
+        window.location.href = `${window.location.origin}/public/listApplicant.html`
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
 }
 // EVENTS 
 fullname.addEventListener('blur',()=>{

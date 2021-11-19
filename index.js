@@ -1,4 +1,5 @@
 //Init
+require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const app = express();
@@ -7,14 +8,14 @@ const cors = require('cors');
 
 //Mongoose Library
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-RR?retryWrites=true&w=majority',
-(error)=>{
-  if(error){
-    console.log("error: ", error)
-  }else{
-    console.log("Database connected")
-  }
-})
+mongoose.connect(process.env.DATABASE_URL,
+  (error)=>{
+    if(error){
+      console.log("error: ", error)
+    }else{
+      console.log("Database connected")
+    }
+  })
 
 //Routes require
 const adminRoutes = require("./routes/admins");
@@ -31,6 +32,7 @@ const psychologistsRoutes = require("./routes/psychologists");
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors())
+app.use(express.static('public'))
 app.use('/', router)
 
 //Frontpage message
@@ -62,6 +64,6 @@ router.use("/profiles", profilesRoutes);
 //Psychologists
 router.use("/psychologists", psychologistsRoutes);
 
-app.listen(PORT, () => {
-    console.log(`MindSet server listening at http://localhost:${port}`);
-  });
+app.listen(process.env.PORT, () => {
+  console.log(`MindSet server listening at http://localhost:${process.env.PORT}`);
+});
