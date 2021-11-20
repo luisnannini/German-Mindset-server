@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="../styles/reset.css"/>
+        <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title> MindSet - Administrator site </title>
+    </head>
+    <body>
+        <header id="header">
+            <div class="logo-container">
+                <div class="logoMindset">
+                    <h1>MindSet</h1>
+                </div>
+            </div>
+            <div class="header2-container">
+                <div class="section-container">
+                    <span> Administrators</span>
+                </div>
+                <div class="logout">
+                    <span> Log Out</span>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="main-container">
+                <article class="aside">
+                    <div class="nav">
+                        <nav>
+                            <a href="#">admins</a>
+                            <a href="#">applications</a>
+                            <a href="#">clients</a>
+                            <a href="#">interviews</a>
+                            <a href="#">positions</a>
+                            <a href="#">profiles</a>
+                            <a href="#">psychologists</a>
+                            <a href="#">appointments</a>
+                        </nav>
+                    </div>
+                </article>
+                <article class="window-content">
+                    <div class="form-container">
+                        <form id="form">
+                            <div class="input-container">
+                                <div class="form-column">
+                                    <div class="form-field">
+                                        <label class="form-label" for="name">Full name:</label>
+                                        <input id="name" name="name" placeholder="Your Name" type="text" required/>
+                                    </div>
+                                    <div class="form-field">
+                                         <label class="form-label" for="name">Phone number:</label>
+                                         <input id="phone" name="phone" placeholder="Your Phone" type="number" required/>
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label" for="name">Email address:</label>
+                                        <input id="email" name="email" placeholder="Your email address" type="text" />
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label" for="name">Address:</label>
+                                        <input id="address" name="address" placeholder="Your address" type="text" required/>
+                                    </div>
+                                </div>
+                                <div class="form-column">
+                                    <div class="form-field">
+                                        <label class="form-label" for="name">City:</label>
+                                        <input id="city" name="city" placeholder="Your city" type="text" required/>
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label" for="name">Country:</label>
+                                        <input id="country" name="country" placeholder="Your country" type="text" required/>
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label" for="name">Password:</label>
+                                        <input id="password" name="password" placeholder="Your password" type="password" required/>
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label" for="name">Confirm password:</label>
+                                        <input id="confirm-password" name="confirm-password" placeholder="Repeat password" type="password" required/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="save">
+                        <button id="submit" type="submit">
+                            Save changes
+                        </button>
+                    </div>
+                </article>
+            </div>
+            <footer id="footer">
+                <span>&copy; 2021 MindSet Inc.</span>
+            </footer>
+            <script src="../js/formAdmins.js"></script>
+    </body>
+        </main>
+    </body>
+</html>
