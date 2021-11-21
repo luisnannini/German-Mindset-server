@@ -1,4 +1,3 @@
-const fs = require('fs');
 const Postulations = require('../models/Postulations');
 
 // See list of postulations
@@ -70,7 +69,9 @@ const addPostulation = (req, res) => {
 // Update Postulation
 const updatePostulation = (req, res) => {
     Postulations.findByIdAndUpdate(req.params.id,
-        { description : req.body.description },
+        {   id_clients : req.body.id_clients,
+            id_profile : req.body.id_profile,
+            description : req.body.description },
         { new: true },
         (error, newPostulation) =>  {
             if(error) {
