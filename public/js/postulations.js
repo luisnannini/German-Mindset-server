@@ -105,6 +105,7 @@ function addPostulationButton(){
   addButton.addEventListener("click",function(e){
     document.querySelector(".modal-container").classList.remove("invisible")
     document.querySelector("#modal-title").innerHTML = "Add new Postulation"
+    document.querySelector("input").createElement
     const addButton = document.querySelector("#subs-button")
     addButton.value = "ADD POSITION"
     e.preventDefault()
@@ -173,3 +174,61 @@ function addPostulation() {
   }).then(response => {if (response.status == 201){location.reload()}})
   .catch(err => console.log(err))
 }
+
+//Form error or succes message
+
+const id_client = document.getElementById('id-client');
+id_client.addEventListener("blur",() =>{
+    if(id_client.value == ""){
+      showError(0);
+    }else{
+      showSuccess(0);
+    }
+})
+id_client.addEventListener("focus",() =>{
+  if(id_client.value == ""){
+    remove(0);
+  }
+})
+
+const id_profile = document.getElementById('id-profile');
+id_profile.addEventListener("blur",() =>{
+    if(id_profile.value == ""){
+      showError(1);
+    }else{
+      showSuccess(1);
+    }
+})
+id_profile.addEventListener("focus",() =>{
+  if(id_profile.value == ""){
+    remove(1);
+  }
+})
+
+const id_description = document.getElementById('id-description');
+id_description.addEventListener("blur",() =>{
+    if(id_description.value == ""){
+      showError(2);
+    }else{
+      showSuccess(2);
+    }
+})
+id_description.addEventListener("focus",() =>{
+  if(id_description.value == ""){
+    remove(2);
+  }
+})
+
+function showSuccess(i){
+  data[i].classList.add('success');
+}
+function showError(i){
+  data[i].classList.add('error');
+}
+function remove(i){
+  data[i].classList.remove('error');
+  data[i].classList.remove('success');
+}
+
+const data = document.querySelectorAll('input')
+

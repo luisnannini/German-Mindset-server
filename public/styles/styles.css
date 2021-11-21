@@ -185,3 +185,14 @@ input{
 .edit-modal{
   cursor: pointer;
 }
+
+.success{
+  border: 2px solid green;
+  border-radius: 7px;
+  opacity: 1;
+}
+.error{
+  border: 2px solid red;
+  border-radius: 7px;
+  opacity: 1;
+}
