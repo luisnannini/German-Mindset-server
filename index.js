@@ -25,7 +25,7 @@ const interviewRoutes = require("./routes/interviews");
 const postulationsRoutes = require("./routes/postulations");
 const profilesRoutes = require("./routes/profiles");
 const psychologistsRoutes = require("./routes/psychologists");
-
+//const listPostulations = require("./public/views/listPostulations.html")
 
 //Init body parser middleware
 app.use(express.json());
@@ -44,17 +44,19 @@ router.use("/admin", adminRoutes);
 //Applicants
 router.use("/applicants", applicantRoutes);
 
-//Appointments 
+//Appointments
 router.use("/appointments", appointmentRoutes);
 
-//Clients 
+//Clients
 router.use("/clients", clientRoutes);
 
-//Interviews 
+//Interviews
 router.use("/interviews", interviewRoutes);
 
 //Postulations
 router.use("/postulations", postulationsRoutes);
+//router.get("/postulations", listPostulations);
+//router.use("/api/postulations", postulationsRoutes);
 
 //Profiles
 router.use("/profiles", profilesRoutes);
@@ -63,5 +65,5 @@ router.use("/profiles", profilesRoutes);
 router.use("/psychologists", psychologistsRoutes);
 
 app.listen(PORT, () => {
-    console.log(`MindSet server listening at http://localhost:${port}`);
+    console.log(`MindSet server listening at http://localhost:${PORT}`);
   });
