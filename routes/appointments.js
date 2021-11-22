@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const appointments = require('../controllers/Appointments');
-const validation = require('../validations/Appointments')
+const appointments = require('../controllers/appointments');
+const validation = require('../validations/appointments')
 
 router.get('/', appointments.getAppointments);
 router.get('/psychologists/:id_psychologist', appointments.getAppointmentsByPsychologistId);

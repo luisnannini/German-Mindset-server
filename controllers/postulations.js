@@ -1,4 +1,4 @@
-const Postulations = require('../models/Postulations');
+const Postulations = require('../models/postulations');
 
 // See list of postulations
 const getPostulations = (req, res) => {

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const interviews = require('../controllers/Interviews');
-const validation = require('../validations/Interviews')
+const interviews = require('../controllers/interviews');
+const validation = require('../validations/interviews')
 
 
 router.get('/', interviews.getInterviews);
