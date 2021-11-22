@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/styles/styles.css">
+  <title>Form Psychologists</title>
+</head>
+<body>
+  <div class="modal-container invisible">
+    <p id="modal-title">Psychologists Information</p>
+    <div class="form-container">
+      <form name="subs-form" id="subs-form">
+        <div class="input-div">
+          <label for="full_name">Full Name</label>
+          <input type="text" id="full_name" name="full_name" required="">
+        </div>
+        <div class="input-div">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" required="">
+        </div>
+        <div class="input-div">
+          <label for="license">License</label>
+          <input type="text" id="license" name="license" required="">
+        </div>
+        <div class="input-div">
+          <label for="phone-number">Phone Number</label>
+          <input type="text" id="phone_number" name="phone_number" required="">
+        </div>
+        <div class="input-div">
+          <label for="address">Address</label>
+          <input type="text" id="address" name="address" required="">
+        </div>
+        <div class="input-div">
+          <label for="birth-date">Birth Date</label>
+          <input type="date" id="birth_date" name="birth_date" required="">
+        </div>
+        <input type="submit" id="subs-button" value="Save Changes">
+      </form>
+    </div>
+    <button type="button" class="modal-button">x</button>
+  </div>
+  <div class="flex-container">
+    <div class="aside">
+      <h1>
+        MindSet
+      </h1>
+      <ul>
+        <li>Profiles</li>
+        <li>Reports</li>
+        <li>Applicants</li>
+        <li>Clients</li>
+        <li>Postulations</li>
+        <li>Psychologists</li>
+        <li>Settings</li>
+      </ul>
+    </div>
+    <div class="container-info">
+      <h2>Psychologists</h2>
+      <div class="info">
+        <h3>Psychologists</h3>
+        <ul class="info-title-ul">
+          <li>
+            <p class="title">Psychologist</p>
+          </li>
+          <li>
+            <p class="title">Email</p>
+          </li>
+          <li>
+            <p class="title">License</p>
+          </li>
+          <li>
+            <p class="title">Actions</p>
+          </li>
+        </ul>
+        <div id="list-psychologists">
+        </div>
+      <button class="add-button">+</button>
+    </div>
+  </div>
+  <script src="/public/js/psychologistsCRUD.js"></script>
+</body>
+</html>
