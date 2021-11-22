@@ -33,7 +33,7 @@ function postulations(data){
     liClient.innerText = element.id_clients;
     liProfile.innerText = element.id_profile;
     liDescription.innerText = element.description;
-    liEditIcon.innerHTML = '<a class="edit-modal"><img src="../write.png" alt=""></a><a href=""><img id="delete-icon" src="../bin.png" alt=""></a>'
+    liEditIcon.innerHTML = '<a class="edit-modal"><img src="/public/img/write.png" alt=""></a><a href=""><img id="delete-icon" src="/public/img/bin.png" alt=""></a>'
     ul.appendChild(liClient);
     ul.appendChild(liProfile);
     ul.appendChild(liDescription);
