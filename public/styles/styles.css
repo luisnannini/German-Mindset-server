@@ -53,55 +53,10 @@
 }
 .windowContent{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 80%;
-}
-.listContainer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 85%;
-    height: 35vh;
-    box-shadow: 0px 3px 6px #00000029;
-    border: 1px solid #707070;
-    border-radius: 25px;
-}
-.listContainer > div{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    width: 100%;
-}
-.titles{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-.subTitles{
-    display: flex;
-    color: #FC6225;
-    font-weight: bold;
-}
-.subTitles > ul{
-    display: flex;
-    list-style: none;
-}
-.subTitles li{
-    padding: 0 4em;
-}
-.informationApplicant >span{
-    padding: 0 4em;
-}
-.informationApplicant > ul{
-    display: flex;
-    list-style: none;
-}
-.informationApplicant > ul > li{
-    padding: 0 1em;
-    cursor: pointer;
 }
 .addNew{
     display: flex;
@@ -125,7 +80,7 @@
 }
 .columInpunts{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 45%;
     padding: 0 2em;
 }
@@ -159,4 +114,36 @@
     border: 2px solid red;
     border-radius: 7px;
     opacity: 1;
+}
+/* SHOW LIST */
+.listContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.listData{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.info-title-ul{
+    display: flex;
+    border-bottom:2px solid #8f8f8f;
+    list-style: none;
+}
+  
+.info-title-ul li{
+    width: 100%;
+    text-align: center;
+}
+  
+.info-title-ul li p{
+    padding-top: 10px;
+}
+  
+.title{
+    color: #fc6226;
+    font-size: 25px;
+    padding-top: 30px;
+    border-bottom:2px solid #8f8f8f;
 }

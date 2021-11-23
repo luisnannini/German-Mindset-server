@@ -158,12 +158,7 @@ createApplicant.onsumit = (event)=>{
             availability: data[4].value
         })
     }
-    if (params.get('/:id')){
-        newApplicant.method = 'PUT';
-        url = `${window.location.origin}/applicants/${param.get(':id')}`;
-    }else{
-        newApplicant.method = 'POST';
-        url = `${window.location.origin}/applicants`;
-    }
+    newApplicant.method = 'POST';
+    url = `${window.location.origin}/applicants`;
     create(url,newApplicant)
 }
