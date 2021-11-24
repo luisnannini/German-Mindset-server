@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../styles/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
+  <title>Administrators - MindSet</title>
+</head>
+<body>
+  <div class="modal-container invisible">
+    <p id="modal-title">Administrator Information</p>
+    <div class="form-container">
+      <form name="subs-form" id="subs-form">
+        <div class="input-div">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required="">
+          </div>
+          <div class="input-div">
+            <label for="id-admin">ID Administrator:</label>
+            <input type="text" id="id-admin" name="id-admin" required="">
+          </div>
+          <!--
+           <div class="input-div">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required="">
+          </div>
+          <div class="input-div">
+              <label for="repeat-password">Confirm password:</label>
+              <input type="password" id="repeat-password" name="repeat-assword" required="">
+          </div>  
+          -->
+          <div class="input-div">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required="">
+          </div>
+        <input type="submit" id="subs-button" value="Save Changes">
+      </form>
+    </div>
+    <button type="button" class="modal-button">x</button>
+  </div>
+  <div class="flex-container">
+    <div class="aside">
+      <h1>
+        MindSet
+      </h1>
+      <ul>
+        <li>Profiles</li>
+        <li>Reports</li>
+        <li>Applicants</li>
+        <li>Clients</li>
+        <li>Postulations</li>
+        <li>Psychologists</li>
+        <li>Settings</li>
+      </ul>
+    </div>
+    <div class="container-info">
+      <h2>Administrators</h2>
+      <div class="info">
+        <h3>List of administrators</h3>
+        <ul class="info-title-ul">
+          <li>
+            <p class="title">Name</p>
+          </li>
+          <li>
+            <p class="title">Id Admin</p>
+          </li>
+          <li>
+            <p class="title">Email</p>
+          </li>
+          <li>
+            <p class="title">Actions</p>
+          </li>
+        </ul>
+        <div id="list-admins">
+      </div>
+      <button class="add-button">+</button>
+    </div>
+  </div>
+  <script src="../js/admins.js"></script>
+</body>
+</html>
