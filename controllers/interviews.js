@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Interviews = require('../models/Interviews');
+const Interviews = require('../models/interviews');
 
 // All interviews
 const getInterviews = (req, res) => {

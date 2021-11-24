@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const admins = require('../controllers/Admins');
-const validation = require('../validations/Admins')
+const admins = require('../controllers/admins');
+const validation = require('../validations/admins')
 
 router.get('/', admins.getAdmins);
 router.get('/:id', admins.getOneAdmin);
