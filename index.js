@@ -3,19 +3,18 @@ require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const app = express();
-const PORT = process.env.PORT || 5000;
 const cors = require('cors');
 
 //Mongoose Library
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL,
-  (error)=>{
-    if(error){
-      console.log("error: ", error)
-    }else{
-      console.log("Database connected")
-    }
-  })
+(error)=>{
+  if(error){
+    console.log("error: ", error)
+  }else{
+    console.log("Database connected")
+  }
+})
 
 //Routes require
 const adminRoutes = require("./routes/admins");
@@ -65,5 +64,6 @@ router.use("/profiles", profilesRoutes);
 router.use("/psychologists", psychologistsRoutes);
 
 app.listen(process.env.PORT, () => {
-  console.log(`MindSet server listening at http://localhost:${process.env.PORT}`);
-});
+    console.log(`MindSet server listening at http://localhost:${process.env.PORT}`);
+ });
+
