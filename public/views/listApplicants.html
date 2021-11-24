@@ -1,76 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="../styles/reset.css"/>
-        <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
-        <title> MindSet </title>
-    </head>
-    <body>
-        <header id="header">
-            <div class="headerContent box1">
-                <div class="logoMindset">
-                    <h1>MindSet</h1>
-                </div>
-            </div>
-            <div class="headerContent box2">
-                <div class="section">
-                    <span> Applicants</span>
-                </div>
-                <div class="logout">
-                    <span> Log Out</span>
-                </div>
-            </div>
-        </header>
-        <main>
-            <div class="conteiner">
-                <article class="aside">
-                    <div class="list">
-                        <ul>
-                            <li>Profiles</li>
-                            <li>Reports</li>
-                            <li>Applicants</li>
-                            <li>Clients</li>
-                            <li>Positions</li>
-                            <li>Psychologists</li>
-                            <li>Settings</li>
-                        </ul>
-                    </div>
-                </article>
-                <article class="windowContent">
-                    <div class="listContainer">
-                        <h2>Applicant</h2>
-                        <div class="listData">
-                          <ul class="info-title-ul">
-                            <li>
-                              <p class="title">Full Name</p>
-                            </li>
-                            <li>
-                              <p class="title">Birth</p>
-                            </li>
-                            <li>
-                              <p class="title">Phone</p>
-                            </li>
-                            <li>
-                              <p class="title">State</p>
-                            </li>
-                          </ul>
-                          <div id="list-postulations">
-                          </div>
-                      </div>
-                    </div>
-                    <div class="addNew">
-                        <button id="new">
-                            NEW
-                        </button>
-                    </div>
-                </article>
-            </div>
-            <footer id="footer">
-                <span>&copy; 2021 MindSet Team</span>
-            </footer>
-            <script src="../js/listApplicant.js"></script>
-        </main>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <title>
+      Applicants List
+  </title>
+</head>
+<body>
+  <div class="modal-container invisible">
+    <p id="modal-title"></p>
+    <div class="form-container">
+      <form name="subs-form" id="subs-form">
+        <div class="input-div">
+          <label for="type">Full Name</label>
+          <input type="text" id="name" name="Full Name" required="">
+        </div>
+        <div class="input-div">
+          <label for="type">Email</label>
+          <input type="text" id="email" name="Email">
+        </div>
+        <div class="input-div">
+          <label for="type">Phone</label>
+          <input type="text" id="phone" name="Phone-number" required="">
+        </div>
+        <div class="input-div">
+          <label for="type">Birth Date</label>
+          <input type="date" id="date" name="Birth Date" required="">
+        </div>
+        <div class="input-div">
+          <label for="type">State</label>
+          <input type="text" id="state" name="Availability" required="">
+        </div>
+        <input type="submit" id="subs-button" value="Save Changes">
+        <input type="submit" id="delete-button" value="Delete Profile">
+      </form>
+    </div>
+    <button type="button" class="modal-button">x</button>
+  </div>
+  <div class="flex-container">
+    <div class="aside">
+      <h1>
+        MindSet
+      </h1>
+      <ul>
+        <li>Profiles</li>
+        <li>Reports</li>
+        <li>
+            <a href="./listApplicants.html">Applicants</a>
+        </li>
+        <li>Clients</li>
+        <li>Postulations</li>
+        <li>Psychologists</li>
+        <li>Settings</li>
+      </ul>
+    </div>
+    <div class="container-info">
+      <h2>Applicants</h2>
+      <div class="info">
+        <h3>Applicant</h3>
+        <ul class="info-title-ul">
+            <li>
+                <p class="title">Full Name</p>
+            </li>
+            <li>
+                <p class="title">Email</p>
+            </li>
+            <li>
+                <p class="title">Birth Date</p>
+            </li>
+            <li>
+                <p class="title">Phone</p>
+            </li>
+            <li>
+                <p class="title">State</p>
+            </li>
+        </ul>
+        <div id="list-profiles">
+        </div>
+      <button class="add-button">+</button>
+    </div>
+  </div>
+  <script src="../js/listApplicant.js"></script>
+</body>
 </html>
