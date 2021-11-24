@@ -1,4 +1,4 @@
-const appointments = require('../models/Appointments');
+const appointments = require('../models/appointments');
 
 // See list of appointments
 
