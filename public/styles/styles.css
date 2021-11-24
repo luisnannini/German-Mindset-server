@@ -42,6 +42,11 @@ ul li{
   line-height: 60px;
 }
 
+.aside ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
 h2{
   background-color: #fc6226;
   color: #fff;
@@ -90,6 +95,7 @@ h3{
   width: 100px;
   height: 100px;
   font-size: 65px;
+  border: none;
   margin-left: 90%;
   margin-bottom: 30px;
 }
@@ -195,4 +201,12 @@ input{
   border: 2px solid red;
   border-radius: 7px;
   opacity: 1;
+
+#list-profiles ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+#list-profiles ul li:hover {
+    cursor: pointer;
 }

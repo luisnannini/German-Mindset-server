@@ -25,7 +25,8 @@ const interviewRoutes = require("./routes/interviews");
 const postulationsRoutes = require("./routes/postulations");
 const profilesRoutes = require("./routes/profiles");
 const psychologistsRoutes = require("./routes/psychologists");
-//const listPostulations = require("./public/views/listPostulations.html")
+
+app.use(express.static('public'));
 
 //Init body parser middleware
 app.use(express.json());
