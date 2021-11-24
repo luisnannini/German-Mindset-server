@@ -45,17 +45,19 @@ router.use("/admin", adminRoutes);
 //Applicants
 router.use("/applicants", applicantRoutes);
 
-//Appointments 
+//Appointments
 router.use("/appointments", appointmentRoutes);
 
-//Clients 
+//Clients
 router.use("/clients", clientRoutes);
 
-//Interviews 
+//Interviews
 router.use("/interviews", interviewRoutes);
 
 //Postulations
 router.use("/postulations", postulationsRoutes);
+//router.get("/postulations", listPostulations);
+//router.use("/api/postulations", postulationsRoutes);
 
 //Profiles
 router.use("/profiles", profilesRoutes);
