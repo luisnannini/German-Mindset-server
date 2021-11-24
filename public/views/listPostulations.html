@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/styles/styles.css">
+  <title>Form Postulations</title>
+</head>
+<body>
+  <div class="modal-container invisible">
+    <p id="modal-title">Postulation Information</p>
+    <div class="form-container">
+      <form name="subs-form" id="subs-form">
+        <div class="input-div">
+          <label for="id-client">Id Client</label>
+          <input type="text" id="id-client" name="id-client" required="">
+        </div>
+        <div class="input-div">
+          <label for="id-profile">Id Profile</label>
+          <input type="text" id="id-profile" name="id-profile" required="">
+        </div>
+        <div class="input-div">
+          <label for="description">Description</label>
+          <input type="text" id="id-description" name="description" required="">
+        </div>
+        <input type="submit" id="subs-button" value="Save Changes">
+      </form>
+    </div>
+    <button type="button" class="modal-button">x</button>
+  </div>
+  <div class="flex-container">
+    <div class="aside">
+      <h1>
+        MindSet
+      </h1>
+      <ul>
+        <li>Profiles</li>
+        <li>Reports</li>
+        <li>Applicants</li>
+        <li>Clients</li>
+        <li>Postulations</li>
+        <li>Psychologists</li>
+        <li>Settings</li>
+      </ul>
+    </div>
+    <div class="container-info">
+      <h2>Postulations</h2>
+      <div class="info">
+        <h3>Postulations</h3>
+        <ul class="info-title-ul">
+          <li>
+            <p class="title">Id Client</p>
+          </li>
+          <li>
+            <p class="title">Id Profile</p>
+          </li>
+          <li>
+            <p class="title">Description</p>
+          </li>
+          <li>
+            <p class="title">Actions</p>
+          </li>
+        </ul>
+        <div id="list-postulations">
+      </div>
+      <button class="add-button">+</button>
+    </div>
+  </div>
+  <script src="/public/js/postulations.js"></script>
+</body>
+</html>
