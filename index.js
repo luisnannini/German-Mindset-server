@@ -1,13 +1,13 @@
 //Init
+require('dotenv').config()
 const express = require('express');
 const router = express.Router();
 const app = express();
-const PORT = process.env.PORT || 5000;
 const cors = require('cors');
 
 //Mongoose Library
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-RR?retryWrites=true&w=majority',
+mongoose.connect(process.env.DATABASE_URL,
 (error)=>{
   if(error){
     console.log("error: ", error)
@@ -26,6 +26,7 @@ const postulationsRoutes = require("./routes/postulations");
 const profilesRoutes = require("./routes/profiles");
 const psychologistsRoutes = require("./routes/psychologists");
 
+app.use(express.static('public'));
 
 //Init body parser middleware
 app.use(express.json());
@@ -44,17 +45,19 @@ router.use("/admin", adminRoutes);
 //Applicants
 router.use("/applicants", applicantRoutes);
 
-//Appointments 
+//Appointments
 router.use("/appointments", appointmentRoutes);
 
-//Clients 
+//Clients
 router.use("/clients", clientRoutes);
 
-//Interviews 
+//Interviews
 router.use("/interviews", interviewRoutes);
 
 //Postulations
 router.use("/postulations", postulationsRoutes);
+//router.get("/postulations", listPostulations);
+//router.use("/api/postulations", postulationsRoutes);
 
 //Profiles
 router.use("/profiles", profilesRoutes);
@@ -62,6 +65,6 @@ router.use("/profiles", profilesRoutes);
 //Psychologists
 router.use("/psychologists", psychologistsRoutes);
 
-app.listen(PORT, () => {
-    console.log(`MindSet server listening at http://localhost:${PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`MindSet server listening at http://localhost:${process.env.PORT}`);
   });
