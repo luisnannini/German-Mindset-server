@@ -66,7 +66,7 @@ router.use("/profiles", profilesRoutes);
 //Psychologists
 router.use("/psychologists", psychologistsRoutes);
 
+
 app.listen(process.env.PORT, () => {
     console.log(`MindSet server listening at http://localhost:${process.env.PORT}`);
- });
-
+});
