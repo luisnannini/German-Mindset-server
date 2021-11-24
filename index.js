@@ -26,6 +26,7 @@ const postulationsRoutes = require("./routes/postulations");
 const profilesRoutes = require("./routes/profiles");
 const psychologistsRoutes = require("./routes/psychologists");
 
+app.use(express.static('public'));
 
 //Init body parser middleware
 app.use(express.json());
