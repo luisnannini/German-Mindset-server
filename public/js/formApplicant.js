@@ -1,38 +1,113 @@
-window.onload = ()=>{
-    if (params.get(':id')){
-        fetch(`${window.location.origin}/applicants/?_id=${params.get(':id')}`)
-        .then((res)=>{
-            if(res.status !== 200 && res.status !== 201){
-                return res.json().then(({message})=>{
-                    throw new Error(message);
-                })
-            }
-        return res.json();
-        })
-        .then((res)=>{
-            res.data.forEach((applicant) => {
-                fullname.value = applicant.full_name,
-                email.value = applicant.email,
-                phone.value = applicant.phone_number,
-                date.value = applicant.birth_date,
-                state.value = applicant.availability
-            });
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
-    }
-}
+let idToEdit
+const url = "http://localhost:5000/applicants/"
 // SELECTORS
 const fullname = document.getElementById('name');
 const email = document.getElementById('email');
 const phone = document.getElementById('phone');
 const date = document.getElementById('date');
 const state = document.getElementById('state');
+const data = document.querySelectorAll('input');
 const url = "mongodb+srv://Sabrina:basd1234@basd-rr.gdgvl.mongodb.net/BaSD-RR?retryWrites=true&w=majority"
-const data = document.querySelectorAll('input')
-const createApplicant = document.getElementById('submit');
-// FUNCTIONS
+const applicantsList = document.getElementById('list-applicants');
+const modal = document.querySelector('.modal-container');
+const closeButton = document.querySelector('.modal-button');
+const saveButton = document.querySelector('#subs-button');
+const deleteButton = document.querySelector('#delete-button');
+const addButton = document.querySelector('.add-button');
+
+// FUNCTION BACK
+
+function getApplicants(){
+	fetch(url)
+		.then(function (response){
+			return response.json();
+		})
+		.then(function(data){
+			applicants(data);
+		})
+		.catch(function(err) {
+			console.log(err)
+		})
+}
+
+function applicants(data){
+    const listApplicants = document.querySelector('#list-applicants');
+    data.forEach(element => {
+      let ul = document.createElement("ul")
+      ul.id = element._id
+      ul.classList.add("info-title-ul")
+      let liFullName = document.createElement("li")
+      let liEmail = document.createElement("li")
+      let liPhone = document.createElement("li")
+      let liDate = document.createElement("li")
+      let liStatus = document.createElement("li")
+      liFullName.classList.add("name")
+      liEmail.classList.add("email")
+      liPhone.classList.add("phone")
+      liDate.classList.add("date")
+      liStatus.classList.add("state")
+      liFullName.innerText = element.full_name
+      liEmail.innerText = element.email
+      liPhone.innerText = element.phone_number
+      liDate.innerHTML = element.date
+      liStatus.innerHTML = element.availability
+      ul.appendChild(liFullName)
+      ul.appendChild(liEmail)
+      ul.appendChild(liPhone)
+      ul.appendChild(liDate)
+      ul.appendChild(liStatus)
+      listApplicants.appendChild(ul)
+    })
+    handlerModal();
+};
+
+function handlerModal(){
+    const modalCloseButton = document.querySelector(".modal-button")
+    modalCloseButton.addEventListener("click", function(){
+        document.querySelector(".modal-container").classList.add("invisible")
+    })
+    const modalSaveChanges = document.querySelector("#subs-button")
+    modalSaveChanges.addEventListener("click", function(e){
+      e.preventDefault()
+      document.querySelector(".modal-container").classList.add("invisible")
+    })
+}
+
+
+function addApplicant() {
+    const applicant = {
+      full_name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone_number: document.getElementById('phone').value,
+      birth_date: document.getElementById('date').value,
+      availability: document.getElementById('state').value
+    }
+  
+    fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'},
+        body: JSON.stringify(applicant)
+    }).then(response => {if (response.status == 201){location.reload()}})
+    .catch(err => console.log(err))
+}
+
+function addApplicantButton(){
+    const addButton = document.querySelector(".add-button")
+    addButton.addEventListener("click",function(e){
+        document.querySelector(".modal-container").classList.remove("invisible")
+        document.querySelector("#modal-title").innerHTML = "Add new Applicant"
+        document.querySelector("input").createElement
+        const addButton = document.querySelector("#subs-button")
+        addButton.value = "SAVE APPLICANT"
+        e.preventDefault()
+        addButton.addEventListener("click",function(){
+          addApplicant();
+        })
+    })
+}
+
+// FUNCTIONS INFO
 function showSuccess(i){
     data[i].classList.add('success');
 }
@@ -93,24 +168,13 @@ function phoneVerify(){
         return false;
     }
 }
-function create (){
-    fetch(url,newApplicant)
-    .then((res)=>{
-        if(res.status !== 200 && res.status !== 201){
-            return res.json()
-            .then(({message})=>{
-                throw new Error(message)
-            })
-        }
-        return res.json()
-    })
-    .then(()=>{
-        window.location.href = `${window.location.origin}/public/listApplicant.html`
-    })
-    .catch((error)=>{
-        console.log(error)
-    })
+function dateVerify(){
+    //Validation for date
 }
+function statusVerify(){
+    //Validation for availability
+}
+
 // EVENTS 
 fullname.onblur = ()=>{
     if (nameVerify()){
@@ -134,31 +198,16 @@ email.onfocus = ()=>{
 }
 phone.onblur = ()=>{
     if(phoneVerify()){
-        showSuccess(3);
+        showSuccess(2);
     }else{
-        showError(3);
+        showError(2);
     }
 }
 phone.onfocus = ()=>{
-    remove(3);
+    remove(2);
 }
-// METHODS CALLS
-createApplicant.onsumit = (event)=>{
-    event.preventDefault();
-    let url = `${window.location.origin}/applicants`;
-    let newApplicant = {
-        headers: {
-            "Content-Type" : "application/json",
-        },
-        body : JSON.stringify({
-            full_name : data[0].value,
-            email: data[1].value,
-            birth_date: data[2].value,
-            phone_number: parseInt(data[3].value),
-            availability: data[4].value
-        })
-    }
-    newApplicant.method = 'POST';
-    url = `${window.location.origin}/applicants`;
-    create(url,newApplicant)
-}
+// CALLS
+
+handlerModal()
+addApplicantButton()
+getApplicants();
