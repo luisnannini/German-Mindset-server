@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const clients = require('../controllers/Clients');
-const validation = require('../validations/Clients')
+const clients = require('../controllers/clients');
+const validation = require('../validations/clients')
 
 router.get('/', clients.getClients);
 router.get('/:id', clients.getOneClient);

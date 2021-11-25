@@ -1,7 +1,7 @@
 const fs = require('fs');
-const Psychologists = require('../models/Psychologists');
-const Appointments = require('../models/Appointments');
-const Applicants = require('../models/Applicants')
+const Psychologists = require('../models/psychologists');
+const Appointments = require('../models/appointments');
+const Applicants = require('../models/applicants')
 
 // See list of psychologists
 const getPsychologists = (req, res) => {

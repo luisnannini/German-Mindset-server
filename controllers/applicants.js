@@ -1,4 +1,4 @@
-const Applicants = require('../models/Applicants');
+const Applicants = require('../models/applicants');
 
 // See list of applicants
 

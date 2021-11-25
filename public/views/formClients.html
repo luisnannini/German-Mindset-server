@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <title>Clients Form</title>
+</head>
+<body>
+  <div class="modal-container invisible">
+    <p id="modal-title">Client Information</p>
+    <div class="form-container">
+      <form name="subs-form" id="subs-form">
+        <div class="input-div">
+          <label for="companyName">Company name</label>
+          <input type="text" id="companyName" name="companyName">
+        </div>
+        <div class="input-div">
+          <label for="companyAddress">Address</label>
+          <input type="text" id="companyAddress" name="companyAddress">
+        </div>
+        <div class="input-div">
+          <label for="openPositions">Open Positions</label>
+          <input type="number" id="openPositions" name="openPositions">
+        </div>
+        <input type="submit" id="subs-button" value="Save Changes">
+      </form>
+    </div>
+    <button type="button" class="modal-button">x</button>
+  </div>
+  <div class="flex-container">
+    <div class="aside">
+      <h1>
+        MindSet
+      </h1>
+      <ul>
+        <li>Profiles</li>
+        <li>Reports</li>
+        <li>Applicants</li>
+        <li>Clients</li>
+        <li>Postulations</li>
+        <li>Psychologists</li>
+        <li>Settings</li>
+      </ul>
+    </div>
+    <div class="container-info">
+      <h2>Administrator</h2>
+      <div class="info">
+        <h3>Clients</h3>
+        <ul class="info-title-ul">
+          <li>
+            <p class="title">Company name</p>
+          </li>
+          <li>
+            <p class="title">Address</p>
+          </li>
+          <li>
+            <p class="title">Open Positions</p>
+          </li>
+          <li>
+            <p class="title">Actions</p>
+          </li>
+        </ul>
+        <div id="list-postulations">
+      </div>
+      <button class="add-button">+</button>
+    </div>
+  </div>
+  <script src="../js/clients.js"></script>
+</body>
+</html>

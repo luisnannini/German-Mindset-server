@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Profiles = require('../models/Profiles');
+const Profiles = require('../models/profiles');
 
 // See list of Profiles
 const getProfiles = (req, res) => {
