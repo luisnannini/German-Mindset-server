@@ -27,7 +27,6 @@ The app will schedule interviews with companies that the search match with your 
 
 # Steps to see the app
 
-- Clone this repository: https://github.com/estefrare/BaSD-MindSet.git
 - Install the dependecies: 
 
       npm install
