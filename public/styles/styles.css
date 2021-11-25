@@ -203,19 +203,24 @@ input{
   opacity: 1;
 
 #list-profiles ul {
-    display: flex;
-    justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
 }
 
 #list-profiles ul li:hover {
-    cursor: pointer;
-  
+   cursor: pointer;
+}
+#list-applicants ul {
+   display: flex;
+   justify-content: space-between;
+}  
+#list-applicants ul li:hover {
+   cursor: pointer;
+ } 
 #list-admins ul {
     display: flex;
     justify-content: space-between;
 }
-
 #list-admins ul li:hover {
     cursor: pointer;
-
 }

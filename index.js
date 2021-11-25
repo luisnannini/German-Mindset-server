@@ -32,6 +32,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cors())
+app.use(express.static('public'))
 app.use('/', router)
 
 //Frontpage message
@@ -68,5 +69,4 @@ router.use("/psychologists", psychologistsRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`MindSet server listening at http://localhost:${process.env.PORT}`);
-  });
-
+});
