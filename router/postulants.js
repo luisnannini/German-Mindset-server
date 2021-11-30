@@ -4,22 +4,13 @@ const validations = require('../validations/postulants');
 
 const router = express.Router();
 
-const {
-  createPostulant,
-  updatePostulants,
-  deletePostulant,
-  listPostulants,
-} = controller;
+const { createPostulant, updatePostulants, deletePostulant, listPostulants } = controller;
 
-const {
-  validatePostulant,
-  validatePostulantId,
-  validateUpdatedPostulant,
-} = validations;
+const { validatePostulant, validatePostulantId, validateUpdatedPostulant } = validations;
 
 router.post('/', validatePostulant, createPostulant);
-router.put('/:id', validatePostulantId, validateUpdatedPostulant, updatePostulants);
-router.delete('/:id', validatePostulantId, deletePostulant);
+router.put('/', validatePostulantId, validateUpdatedPostulant, updatePostulants);
+router.delete('/', validatePostulantId, deletePostulant);
 router.get('/', listPostulants);
 
 module.exports = router;

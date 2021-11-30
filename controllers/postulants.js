@@ -1,7 +1,8 @@
 const Postulants = require('../models/Postulants');
 
 const listPostulants = (req, res) => {
-  Postulants.find(req.query).populate('profiles.profileId', 'name')
+  Postulants.find(req.query)
+    .populate('profiles.profileId', 'name')
     .then((postulants) => {
       res.status(200).json({
         message: 'List of Postulants',
@@ -32,7 +33,7 @@ const createPostulant = (req, res) => {
     workExperience: bodyReq.workExperience,
   });
 
-  postulant.save(((error) => {
+  postulant.save((error) => {
     if (error) {
       return res.status(400).json({
         message: error,
@@ -42,11 +43,11 @@ const createPostulant = (req, res) => {
       message: 'Postulant created',
       data: postulant,
     });
-  }));
+  });
 };
 
 const deletePostulant = (req, res) => {
-  Postulants.findByIdAndDelete(req.params.id, (error, pointedPostulant) => {
+  Postulants.findByIdAndDelete(req.query.id, (error, pointedPostulant) => {
     if (error) {
       return res.status(400).json({
         message: error,
@@ -57,14 +58,15 @@ const deletePostulant = (req, res) => {
         message: 'Postulant Id does not exist',
       });
     }
-    return res.status(204).send();
+    return res.status(204).json({ message: 'Postulant deleted succesfully' });
   });
 };
 
 const updatePostulants = (req, res) => {
+  console.log(req.body);
   const bodyReq = req.body;
   Postulants.findByIdAndUpdate(
-    req.params.id,
+    req.query.id,
     {
       firstName: bodyReq.firstName,
       lastName: bodyReq.lastName,
@@ -76,11 +78,7 @@ const updatePostulants = (req, res) => {
       available: bodyReq.available,
       phone: bodyReq.phone,
       profiles: bodyReq.profiles,
-      'studies.primaryStudies': bodyReq.studies.primaryStudies,
-      'studies.secondaryStudies': bodyReq.studies.secondaryStudies,
-      'studies.tertiaryStudies': bodyReq.studies.tertiaryStudies,
-      'studies.universityStudies': bodyReq.studies.universityStudies,
-      'studies.informalStudies': bodyReq.studies.informalStudies,
+      studies: bodyReq.studies,
       workExperience: bodyReq.workExperience,
     },
     { new: true },
