@@ -20,31 +20,31 @@ const availabilityDaySchema = new Schema({
 const availabilitySchema = new Schema({
   monday: {
     type: availabilityDaySchema,
-    required: true,
+    default: false,
   },
   tuesday: {
     type: availabilityDaySchema,
-    required: true,
+    default: false,
   },
   wednesday: {
     type: availabilityDaySchema,
-    required: true,
+    default: false,
   },
   thursday: {
     type: availabilityDaySchema,
-    required: true,
+    default: false,
   },
   friday: {
     type: availabilityDaySchema,
-    required: true,
+    default: false,
   },
   saturday: {
     type: availabilityDaySchema,
-    required: true,
+    default: false,
   },
   sunday: {
     type: availabilityDaySchema,
-    required: true,
+    default: false,
   },
 }, { _id: false });
 
@@ -60,7 +60,6 @@ const PsychologistSchema = new Schema(
     },
     availability: {
       type: availabilitySchema,
-      required: true,
     },
     username: {
       type: String,
