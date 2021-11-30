@@ -1,7 +1,6 @@
 const { ObjectId } = require('mongoose').Types;
 
-const emailRegex =
-  /(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([0-5][0-9]):([0-5][0-9]):([0-5][0-9]).\d{3}Z$)|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$)/;
+const emailRegex = /(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([0-5][0-9]):([0-5][0-9]):([0-5][0-9]).\d{3}Z$)|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$)/;
 
 const validatePostulant = (req, res, next) => {
   const bodyReq = req.body;
@@ -24,8 +23,8 @@ const validatePostulant = (req, res, next) => {
     return res.status(400).json({ message: 'address is wrong or missing' });
   }
   if (
-    !bodyReq.birthday ||
-    !bodyReq.birthday.match(
+    !bodyReq.birthday
+    || !bodyReq.birthday.match(
       /(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([0-5][0-9]):([0-5][0-9]):([0-5][0-9]).\d{3}Z$)|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$)/,
     )
   ) {
@@ -59,9 +58,9 @@ const validateUpdatedPostulant = (req, res, next) => {
     return res.status(400).json({ message: 'address is wrong or missing' });
   }
   if (
-    bodyReq.birthday &&
-    !bodyReq.birthday.match(
-      /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([0-5][0-9]):([0-5][0-9]):([0-5][0-9]).([0-9][0-9][0-9])Z$/,
+    bodyReq.birthday
+    && !bodyReq.birthday.match(
+      /(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([0-5][0-9]):([0-5][0-9]):([0-5][0-9]).\d{3}Z$)|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$)/,
     )
   ) {
     return res.status(400).json({ message: 'birthday form should be YYYY-MM-DDTHH:MM:SS.000Z' });

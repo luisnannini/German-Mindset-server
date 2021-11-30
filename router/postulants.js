@@ -4,7 +4,9 @@ const validations = require('../validations/postulants');
 
 const router = express.Router();
 
-const { createPostulant, updatePostulants, deletePostulant, listPostulants } = controller;
+const {
+  createPostulant, updatePostulants, deletePostulant, listPostulants,
+} = controller;
 
 const { validatePostulant, validatePostulantId, validateUpdatedPostulant } = validations;
 
