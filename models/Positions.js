@@ -8,8 +8,8 @@ const PositionsSchema = new Schema({
     ref: 'Clients',
     required: true,
   },
-  jobDescription: { type: String },
-  vacancy: { type: Number },
+  jobDescription: { type: String, required: true },
+  vacancy: { type: Number, required: true },
   professionalProfiles: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Profiles' },
   isOpen: { type: Boolean, required: true },
 }, {
