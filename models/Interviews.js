@@ -21,7 +21,7 @@ const InterviewSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ['succesful', 'failed', 'cancelled', 'assigned', 'confirmed'],
+      enum: ['successful', 'failed', 'cancelled', 'assigned', 'confirmed'],
       default: 'assigned',
       required: true,
     },
