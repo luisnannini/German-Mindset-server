@@ -47,7 +47,7 @@ const createPostulant = (req, res) => {
 };
 
 const deletePostulant = (req, res) => {
-  Postulants.findByIdAndDelete(req.query.id, (error, pointedPostulant) => {
+  Postulants.findByIdAndDelete(req.params.id, (error, pointedPostulant) => {
     if (error) {
       return res.status(400).json({
         message: error,
@@ -65,7 +65,7 @@ const deletePostulant = (req, res) => {
 const updatePostulants = (req, res) => {
   const bodyReq = req.body;
   Postulants.findByIdAndUpdate(
-    req.query.id,
+    req.params.id,
     {
       firstName: bodyReq.firstName,
       lastName: bodyReq.lastName,

@@ -11,8 +11,8 @@ const {
 const { validatePostulant, validatePostulantId, validateUpdatedPostulant } = validations;
 
 router.post('/', validatePostulant, createPostulant);
-router.put('/', validatePostulantId, validateUpdatedPostulant, updatePostulants);
-router.delete('/', validatePostulantId, deletePostulant);
+router.put('/:id', validatePostulantId, validateUpdatedPostulant, updatePostulants);
+router.delete('/:id', validatePostulantId, deletePostulant);
 router.get('/', listPostulants);
 
 module.exports = router;
