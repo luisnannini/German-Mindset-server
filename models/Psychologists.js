@@ -8,11 +8,11 @@ const availabilityDaySchema = new Schema({
     required: true,
   },
   from: {
-    type: Number,
+    type: String,
     default: 1000,
   },
   to: {
-    type: Number,
+    type: String,
     default: 1800,
   },
 }, { _id: false });
