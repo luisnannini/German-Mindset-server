@@ -16,15 +16,18 @@ const validatePostulant = (req, res, next) => {
   if (!bodyReq.password) {
     return res.status(400).json({ message: 'password is wrong or missing' });
   }
-  if (!bodyReq.contactRange
-    || !bodyReq.contactRange.from
-    || !bodyReq.contactRange.to) {
+  if (!bodyReq.contactRange || !bodyReq.contactRange.from || !bodyReq.contactRange.to) {
     return res.status(400).json({ message: 'contactRange is wrong or missing' });
   }
   if (!bodyReq.address) {
     return res.status(400).json({ message: 'address is wrong or missing' });
   }
-  if (!bodyReq.birthday || !bodyReq.birthday.match(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/)) {
+  if (
+    !bodyReq.birthday
+    || !bodyReq.birthday.match(
+      /(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([0-5][0-9]):([0-5][0-9])((:[0-5][0-9].\d{3}Z)?)$)|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$)/,
+    )
+  ) {
     return res.status(400).json({ message: 'birthday is wrong or missing' });
   }
   if (!bodyReq.available || typeof bodyReq.available !== 'boolean') {
@@ -46,7 +49,7 @@ const validateUpdatedPostulant = (req, res, next) => {
     return res.status(400).json({ message: 'lastName is wrong or missing' });
   }
   if (bodyReq.email && !bodyReq.email.match(emailRegex)) {
-    return res.status(400).json({ message: 'email is wrong or missing' });
+    return res.status(400).json({ message: 'email format is invalid' });
   }
   if (bodyReq.password && typeof bodyReq.password !== 'string') {
     return res.status(400).json({ message: 'password is wrong or missing' });
@@ -54,14 +57,19 @@ const validateUpdatedPostulant = (req, res, next) => {
   if (bodyReq.address && typeof bodyReq.address !== 'string') {
     return res.status(400).json({ message: 'address is wrong or missing' });
   }
-  if (bodyReq.birthday && !bodyReq.birthday.match(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/)) {
-    return res.status(400).json({ message: 'birthday is wrong or missing' });
+  if (
+    bodyReq.birthday
+    && !bodyReq.birthday.match(
+      /(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])T([0-5][0-9]):([0-5][0-9])((:[0-5][0-9].\d{3}Z)?)$)|(^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$)/,
+    )
+  ) {
+    return res.status(400).json({ message: 'birthday form should be YYYY-MM-DDTHH:MM:SS.000Z' });
   }
   if (bodyReq.available && typeof bodyReq.available !== 'boolean') {
-    return res.status(400).json({ message: 'available is wrong or missing' });
+    return res.status(400).json({ message: 'available should be boolean' });
   }
   if (bodyReq.phone && Number.isNaN(bodyReq.phone)) {
-    return res.status(400).json({ message: 'phone is wrong or missing' });
+    return res.status(400).json({ message: 'phone should be a number' });
   }
 
   return next();
