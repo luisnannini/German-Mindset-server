@@ -1,7 +1,7 @@
 const Postulants = require('../models/Postulants');
 
 const listPostulants = (req, res) => {
-  Postulants.find(req.query.id)
+  Postulants.find(req.query)
     .populate('profiles.profileId', 'name')
     .then((postulants) => {
       res.status(200).json({
