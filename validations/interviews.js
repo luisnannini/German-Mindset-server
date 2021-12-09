@@ -42,7 +42,7 @@ const validateUpdatedInterview = (req, res, next) => {
   if (!bodyReq.status || !bodyReq.status.match(enu)) {
     return res.status(400).json({ message: 'Status value is incorrect or missing' });
   }
-  if (!bodyReq.date || !bodyReq.date.match(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/)) {
+  if (!bodyReq.date || !bodyReq.date.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2})$/)) {
     return res.status(400).json({ message: 'Date value is incorrect or missing' });
   }
   return next();
