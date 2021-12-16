@@ -65,7 +65,7 @@ const validateUpdatedPostulant = (req, res, next) => {
   ) {
     return res.status(400).json({ message: 'birthday form should be YYYY-MM-DDTHH:MM:SS.000Z' });
   }
-  if (!bodyReq.available || typeof bodyReq.available !== 'boolean') {
+  if (typeof bodyReq.available !== 'boolean') {
     return res.status(400).json({ message: 'available should be boolean' });
   }
   if (!bodyReq.phone || Number.isNaN(bodyReq.phone)) {
