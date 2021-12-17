@@ -30,7 +30,7 @@ const validatePostulant = (req, res, next) => {
   ) {
     return res.status(400).json({ message: 'birthday is wrong or missing' });
   }
-  if (!bodyReq.available || typeof bodyReq.available !== 'boolean') {
+  if (typeof bodyReq.available !== 'boolean') {
     return res.status(400).json({ message: 'available is wrong or missing' });
   }
   if (!bodyReq.phone) {
