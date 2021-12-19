@@ -44,31 +44,26 @@ const availabilityObjectModel = {
 
 const availabilityObjectValidator = (object) => {
   const keys = Object.keys(availabilityObjectModel);
-  return keys.reduce(
-    (isValid, el) => {
-      if (el in object
-      && ((object[el].availability && typeof object[el].availability !== 'boolean')
-      || (object[el].from && typeof object[el].from !== 'number')
-      || (object[el].to && typeof object[el].to !== 'number'))) {
-        return false;
-      }
-      return isValid && true;
-    },
-    true,
-  );
+  for (let key = 0; key < keys.length; key += 1) {
+    if (!object[keys[key]] || typeof object[keys[key]].availability !== 'boolean'
+     || !Number(object[keys[key]].from.replace(':', ''))
+     || !Number(object[keys[key]].to.replace(':', ''))) {
+      return false;
+    }
+  }
+  return true;
 };
 
 const availabilityObjectUpdateValidator = (object) => {
   const keys = Object.keys(availabilityObjectModel);
-  return keys.reduce((isValid, el) => {
-    if (el in object
-      && typeof object[el].availability === 'boolean'
-      && typeof object[el].from === 'number'
-      && typeof object[el].to === 'number') {
-      return isValid && true;
+  for (let key = 0; key < keys.length; key += 1) {
+    if (!object[keys[key]] || typeof object[keys[key]].availability !== 'boolean'
+     || !Number(object[keys[key]].from.replace(':', ''))
+     || !Number(object[keys[key]].to.replace(':', ''))) {
+      return false;
     }
-    return false;
-  }, true);
+  }
+  return true;
 };
 
 const validateIdFormat = (req, res, next) => {
