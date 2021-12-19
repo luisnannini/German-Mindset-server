@@ -58,7 +58,7 @@ const updatePosition = (req, res) => {
 const deletePosition = (req, res) => {
   Positions.findByIdAndDelete(req.params.id, (error) => {
     if (error) {
-      return res.status(404).json({ message: `Position with id ${req.params.id} does not extis` });
+      return res.status(404).json({ message: `Position with id ${req.params.id} does not exist` });
     }
     return res.status(204).send();
   });

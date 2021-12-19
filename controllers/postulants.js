@@ -58,7 +58,7 @@ const deletePostulant = (req, res) => {
         message: 'Postulant Id does not exist',
       });
     }
-    return res.status(204).json({ message: 'Postulant deleted succesfully' });
+    return res.status(204).json({ message: 'Postulant deleted successfully' });
   });
 };
 
