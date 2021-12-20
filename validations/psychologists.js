@@ -44,39 +44,37 @@ const availabilityObjectModel = {
 
 const availabilityObjectValidator = (object) => {
   const keys = Object.keys(availabilityObjectModel);
-  return keys.reduce(
-    (isValid, el) => {
-      if (el in object
-      && ((object[el].availability && typeof object[el].availability !== 'boolean')
-      || (object[el].from && typeof object[el].from !== 'number')
-      || (object[el].to && typeof object[el].to !== 'number'))) {
-        return false;
-      }
-      return isValid && true;
-    },
-    true,
-  );
+  for (let key = 0; key < keys.length; key += 1) {
+    if (!object[keys[key]] || typeof object[keys[key]].availability !== 'boolean') return false;
+    if (
+      (object[keys[key]].from !== '0' || object[keys[key]].to !== '0')
+      && (!Number(object[keys[key]].from.replace(':', ''))
+      || !Number(object[keys[key]].to.replace(':', '')))
+    ) {
+      return false;
+    }
+  }
+  return true;
 };
 
 const availabilityObjectUpdateValidator = (object) => {
   const keys = Object.keys(availabilityObjectModel);
-  return keys.reduce((isValid, el) => {
-    if (el in object
-      && typeof object[el].availability === 'boolean'
-      && typeof object[el].from === 'number'
-      && typeof object[el].to === 'number') {
-      return isValid && true;
+  for (let key = 0; key < keys.length; key += 1) {
+    if (!object[keys[key]] || typeof object[keys[key]].availability !== 'boolean') return false;
+    if (
+      (object[keys[key]].from !== '0' || object[keys[key]].to !== '0')
+      && (!Number(object[keys[key]].from.replace(':', ''))
+      || !Number(object[keys[key]].to.replace(':', '')))
+    ) {
+      return false;
     }
-    return false;
-  }, true);
+  }
+  return true;
 };
 
 const validateIdFormat = (req, res, next) => {
   if (!ObjectId.isValid(req.params.id)) {
-    return errorResHelper(
-      `The psychologist 'Id' (${req.params.id}) given is invalid`,
-      res,
-    );
+    return errorResHelper(`The psychologist 'Id' (${req.params.id}) given is invalid`, res);
   }
   return next();
 };
@@ -108,10 +106,7 @@ const validatePsychologists = (req, res, next) => {
     invalidBodyAttrs.push("'address'");
   }
   if (invalidBodyAttrs.length === 1) {
-    return errorResHelper(
-      `Param ${invalidBodyAttrs[0]} is missing or invalid`,
-      res,
-    );
+    return errorResHelper(`Param ${invalidBodyAttrs[0]} is missing or invalid`, res);
   }
   if (invalidBodyAttrs.length > 1) {
     return errorResHelper(
@@ -151,10 +146,7 @@ const validatePsychologistsUsedAttr = (req, res, next) => {
     invalidBodyAttrs.push("'address'");
   }
   if (invalidBodyAttrs.length === 1) {
-    return errorResHelper(
-      `Param ${invalidBodyAttrs[0]} is missing or invalid`,
-      res,
-    );
+    return errorResHelper(`Param ${invalidBodyAttrs[0]} is missing or invalid`, res);
   }
   if (invalidBodyAttrs.length > 1) {
     return errorResHelper(
