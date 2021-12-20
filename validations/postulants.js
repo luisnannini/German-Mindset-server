@@ -16,9 +16,9 @@ const validatePostulant = (req, res, next) => {
   if (!bodyReq.password) {
     return res.status(400).json({ message: 'password is wrong or missing' });
   }
-  if (!bodyReq.contactRange || !bodyReq.contactRange.from || !bodyReq.contactRange.to) {
-    return res.status(400).json({ message: 'contactRange is wrong or missing' });
-  }
+  // if (!bodyReq.contactRange || !bodyReq.contactRange.from || !bodyReq.contactRange.to) {
+  //   return res.status(400).json({ message: 'contactRange is wrong or missing' });
+  // }
   if (!bodyReq.address) {
     return res.status(400).json({ message: 'address is wrong or missing' });
   }
