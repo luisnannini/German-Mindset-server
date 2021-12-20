@@ -16,9 +16,9 @@ const validatePostulant = (req, res, next) => {
   if (!bodyReq.password) {
     return res.status(400).json({ message: 'password is wrong or missing' });
   }
-  if (!bodyReq.contactRange || !bodyReq.contactRange.from || !bodyReq.contactRange.to) {
-    return res.status(400).json({ message: 'contactRange is wrong or missing' });
-  }
+  // if (!bodyReq.contactRange || !bodyReq.contactRange.from || !bodyReq.contactRange.to) {
+  //   return res.status(400).json({ message: 'contactRange is wrong or missing' });
+  // }
   if (!bodyReq.address) {
     return res.status(400).json({ message: 'address is wrong or missing' });
   }
@@ -30,7 +30,7 @@ const validatePostulant = (req, res, next) => {
   ) {
     return res.status(400).json({ message: 'birthday is wrong or missing' });
   }
-  if (!bodyReq.available || typeof bodyReq.available !== 'boolean') {
+  if (typeof bodyReq.available !== 'boolean') {
     return res.status(400).json({ message: 'available is wrong or missing' });
   }
   if (!bodyReq.phone) {
@@ -65,7 +65,7 @@ const validateUpdatedPostulant = (req, res, next) => {
   ) {
     return res.status(400).json({ message: 'birthday form should be YYYY-MM-DDTHH:MM:SS.000Z' });
   }
-  if (!bodyReq.available || typeof bodyReq.available !== 'boolean') {
+  if (typeof bodyReq.available !== 'boolean') {
     return res.status(400).json({ message: 'available should be boolean' });
   }
   if (!bodyReq.phone || Number.isNaN(bodyReq.phone)) {
