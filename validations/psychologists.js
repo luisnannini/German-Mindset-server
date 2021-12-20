@@ -47,7 +47,7 @@ const availabilityObjectValidator = (object) => {
   for (let key = 0; key < keys.length; key += 1) {
     if (!object[keys[key]] || typeof object[keys[key]].availability !== 'boolean') return false;
     if (
-      (object[keys[key]].from !== '0' || object[keys[key]].to !== '0')
+      (object[keys[key]].from !== '' || object[keys[key]].to !== '')
       && (!object[keys[key]].from.match(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/)
       || !object[keys[key]].to.match(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/))
     ) {
@@ -62,7 +62,7 @@ const availabilityObjectUpdateValidator = (object) => {
   for (let key = 0; key < keys.length; key += 1) {
     if (!object[keys[key]] || typeof object[keys[key]].availability !== 'boolean') return false;
     if (
-      (object[keys[key]].from !== '0' || object[keys[key]].to !== '0')
+      (object[keys[key]].from !== '' || object[keys[key]].to !== '')
       && (!object[keys[key]].from.match(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/)
       || !object[keys[key]].to.match(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/))
     ) {
