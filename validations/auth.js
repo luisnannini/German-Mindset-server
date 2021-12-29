@@ -5,7 +5,7 @@ const required = (req, res, next) => {
     return res.status(400).send({ message: 'Email is required' });
   }
   if (!req.body.email.match(emailRegex)) {
-    return res.status(400).json({ message: 'Email is wrong' });
+    return res.status(400).json({ message: 'Invalid email format' });
   }
   if (!req.body.password) {
     return res.status(400).send({ message: 'Password is required' });

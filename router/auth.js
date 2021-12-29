@@ -1,11 +1,9 @@
 const express = require('express');
-const controller = require('../controllers/auth');
-const validations = require('../validations/auth');
-
+const { register } = require('../controllers/auth');
+const { required } = require('../validations/auth');
+// url = /api/auth/register
 const router = express.Router();
 
-const { register } = controller;
-
-router.post('/register', validations.required, register);
+router.post('/register', required, register);
 
 module.exports = router;

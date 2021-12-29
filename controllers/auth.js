@@ -1,14 +1,14 @@
 const Users = require('../models/Users');
 const Firebase = require('../helper/firebase');
 
-const register = async (req, res) => {
+const register = async ({ body: { email, password } }, res) => {
   try {
     const newFirebaseUser = await Firebase.auth().createUser({
-      email: req.body.email,
-      password: req.body.password,
+      email,
+      password,
     });
     const userCreated = new Users({
-      email: req.body.email,
+      email,
       firebaseUid: newFirebaseUser.uid,
     });
     const userSaved = await userCreated.save();
