@@ -1,7 +1,6 @@
 const firebase = require('../helper/firebase');
 
-const authMiddleware = (req, res, next) => {
-  const { token } = req.headers;
+const authMiddleware = ({ headers: { token } }, res, next) => {
   if (!token) {
     return res.status(400).json({ message: 'Provide a token' });
   }
