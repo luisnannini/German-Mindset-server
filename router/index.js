@@ -10,7 +10,9 @@ const profiles = require('./profiles');
 const psychologists = require('./psychologists');
 const sessions = require('./sessions');
 const postulants = require('./postulants');
+const auth = require('./auth');
 
+router.use('/auth', auth);
 router.use('/admins', admins);
 router.use('/applications', applications);
 router.use('/clients', clients);
