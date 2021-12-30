@@ -1,5 +1,6 @@
 const express = require('express');
 const controller = require('../controllers/positions');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 const positionsValidations = require('../validations/positions');
@@ -11,9 +12,9 @@ const {
   listPositions,
 } = controller;
 
-router.get('/', listPositions);
-router.post('/', positionsValidations.required, createPosition);
-router.put('/:id', positionsValidations.required, updatePosition);
-router.delete('/:id', deletePosition);
+router.get('/', authMiddleware, listPositions);
+router.post('/', authMiddleware, positionsValidations.required, createPosition);
+router.put('/:id', authMiddleware, positionsValidations.required, updatePosition);
+router.delete('/:id', authMiddleware, deletePosition);
 
 module.exports = router;
