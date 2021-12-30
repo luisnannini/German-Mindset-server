@@ -3,7 +3,6 @@ const validations = require('../validations/sessions');
 const controller = require('../controllers/sessions');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-
 const router = express.Router();
 
 const {
