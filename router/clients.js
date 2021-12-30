@@ -1,6 +1,7 @@
 const express = require('express');
 const controller = require('../controllers/clients');
 const clientValidations = require('../validations/clients');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
@@ -11,9 +12,9 @@ const {
   listClients,
 } = controller;
 
-router.post('/', clientValidations.required, createClient);
-router.put('/:id', clientValidations.required, updateClient);
-router.delete('/:id', deleteClient);
-router.get('/', listClients);
+router.post('/', authMiddleware, clientValidations.required, createClient);
+router.put('/:id', authMiddleware, clientValidations.required, updateClient);
+router.delete('/:id', authMiddleware, deleteClient);
+router.get('/', authMiddleware, listClients);
 
 module.exports = router;

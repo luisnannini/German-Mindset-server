@@ -1,6 +1,8 @@
 const express = require('express');
 const controller = require('../controllers/psychologists');
 const validations = require('../validations/psychologists');
+const authMiddleware = require('../middlewares/authMiddleware');
+
 
 const router = express.Router();
 
@@ -11,9 +13,9 @@ const {
   updatePsychologist,
 } = controller;
 
-router.post('/', validations.validatePsychologists, createPsychologist);
-router.put('/:id', validations.validateIdFormat, validations.validatePsychologistsUsedAttr, updatePsychologist);
-router.delete('/:id', validations.validateIdFormat, deletePsychologist);
-router.get('/', listPsychologists);
+router.post('/', authMiddleware, validations.validatePsychologists, createPsychologist);
+router.put('/:id', authMiddleware, validations.validateIdFormat, validations.validatePsychologistsUsedAttr, updatePsychologist);
+router.delete('/:id', authMiddleware, validations.validateIdFormat, deletePsychologist);
+router.get('/', authMiddleware, listPsychologists);
 
 module.exports = router;

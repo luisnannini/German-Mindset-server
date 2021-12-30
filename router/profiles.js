@@ -1,6 +1,7 @@
 const express = require('express');
 const controller = require('../controllers/profiles');
 const validations = require('../validations/profiles');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
@@ -16,9 +17,9 @@ const {
   validateIdFormat,
 } = validations;
 
-router.get('/', listProfiles);
-router.post('/', validateRequiredProfile, createProfile);
-router.put('/:id', validateIdFormat, updateProfile);
-router.delete('/:id', validateIdFormat, deleteProfile);
+router.get('/', authMiddleware, listProfiles);
+router.post('/', authMiddleware, validateRequiredProfile, createProfile);
+router.put('/:id', authMiddleware, validateIdFormat, updateProfile);
+router.delete('/:id', authMiddleware, validateIdFormat, deleteProfile);
 
 module.exports = router;
