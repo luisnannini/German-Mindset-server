@@ -3,7 +3,6 @@ const controller = require('../controllers/postulants');
 const validations = require('../validations/postulants');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-
 const router = express.Router();
 
 const {

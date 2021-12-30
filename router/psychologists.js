@@ -3,7 +3,6 @@ const controller = require('../controllers/psychologists');
 const validations = require('../validations/psychologists');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-
 const router = express.Router();
 
 const {
