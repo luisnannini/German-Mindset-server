@@ -18,6 +18,12 @@ const listSessions = (req, res) => {
     .catch((err) => res.status(400).json({ message: err }));
 };
 
+const getById = (req, res) => {
+  Sessions.findById(req.params.id)
+    .then((session) => res.status(200).json(session))
+    .catch((err) => res.status(404).json(err));
+};
+
 const createSession = (req, res) => {
   const session = new Sessions({
     postulant: req.body.postulant,
@@ -76,5 +82,5 @@ const deleteSession = (req, res) => {
 };
 
 module.exports = {
-  createSession, listSessions, updateSession, deleteSession,
+  createSession, listSessions, updateSession, deleteSession, getById,
 };
