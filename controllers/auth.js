@@ -1,8 +1,6 @@
 const Users = require('../models/Users');
 const Firebase = require('../helper/firebase');
 
-// USING ASYNC AWAIT
-
 const register = async (req, res) => {
   try {
     // Create user in Firebase
@@ -17,6 +15,7 @@ const register = async (req, res) => {
     });
     // Save the new user on DB
     const userSaved = await userCreated.save();
+    await Firebase.auth().setCustomUserClaims(newFirebaseUser.uid, { role: 'POSTULANT' });
     // Response with the new user created
     return res.status(201).json({
       message: 'User created',
