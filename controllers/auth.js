@@ -1,4 +1,4 @@
-const Users = require('../models/Users');
+const Admins = require('../models/Admins');
 const Firebase = require('../helper/firebase');
 
 const register = async (req, res) => {
@@ -9,7 +9,7 @@ const register = async (req, res) => {
       password: req.body.password,
     });
     // Create new user
-    const userCreated = new Users({
+    const userCreated = new Admins({
       email: req.body.email,
       firebaseUid: newFirebaseUser.uid,
     });
