@@ -1,15 +1,5 @@
 const Psychologists = require('../models/Psychologists');
 
-const availabilityObjectAttrConstructor = (req) => {
-  const keys = Object.keys(req.body.availability || {});
-  return keys.reduce((resultObj, el) => ({
-    ...resultObj,
-    [`availability.${el}.availability`]: req.body.availability[el]?.availability,
-    [`availability.${el}.from`]: req.body.availability[el]?.from,
-    [`availability.${el}.to`]: req.body.availability[el]?.to,
-  }), {});
-};
-
 const listPsychologists = (req, res) => {
   Psychologists.find(req.query)
     .then((psychologists) => {
@@ -25,7 +15,6 @@ const createPsychologist = (req, res) => {
   const psychologist = new Psychologists({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    availability: req.body.availability,
     username: req.body.username,
     password: req.body.password,
     email: req.body.email,
@@ -54,7 +43,6 @@ const updatePsychologist = (req, res) => {
       email: req.body.email,
       phone: req.body.phone,
       address: req.body.address,
-      ...availabilityObjectAttrConstructor(req),
     },
     { new: true },
     (err, updatedPsychologist) => {
