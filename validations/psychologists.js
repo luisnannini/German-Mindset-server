@@ -4,74 +4,6 @@ const errorResHelper = (errorDescription, res, errCode = 400) => {
   res.status(errCode).json({ message: errorDescription });
 };
 
-const availabilityObjectModel = {
-  monday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  tuesday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  wednesday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  thursday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  friday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  saturday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-  sunday: {
-    availability: '',
-    from: '',
-    to: '',
-  },
-};
-
-const availabilityObjectValidator = (object) => {
-  const keys = Object.keys(availabilityObjectModel);
-  for (let key = 0; key < keys.length; key += 1) {
-    if (!object[keys[key]] || typeof object[keys[key]].availability !== 'boolean') return false;
-    if (
-      (object[keys[key]].from !== '' || object[keys[key]].to !== '')
-      && (!object[keys[key]].from.match(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/)
-      || !object[keys[key]].to.match(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/))
-    ) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const availabilityObjectUpdateValidator = (object) => {
-  const keys = Object.keys(availabilityObjectModel);
-  for (let key = 0; key < keys.length; key += 1) {
-    if (!object[keys[key]] || typeof object[keys[key]].availability !== 'boolean') return false;
-    if (
-      (object[keys[key]].from !== '' || object[keys[key]].to !== '')
-      && (!object[keys[key]].from.match(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/)
-      || !object[keys[key]].to.match(/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/))
-    ) {
-      return false;
-    }
-  }
-  return true;
-};
-
 const validateIdFormat = (req, res, next) => {
   if (!ObjectId.isValid(req.params.id)) {
     return errorResHelper(`The psychologist 'Id' (${req.params.id}) given is invalid`, res);
@@ -86,9 +18,6 @@ const validatePsychologists = (req, res, next) => {
   }
   if (typeof req.body.lastName !== 'string') {
     invalidBodyAttrs.push("'lastName'");
-  }
-  if (!availabilityObjectUpdateValidator(req.body.availability)) {
-    invalidBodyAttrs.push("'availability'");
   }
   if (typeof req.body.username !== 'string') {
     invalidBodyAttrs.push("'username'");
@@ -126,9 +55,6 @@ const validatePsychologistsUsedAttr = (req, res, next) => {
   }
   if (req.body.lastName && typeof req.body.lastName !== 'string') {
     invalidBodyAttrs.push("'lastName'");
-  }
-  if (req.body.availability && !availabilityObjectValidator(req.body.availability)) {
-    invalidBodyAttrs.push("'availability'");
   }
   if (req.body.username && typeof req.body.username !== 'string') {
     invalidBodyAttrs.push("'username'");
