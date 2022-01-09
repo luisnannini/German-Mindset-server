@@ -26,6 +26,7 @@ const PsychologistSchema = new Schema(
     },
     phone: Number,
     address: String,
+    firebaseUid: { type: String, required: true },
   },
   { timestamps: true },
 );

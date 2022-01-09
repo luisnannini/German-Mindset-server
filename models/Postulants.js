@@ -57,6 +57,7 @@ const PostulantSchema = new Schema(
       description: { type: String },
       _id: false,
     }],
+    firebaseUid: { type: String, required: true },
   },
   {
     timestamps: true,

@@ -50,7 +50,7 @@ const updateAdmin = (req, res) => {
         });
       }
       return res.status(200).json({
-        message: 'Admin succesfully updated!',
+        message: 'Admin successfully updated!',
         data: newAdmin,
       });
     },
