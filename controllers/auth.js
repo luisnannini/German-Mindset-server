@@ -45,7 +45,6 @@ const registerPostulant = async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       password: req.body.password,
-      contactRange: req.body.contactRange,
       address: req.body.address,
       birthday: req.body.birthday,
       available: req.body.available,
