@@ -7,12 +7,11 @@ const registerAdmin = async (req, res) => {
   try {
     // Create user in Firebase
     const newFirebaseUser = await Firebase.auth().createUser({
-      email: req.body.email,
+      email: req.body.username,
       password: req.body.password,
     });
     // Create new user
     const userCreated = new Admins({
-      email: req.body.email,
       password: req.body.password,
       username: req.body.username,
       name: req.body.name,
@@ -28,6 +27,7 @@ const registerAdmin = async (req, res) => {
     });
   } catch (error) {
     // Return error
+    console.log('error');
     return res.status(400).json({ message: error.toString() });
   }
 };
