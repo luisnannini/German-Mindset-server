@@ -44,7 +44,6 @@ const registerPostulant = async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       password: req.body.password,
-      contactRange: req.body.contactRange,
       address: req.body.address,
       birthday: req.body.birthday,
       available: req.body.available,
@@ -79,7 +78,6 @@ const registerPsychologist = async (req, res) => {
     const userCreated = new Psychologists({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      availability: req.body.availability,
       password: req.body.password,
       email: req.body.email,
       phone: req.body.phone,
