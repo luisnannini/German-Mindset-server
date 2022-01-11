@@ -12,7 +12,7 @@ const {
   listPositions,
 } = controller;
 
-router.get('/', authMiddleware, listPositions);
+router.get('/', listPositions);
 router.post('/', authMiddleware, positionsValidations.required, createPosition);
 router.put('/:id', authMiddleware, positionsValidations.required, updatePosition);
 router.delete('/:id', authMiddleware, deletePosition);

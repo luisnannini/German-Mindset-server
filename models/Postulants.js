@@ -8,10 +8,6 @@ const PostulantSchema = new Schema(
     lastName: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    contactRange: {
-      from: { type: String },
-      to: { type: String },
-    },
     address: { type: String, required: true },
     birthday: { type: Date, required: true },
     available: { type: Boolean, required: true },
@@ -57,6 +53,7 @@ const PostulantSchema = new Schema(
       description: { type: String },
       _id: false,
     }],
+    firebaseUid: { type: String, required: true },
   },
   {
     timestamps: true,
