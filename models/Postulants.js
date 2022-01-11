@@ -12,7 +12,7 @@ const PostulantSchema = new Schema(
     birthday: { type: Date, required: true },
     available: { type: Boolean, required: true },
     phone: { type: Number, required: true },
-    profiles: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Profiles' },
+    profiles: { type: mongoose.Schema.Types.ObjectId, ref: 'Profiles' },
     studies: {
       primaryStudies: {
         startDate: { type: Date },
