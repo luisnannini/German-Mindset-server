@@ -1,5 +1,4 @@
 const Admins = require('../models/Admins');
-const { auth } = require('../helper/firebase');
 
 const getAdmins = (req, res) => {
   Admins.find(req.query)
@@ -31,9 +30,6 @@ const createAdmin = (req, res) => {
 };
 
 const updateAdmin = async (req, res) => {
-  auth().verifyIdToken(req.headers.token).then((user) => {
-    auth().updateUser(user.uid, { email: req.body.email });
-  });
   Admins.findByIdAndUpdate(
     req.params.id,
     {
