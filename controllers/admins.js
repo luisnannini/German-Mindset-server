@@ -14,7 +14,7 @@ const getAdmins = (req, res) => {
 const createAdmin = (req, res) => {
   const adminCreated = new Admins({
     name: req.body.name,
-    username: req.body.username,
+    email: req.body.email,
     password: req.body.password,
   });
 
@@ -34,7 +34,7 @@ const updateAdmin = (req, res) => {
     req.params.id,
     {
       name: req.body.name,
-      username: req.body.username,
+      email: req.body.email,
       password: req.body.password,
     },
     { new: true },
