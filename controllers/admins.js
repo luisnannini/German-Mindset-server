@@ -14,7 +14,7 @@ const getAdmins = (req, res) => {
 const createAdmin = (req, res) => {
   const adminCreated = new Admins({
     name: req.body.name,
-    username: req.body.username,
+    email: req.body.email,
     password: req.body.password,
   });
 
@@ -29,12 +29,12 @@ const createAdmin = (req, res) => {
   });
 };
 
-const updateAdmin = (req, res) => {
+const updateAdmin = async (req, res) => {
   Admins.findByIdAndUpdate(
     req.params.id,
     {
       name: req.body.name,
-      username: req.body.username,
+      email: req.body.email,
       password: req.body.password,
     },
     { new: true },

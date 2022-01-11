@@ -14,7 +14,6 @@ const registerAdmin = async (req, res) => {
     const userCreated = new Admins({
       email: req.body.email,
       password: req.body.password,
-      username: req.body.username,
       name: req.body.name,
       firebaseUid: newFirebaseUser.uid,
     });
@@ -79,8 +78,6 @@ const registerPsychologist = async (req, res) => {
     const userCreated = new Psychologists({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      availability: req.body.availability,
-      username: req.body.username,
       password: req.body.password,
       email: req.body.email,
       phone: req.body.phone,
