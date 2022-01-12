@@ -11,8 +11,8 @@ const {
 } = controller;
 
 router.post('/', authMiddleware, validations.validateUpdatedAdmin, createAdmin);
-router.put('/:id', authMiddleware, validations.validateUpdatedAdmin, updateFirebaseUser, updateAdmin);
-router.delete('/:id', authMiddleware, validations.validateIdFormat, deleteFirebaseUser, deleteAdmin);
+router.put('/:id', authMiddleware, validations.validateUpdatedAdmin, updateAdmin, updateFirebaseUser);
+router.delete('/:id', authMiddleware, validations.validateIdFormat, deleteAdmin, deleteFirebaseUser);
 router.get('/', authMiddleware, getAdmins);
 
 module.exports = router;

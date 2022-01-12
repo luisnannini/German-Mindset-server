@@ -29,7 +29,7 @@ const createAdmin = (req, res) => {
   });
 };
 
-const updateAdmin = async (req, res) => {
+const updateAdmin = async (req, res, next) => {
   Admins.findByIdAndUpdate(
     req.params.id,
     {
@@ -49,20 +49,19 @@ const updateAdmin = async (req, res) => {
           message: error,
         });
       }
-      return res.status(200).json({
-        message: 'Admin successfully updated!',
-        data: newAdmin,
-      });
+      res.locals.newAdmin = newAdmin;
+      return next();
     },
   );
 };
 
-const deleteAdmin = (req, res) => {
-  Admins.findByIdAndDelete(req.params.id, (error) => {
+const deleteAdmin = (req, res, next) => {
+  Admins.findByIdAndDelete(req.params.id, (error, doc) => {
     if (error) {
       return res.status(400).json({ message: `Admin with id ${req.params.id} does not exist.` });
     }
-    return res.status(204).send();
+    res.locals.uid = doc.firebaseUid;
+    return next();
   });
 };
 
