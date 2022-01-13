@@ -2,7 +2,7 @@ const express = require('express');
 const controller = require('../controllers/admins');
 const validations = require('../validations/admins');
 const authMiddleware = require('../middlewares/authMiddleware');
-const { updateFirebaseUser, deleteFirebaseUser } = require('../middlewares/firebaseUsersHandler');
+const { updateFirebaseUser, deleteFirebaseUser } = require('../middlewares/firebaseController');
 
 const router = express.Router();
 

@@ -32,7 +32,7 @@ const createPsychologist = (req, res) => {
   });
 };
 
-const updatePsychologist = (req, res) => {
+const updatePsychologist = (req, res, next) => {
   Psychologists.findByIdAndUpdate(
     req.params.id,
     {
@@ -52,15 +52,14 @@ const updatePsychologist = (req, res) => {
       if (!updatedPsychologist) {
         return res.status(404).json({ message: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
       }
-      return res.status(200).json({
-        message: 'Psychologist Updated',
-        data: updatedPsychologist,
-      });
+      res.locals.userType = 'Psychologist';
+      res.locals.updatedUser = updatedPsychologist;
+      return next();
     },
   );
 };
 
-const deletePsychologist = (req, res) => {
+const deletePsychologist = (req, res, next) => {
   Psychologists.findByIdAndDelete(req.params.id, (err, deletedPsychologist) => {
     if (err) {
       return res.status(400).json({ message: err });
@@ -68,7 +67,8 @@ const deletePsychologist = (req, res) => {
     if (!deletedPsychologist) {
       return res.status(404).json({ message: `The psychologist 'id' (${req.params.id}) given  does not exist.` });
     }
-    return res.status(204).send();
+    res.locals.uid = deletedPsychologist.firebaseUid;
+    return next();
   });
 };
 

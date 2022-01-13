@@ -49,7 +49,8 @@ const updateAdmin = async (req, res, next) => {
           message: error,
         });
       }
-      res.locals.newAdmin = newAdmin;
+      res.locals.userType = 'Admin';
+      res.locals.updatedUser = newAdmin;
       return next();
     },
   );
