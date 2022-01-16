@@ -5,7 +5,7 @@ const { required } = require('../validations/auth');
 const router = express.Router();
 
 router.post('/registerAdmin', required, registerAdmin);
-router.post('/registerPostulant', required, registerPostulant);
+router.post('/register', required, registerPostulant);
 router.post('/registerPsychologist', required, registerPsychologist);
 
 module.exports = router;
