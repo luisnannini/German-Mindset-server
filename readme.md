@@ -35,8 +35,6 @@ The app will Schedule an interview with our psychologist, this will help you to 
 
 The app will schedule interviews with companies that the search match with your professional profile.
 
-<br>
-
 ## Prerequisites
 
 - node 14.x
