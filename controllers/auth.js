@@ -89,7 +89,8 @@ const registerPsychologist = async (req, res) => {
     });
     // Save the new user on DB
     const userSaved = await userCreated.save();
-    await Firebase.auth().setCustomUserClaims(newFirebaseUser.uid, { role: 'PSYCHOLOGIST' });
+    // eslint-disable-next-line no-underscore-dangle
+    await Firebase.auth().setCustomUserClaims(newFirebaseUser.uid, { role: 'PSYCHOLOGIST', id: userSaved._id });
     // Response with the new user created
     return res.status(201).json({
       message: 'User created',
