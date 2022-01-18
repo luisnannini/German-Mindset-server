@@ -17,7 +17,7 @@ const {
   validateIdFormat,
 } = validations;
 
-router.get('/', authMiddleware, listProfiles);
+router.get('/', listProfiles);
 router.post('/', authMiddleware, validateRequiredProfile, createProfile);
 router.put('/:id', authMiddleware, validateIdFormat, updateProfile);
 router.delete('/:id', authMiddleware, validateIdFormat, deleteProfile);
