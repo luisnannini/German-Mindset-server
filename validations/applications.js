@@ -20,7 +20,7 @@ const validateApplicantFormat = (req, res, next) => {
   if (!ObjectId.isValid(req.body.postulants)) {
     return res.status(400).send({ message: 'Invalid Id Postulants' });
   }
-  if (!ObjectId.isValid(req.body.interview)) {
+  if (req.body.interview && !ObjectId.isValid(req.body.interview)) {
     return res.status(400).send({ message: 'Invalid Id Interview' });
   }
   if (typeof req.body.result !== 'string' || !req.body.result) {
