@@ -18,7 +18,7 @@ const required = (req, res, next) => {
   if (
     !req.body.vacancy
     || !Number.isInteger(+req.body.vacancy)
-    || parseInt(req.body.vacancy, 10) <= 1) {
+    || parseInt(req.body.vacancy, 10) < 1) {
     return res.status(400).send({
       message: 'The number of vacancies must be an integer number and more than 0',
     });

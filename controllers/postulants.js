@@ -45,7 +45,7 @@ const createPostulant = (req, res) => {
   });
 };
 
-const deletePostulant = (req, res) => {
+const deletePostulant = (req, res, next) => {
   Postulants.findByIdAndDelete(req.params.id, (error, pointedPostulant) => {
     if (error) {
       return res.status(400).json({
@@ -57,11 +57,12 @@ const deletePostulant = (req, res) => {
         message: 'Postulant Id does not exist',
       });
     }
-    return res.status(204).json({ message: 'Postulant deleted successfully' });
+    res.locals.uid = pointedPostulant.firebaseUid;
+    return next();
   });
 };
 
-const updatePostulants = (req, res) => {
+const updatePostulants = (req, res, next) => {
   const bodyReq = req.body;
   Postulants.findByIdAndUpdate(
     req.params.id,
@@ -90,10 +91,9 @@ const updatePostulants = (req, res) => {
           message: 'Postulant Id does not exist',
         });
       }
-      return res.status(200).json({
-        message: 'Postulant updated',
-        data: newPostulant,
-      });
+      res.locals.userType = 'Postulant';
+      res.locals.updatedUser = newPostulant;
+      return next();
     },
   );
 };
