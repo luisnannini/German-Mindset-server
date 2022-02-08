@@ -14,7 +14,7 @@
 
 > MindSet is a system that provides Human Resources services to companies.
 
-### 🏠 [Homepage](https://github.com/estefrare/BaSD-MindSet#readme)
+### 🏠 [Homepage](https://mindset-luisnannini.vercel.app/)
 
 ## How it's work:
 
@@ -44,7 +44,7 @@ The app will schedule interviews with companies that the search match with your 
 ```sh
 npm install
 ```
-To see all the dependencies of this project, go to this link: https://github.com/BaSD-2021/German-Mindset-server/network/dependencies
+To see all the dependencies of this project, go to this link: https://github.com/luisnannini/German-Mindset-server/network/dependencies
 
 ## Usage
 
