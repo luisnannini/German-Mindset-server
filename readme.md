@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to BaSD - Mindset Server 👋</h1>
+<h1 align="center">Welcome to Mindset Server 🖥</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.88-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/node-14.x-blue.svg" />
@@ -10,31 +10,13 @@
   </a>
 </p>
 
-![MindSet Logo](./assets/images/MindSet-Readme-Img.png)
+This is the back-end of the:
 
-> MindSet is a system that provides Human Resources services to companies.
+### 🏠 [MindSet-App](https://github.com/luisnannini/Mindset-app)
 
-### 🏠 [Homepage](https://mindset-luisnannini.vercel.app/)
+You can  clone this repo for a:
 
-## How it's work:
-
-It helps the users to find their perfect job according their professional profile.
-
-It only takes 3 steps to accomplish.
-
-### First step:
-
-Make an account by complete all the personal information required.
-
-### Second step:
-
-The app will Schedule an interview with our psychologist, this will help you to find you professional profile. Once the interview is done,the app will match your professional profile with the companie's search.
-
-### Third step:
-
-¡Be ready for you interview!
-
-The app will schedule interviews with companies that the search match with your professional profile.
+# 🖥 Local Installation
 
 ## Prerequisites
 
@@ -45,7 +27,7 @@ The app will schedule interviews with companies that the search match with your 
 ```sh
 npm install
 ```
-To see all the dependencies of this project, go to this link: https://github.com/luisnannini/German-Mindset-server/network/dependencies
+To see all the dependencies of this project, go to this link: https://github.com/luisnannini/Mindset-server/network/dependencies
 
 ## Usage
 
