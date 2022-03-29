@@ -19,7 +19,8 @@
 ## How it's work:
 
 It helps the users to find their perfect job according their professional profile.
-It only takes 3 step to accomplish.
+
+It only takes 3 steps to accomplish.
 
 ### First step:
 
